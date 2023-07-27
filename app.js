@@ -44,6 +44,14 @@ mongoose
   )
   .catch((err) => {
     console.log("\x1b[31m[Error]:\x1b[0m " + err);
+    mongoose
+      .connect(OD, { useNewUrlParser: true })
+      .then(() =>
+        console.log("\x1b[32m[successfully]:\x1b[0m Connected to Online MongoDB")
+      )
+      .catch((err) => {
+        console.log("\x1b[31m[Error]:\x1b[0m " + err);
+      });
   });
 
 // Schemas
@@ -63,35 +71,6 @@ app.use("/d2020", d2020Router);
 app.use("/d2021", d2021Router);
 app.use("/d2022", d2022Router);
 app.use("/d2023", d2023Router);
-
-app.get("/test", async (req, res) => {
-  try {
-    // Perform multiple Mongoose operations
-    const d2018Data = await D2018.find();
-    const d2019Data = await D2019.find();
-    const d2020Data = await D2020.find();
-    const d2021Data = await D2021.find();
-    const d2022Data = await D2022.find();
-    const d2023Data = await D2023.find();
-    const TopData = await Top.find();
-
-    res.render("dashboard.ejs", {
-      arr2018: d2018Data,
-      arr2019: d2019Data,
-      arr2020: d2020Data,
-      arr2021: d2021Data,
-      arr2022: d2022Data,
-      arr2023: d2023Data,
-      arrTop: TopData,
-
-      title: "St.George",
-      description: "صفحه كنيسه الشهيد العظيم مارجرجس ببورسعيد",
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).send("Internal Server Error");
-  }
-});
 
 // server
 app.listen(port, () => {
