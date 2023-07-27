@@ -53,3 +53,15 @@ function synchronizeCheckboxes(event) {
     checkbox1.checked = changedCheckbox.checked;
   }
 }
+
+
+// Check if dark mode is preferred
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  container.classList.remove("light");
+  container.classList.add("dark");
+  themeStylesheet.href = "./css/dark.css";
+} else {
+  container.classList.remove("dark");
+  container.classList.add("light");
+  themeStylesheet.href = "./css/light.css";
+}
