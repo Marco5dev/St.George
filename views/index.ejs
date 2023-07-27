@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./components/head") %>
+
+  <body id="top" class="light">
+    <!-- 
+    - #HEADER
+  -->
+    <%- include("./components/header") %>
+
+    <!-- 
+    - Main
+   -->
+    <main>
+      <article>
+        <!-- 
+          - #church
+        -->
+        <section class="church" id="home" aria-label="home">
+          <div class="container">
+            <div class="church-content">
+              <p class="church-subtitle">Hello Everyone!</p>
+
+              <h1 class="headline headline-1 section-title">
+                We are <span class="span">St.George Church</span>
+              </h1>
+
+              <p class="church-text">
+                <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum
+                temporibus voluptatum sint. Vero et, nihil facilis veniam
+                necessitatibus repellendus dolorem officia maiores quasi. -->
+              </p>
+
+              <div class="input-wrapper">
+                <input
+                  type="email"
+                  name="email_address"
+                  placeholder="Type your email address"
+                  required
+                  class="input-field"
+                  autocomplete="off"
+                />
+
+                <button class="btn btn-primary">
+                  <a href="#"><span class="span">Contact</span></a>
+                  <ion-icon
+                    name="arrow-forward-outline"
+                    aria-hidden="true"
+                  ></ion-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="church-banner">
+              <img
+                src="/images/pattern-2.svg"
+                width="27"
+                height="26"
+                alt="shape"
+                class="shape shape-1"
+              />
+
+              <img
+                src="/images/pattern-3.svg"
+                width="27"
+                height="26"
+                alt="shape"
+                class="shape shape-2"
+              />
+            </div>
+
+            <img
+              src="/images/shadow-1.svg"
+              width="500"
+              height="800"
+              alt=""
+              class="church-bg church-bg-1"
+            />
+
+            <img
+              src="/images/shadow-2.svg"
+              width="500"
+              height="500"
+              alt=""
+              class="church-bg church-bg-2"
+            />
+          </div>
+        </section>
+
+        <!-- 
+          - #winners
+        -->
+        <section
+          class="topWinners"
+          id="topWinners"
+          aria-labelledby="topic-label"
+        >
+          <div class="container">
+            <div class="card topic-card">
+              <div class="card-content">
+                <h2
+                  class="headline headline-2 section-title card-title"
+                  id="topic-label"
+                >
+                  Top 5 Winners
+                </h2>
+
+                <p class="card-text">
+                  أعلى 5 مراكز فى كل مسابقه للاعوام ال 5 السابقه من 2022 إلى
+                  2018
+                </p>
+
+                <div class="btn-group">
+                  <button
+                    class="btn-icon"
+                    aria-label="previous"
+                    data-slider-prev
+                  >
+                    <ion-icon name="arrow-back" aria-hidden="true"></ion-icon>
+                  </button>
+
+                  <button class="btn-icon" aria-label="next" data-slider-next>
+                    <ion-icon
+                      name="arrow-forward"
+                      aria-hidden="true"
+                    ></ion-icon>
+                  </button>
+                </div>
+              </div>
+
+              <div class="slider" data-slider>
+                <ul class="slider-list" data-slider-container>
+                  <% arrTop.forEach(itemTop => { %>
+                  <li class="slider-item">
+                    <a href="  <%- itemTop.social %> " class="slider-card">
+                      <figure
+                        class="slider-banner img-holder"
+                        style="--width: 507; --height: 618"
+                      >
+                        <img
+                          src="<%- itemTop.image || '/images/404.png' %>"
+                          width="507"
+                          height="618"
+                          loading="lazy"
+                          alt="<%- itemTop.name %>"
+                          class="img-cover"
+                        />
+                      </figure>
+
+                      <div class="slider-content">
+                        <span class="slider-title"> <%- itemTop.name %> </span>
+
+                        <p class="slider-subtitle">
+                          <%- itemTop.rank %> <br />
+                          <%- itemTop.competition %> <br />
+                          <%- itemTop.date %>
+                        </p>
+                      </div>
+                    </a>
+                  </li>
+
+                  <% }); %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 
+          - #RECENT POSTS
+        -->
+        <section class="section feature" aria-label="feature" id="recent-post">
+          <div class="container">
+            <h2 class="headline headline-2 section-title">
+              <span class="span">Recent Posts</span>
+            </h2>
+
+            <p class="section-text">Recently featured and highly rated posts</p>
+
+            <ul class="feature-list">
+              <li>
+                <div class="card feature-card">
+                  <figure
+                    class="card-banner img-holder"
+                    style="--width: 1602; --height: 903"
+                  >
+                    <img
+                      src="/images/post-1.jpg"
+                      width="1602"
+                      height="903"
+                      loading="lazy"
+                      alt="2023 بدايه اسبوع الآلام لسنه"
+                      class="img-cover"
+                    />
+                  </figure>
+
+                  <div class="card-content">
+                    <div class="card-wrapper">
+                      <div class="card-tag">
+                        <a href="#23" class="span hover-2" id="23">#23</a>
+                      </div>
+
+                      <div class="wrapper">
+                        <ion-icon
+                          name="time-outline"
+                          aria-hidden="true"
+                        ></ion-icon>
+
+                        <span class="span">1 min rear</span>
+                      </div>
+                    </div>
+
+                    <h3 class="headline headline-3">
+                      <a
+                        href="https://www.facebook.com/photo.php?fbid=756191039341787&set=a.100794241548140&type=3"
+                        class="card-title hover-2"
+                        style="font-family: var(--fontFamily-noto_sans_arabic)"
+                      >
+                        بدايه اسبوع الآلام لسنه 2023
+                      </a>
+                    </h3>
+
+                    <div class="card-wrapper">
+                      <div class="profile-card">
+                        <img
+                          src="/images/author-1.jpg"
+                          width="48"
+                          height="48"
+                          loading="lazy"
+                          alt="St.George"
+                          class="profile-banner"
+                        />
+
+                        <div>
+                          <p class="card-title">St.George Port Said</p>
+
+                          <p class="card-subtitle">10 Apr 2023</p>
+                        </div>
+                      </div>
+
+                      <a
+                        href="https://www.facebook.com/photo.php?fbid=756191039341787&set=a.100794241548140&type=3"
+                        class="card-btn"
+                        >Read more</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="card feature-card">
+                  <figure
+                    class="card-banner img-holder"
+                    style="--width: 1602; --height: 903"
+                  >
+                    <img
+                      src="/images/featured-2.jpg"
+                      width="1602"
+                      height="903"
+                      loading="lazy"
+                      alt="ثالث يوم من بدايه اسبوع الآلام 2023"
+                      class="img-cover"
+                    />
+                  </figure>
+
+                  <div class="card-content">
+                    <div class="card-wrapper">
+                      <div class="card-tag">
+                        <a href="#23" class="span hover-2" id="23">#23</a>
+                      </div>
+
+                      <div class="wrapper">
+                        <ion-icon
+                          name="time-outline"
+                          aria-hidden="true"
+                        ></ion-icon>
+
+                        <span class="span">6 mins read</span>
+                      </div>
+                    </div>
+
+                    <h3 class="headline headline-3">
+                      <a
+                        href="https://www.facebook.com/photo?fbid=616573820514181&set=pb.100064847042124.-2207520000."
+                        class="card-title hover-2"
+                        style="font-family: var(--fontFamily-noto_sans_arabic)"
+                      >
+                        ثالث يوم من بدايه اسبوع الآلام 2023
+                      </a>
+                    </h3>
+
+                    <div class="card-wrapper">
+                      <div class="profile-card">
+                        <img
+                          src="/images/author-1.jpg"
+                          width="48"
+                          height="48"
+                          loading="lazy"
+                          alt="St.George"
+                          class="profile-banner"
+                        />
+
+                        <div>
+                          <p class="card-title">st.George Port Said</p>
+
+                          <p class="card-subtitle">13 Apr 2023</p>
+                        </div>
+                      </div>
+
+                      <a
+                        href="https://www.facebook.com/photo?fbid=616573820514181&set=pb.100064847042124.-2207520000."
+                        class="card-btn"
+                        >Read more</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="card feature-card">
+                  <figure
+                    class="card-banner img-holder"
+                    style="--width: 1602; --height: 903"
+                  >
+                    <img
+                      src="/images/featured-3.jpg"
+                      width="1602"
+                      height="903"
+                      loading="lazy"
+                      alt="حضور سيدنا لليوم الثالث من أيام أسبوع الآلام 2023"
+                      class="img-cover"
+                    />
+                  </figure>
+
+                  <div class="card-content">
+                    <div class="card-wrapper">
+                      <div class="card-tag">
+                        <a href="#23" class="span hover-2">#23</a>
+                      </div>
+
+                      <div class="wrapper">
+                        <ion-icon
+                          name="time-outline"
+                          aria-hidden="true"
+                        ></ion-icon>
+
+                        <span class="span">6 mins read</span>
+                      </div>
+                    </div>
+
+                    <h3 class="headline headline-3">
+                      <a
+                        href="https://www.facebook.com/saint.george.portsaid/posts/pfbid02ffTNU8UEJhhGhGWqdQEWwjbYpNHM4QxQpbadhWStUKjz591FBCFVEx2itbCdePdQl"
+                        class="card-title hover-2"
+                        style="font-family: var(--fontFamily-noto_sans_arabic)"
+                      >
+                        حضور سيدنا لليوم الثالث من أيام أسبوع الآلام
+                      </a>
+                    </h3>
+
+                    <div class="card-wrapper">
+                      <div class="profile-card">
+                        <img
+                          src="/images/author-1.jpg"
+                          width="48"
+                          height="48"
+                          loading="lazy"
+                          alt="St.George"
+                          class="profile-banner"
+                        />
+
+                        <div>
+                          <p class="card-title">St.George Port Said</p>
+
+                          <p class="card-subtitle">13 Apr 2023</p>
+                        </div>
+                      </div>
+
+                      <a
+                        href="https://www.facebook.com/saint.george.portsaid/posts/pfbid02ffTNU8UEJhhGhGWqdQEWwjbYpNHM4QxQpbadhWStUKjz591FBCFVEx2itbCdePdQl"
+                        class="card-btn"
+                        >Read more</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="card feature-card">
+                  <figure
+                    class="card-banner img-holder"
+                    style="--width: 1602; --height: 903"
+                  >
+                    <img
+                      src="/images/featured-4.jpg"
+                      width="1602"
+                      height="903"
+                      loading="lazy"
+                      alt="افضل أيام السنه, يوم الجمعه العظيمه"
+                      class="img-cover"
+                    />
+                  </figure>
+
+                  <div class="card-content">
+                    <div class="card-wrapper">
+                      <div class="card-tag">
+                        <a href="#" class="span hover-2">#23</a>
+                      </div>
+
+                      <div class="wrapper">
+                        <ion-icon
+                          name="time-outline"
+                          aria-hidden="true"
+                        ></ion-icon>
+
+                        <span class="span">6 mins read</span>
+                      </div>
+                    </div>
+
+                    <h3 class="headline headline-3">
+                      <a
+                        href="https://www.facebook.com/photo.php?fbid=617119087126321&set=pb.100064847042124.-2207520000.&type=3"
+                        class="card-title hover-2"
+                        style="font-family: var(--fontFamily-noto_sans_arabic)"
+                      >
+                        افضل أيام السنه, يوم الجمعه العظيمه
+                      </a>
+                    </h3>
+
+                    <div class="card-wrapper">
+                      <div class="profile-card">
+                        <img
+                          src="/images/author-1.jpg"
+                          width="48"
+                          height="48"
+                          loading="lazy"
+                          alt="St.George"
+                          class="profile-banner"
+                        />
+
+                        <div>
+                          <p class="card-title">St.George Port Said</p>
+
+                          <p class="card-subtitle">14 Apr 2023</p>
+                        </div>
+                      </div>
+
+                      <a
+                        href="https://www.facebook.com/photo.php?fbid=617119087126321&set=pb.100064847042124.-2207520000.&type=3"
+                        class="card-btn"
+                        >Read more</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="card feature-card">
+                  <figure
+                    class="card-banner img-holder"
+                    style="--width: 1602; --height: 903"
+                  >
+                    <img
+                      src="/images/featured-5.jpg"
+                      width="1602"
+                      height="903"
+                      loading="lazy"
+                      alt="يوم الجمعه العظيمه لعام 2023"
+                      class="img-cover"
+                    />
+                  </figure>
+
+                  <div class="card-content">
+                    <div class="card-wrapper">
+                      <div class="card-tag">
+                        <a href="#" class="span hover-2">#23</a>
+                      </div>
+
+                      <div class="wrapper">
+                        <ion-icon
+                          name="time-outline"
+                          aria-hidden="true"
+                        ></ion-icon>
+
+                        <span class="span">6 mins read</span>
+                      </div>
+                    </div>
+
+                    <h3 class="headline headline-3">
+                      <a
+                        href="https://www.facebook.com/photo.php?fbid=617119337126296&set=pb.100064847042124.-2207520000.&type=3"
+                        class="card-title hover-2"
+                        style="font-family: var(--fontFamily-noto_sans_arabic)"
+                      >
+                        يوم الجمعه العظيمه لعام 2023
+                      </a>
+                    </h3>
+
+                    <div class="card-wrapper">
+                      <div class="profile-card">
+                        <img
+                          src="/images/author-1.jpg"
+                          width="48"
+                          height="48"
+                          loading="lazy"
+                          alt="St.George"
+                          class="profile-banner"
+                        />
+
+                        <div>
+                          <p class="card-title">St.George Port Said</p>
+
+                          <p class="card-subtitle">14 Apr 2023</p>
+                        </div>
+                      </div>
+
+                      <a
+                        href="https://www.facebook.com/photo.php?fbid=617119337126296&set=pb.100064847042124.-2207520000.&type=3"
+                        class="card-btn"
+                        >Read more</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+            <a
+              href="https://www.facebook.com/saint.george.portsaid"
+              class="btn btn-secondary"
+            >
+              <span class="span">Show More Posts</span>
+
+              <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+            </a>
+          </div>
+
+          <img
+            src="/images/shadow-3.svg"
+            width="500"
+            height="1500"
+            loading="lazy"
+            alt=""
+            class="feature-bg"
+          />
+        </section>
+
+        <!-- 
+          - #POPULAR TAGS
+        -->
+        <section class="tags" aria-labelledby="tag-label">
+          <div class="container">
+            <h2 class="headline headline-2 section-title" id="tag-label">
+              <span class="span">Tags</span>
+            </h2>
+
+            <p class="section-text">Choose where you want to go Sir...</p>
+
+            <ul class="grid-list">
+              <li>
+                <a href="/d2023" class="card tag-btn">
+                  <p class="btn-text">2023</p>
+                </a>
+              </li>
+
+              <li>
+                <a href="/d2022" class="card tag-btn">
+                  <p class="btn-text">2022</p>
+                </a>
+              </li>
+
+              <li>
+                <a href="/d2021" class="card tag-btn">
+                  <p class="btn-text">2021</p>
+                </a>
+              </li>
+
+              <li>
+                <a href="/d2020" class="card tag-btn">
+                  <p class="btn-text">2020</p>
+                </a>
+              </li>
+
+              <li>
+                <a href="/d2019" class="card tag-btn">
+                  <p class="btn-text">2019</p>
+                </a>
+              </li>
+
+              <li>
+                <a href="/d2018" class="card tag-btn">
+                  <p class="btn-text">2018</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 
+          - #RECENT POST
+        -->
+        <section
+          class="section recent-post"
+          id="recent-champions"
+          aria-labelledby="recent-label"
+        >
+          <div class="container">
+            <div class="post-main">
+              <h2 class="headline headline-2 section-title">
+                <span class="span">Recent Champions</span>
+              </h2>
+
+              <p class="section-text">
+                Don't miss the latest winners of "مهرجان الكرازه"
+              </p>
+
+              <ul class="grid-list">
+                <li>
+                  <div class="recent-post-card">
+                    <figure
+                      class="card-banner img-holder"
+                      style="--width: 271; --height: 258"
+                    >
+                      <img
+                        src="/images/Mark Maher.png"
+                        width="271"
+                        height="258"
+                        loading="lazy"
+                        alt="The Big Chambion of the Electronic League for the year 2022 with rank number '1' for this year"
+                        class="img-cover"
+                      />
+                    </figure>
+
+                    <div class="card-content">
+                      <a href="#" class="card-badge">Year 2022</a>
+
+                      <h3 class="headline headline-3 card-title">
+                        <a href="#" class="link hover-2">Mark Maher Ewida</a>
+                      </h3>
+
+                      <p class="card-text">
+                        The Big Chambion of the Electronic League for the year
+                        2022 with rank number '1' for this year
+                      </p>
+
+                      <div class="card-wrapper">
+                        <div class="card-tag">
+                          <a href="#22" class="span hover-2">#computer</a>
+                        </div>
+
+                        <div class="wrapper">
+                          <ion-icon
+                            name="time-outline"
+                            aria-hidden="true"
+                          ></ion-icon>
+
+                          <span class="span">2022/9/15</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="recent-post-card">
+                    <figure
+                      class="card-banner img-holder"
+                      style="--width: 271; --height: 258"
+                    >
+                      <img
+                        src="/images/Mark Maher.png"
+                        width="271"
+                        height="258"
+                        loading="lazy"
+                        alt="The Rank no.2 of Chess league for the year 2022"
+                        class="img-cover"
+                      />
+                    </figure>
+
+                    <div class="card-content">
+                      <a href="#" class="card-badge">Year 2022</a>
+
+                      <h3 class="headline headline-3 card-title">
+                        <a href="#" class="link hover-2">Mark Maher Ewida</a>
+                      </h3>
+
+                      <p class="card-text">
+                        The Rank no.2 of Chess league for the year 2022
+                      </p>
+
+                      <div class="card-wrapper">
+                        <div class="card-tag">
+                          <a href="#" class="span hover-2">#chess</a>
+                        </div>
+
+                        <div class="wrapper">
+                          <ion-icon
+                            name="time-outline"
+                            aria-hidden="true"
+                          ></ion-icon>
+
+                          <span class="span">2022/9/15</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="recent-post-card">
+                    <figure
+                      class="card-banner img-holder"
+                      style="--width: 271; --height: 258"
+                    >
+                      <img
+                        src="/images/Mark Maher.png"
+                        width="271"
+                        height="258"
+                        loading="lazy"
+                        alt="The Rank no.3 of Art league for the year 2021"
+                        class="img-cover"
+                      />
+                    </figure>
+
+                    <div class="card-content">
+                      <a href="#" class="card-badge">Year 2021</a>
+
+                      <h3 class="headline headline-3 card-title">
+                        <a href="#" class="link hover-2">Mark Maher Ewida</a>
+                      </h3>
+
+                      <p class="card-text">
+                        The Rank no.3 of Art league for the year 2021
+                      </p>
+
+                      <div class="card-wrapper">
+                        <div class="card-tag">
+                          <a href="#" class="span hover-2">#art</a>
+                        </div>
+
+                        <div class="wrapper">
+                          <ion-icon
+                            name="time-outline"
+                            aria-hidden="true"
+                          ></ion-icon>
+
+                          <span class="span">2021/10/12</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="recent-post-card">
+                    <figure
+                      class="card-banner img-holder"
+                      style="--width: 271; --height: 258"
+                    >
+                      <img
+                        src="/images/Mark Maher.png"
+                        width="271"
+                        height="258"
+                        loading="lazy"
+                        alt="The Rank no.1 of Research league for the year 2020"
+                        class="img-cover"
+                      />
+                    </figure>
+
+                    <div class="card-content">
+                      <a href="#" class="card-badge">Year 2020</a>
+
+                      <h3 class="headline headline-3 card-title">
+                        <a href="#" class="link hover-2">Mark Maher Ewida</a>
+                      </h3>
+
+                      <p class="card-text">
+                        The Rank no.1 of Research league for the year 2020
+                      </p>
+
+                      <div class="card-wrapper">
+                        <div class="card-tag">
+                          <a href="#" class="span hover-2">#research</a>
+                        </div>
+
+                        <div class="wrapper">
+                          <ion-icon
+                            name="time-outline"
+                            aria-hidden="true"
+                          ></ion-icon>
+
+                          <span class="span">2020/8/18</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="recent-post-card">
+                    <figure
+                      class="card-banner img-holder"
+                      style="--width: 271; --height: 258"
+                    >
+                      <img
+                        src="/images/Mark Maher.png"
+                        width="271"
+                        height="258"
+                        loading="lazy"
+                        alt="Helpful Tips for Working from Home as a Freelancer"
+                        class="img-cover"
+                      />
+                    </figure>
+
+                    <div class="card-content">
+                      <a href="#" class="card-badge">Year 2019</a>
+
+                      <h3 class="headline headline-3 card-title">
+                        <a href="#" class="link hover-2">Mark Maher Ewida</a>
+                      </h3>
+
+                      <p class="card-text">
+                        The Rank no.2 of Chess league for the year 2022
+                      </p>
+
+                      <div class="card-wrapper">
+                        <div class="card-tag">
+                          <a href="#" class="span hover-2">#chess</a>
+                        </div>
+
+                        <div class="wrapper">
+                          <ion-icon
+                            name="time-outline"
+                            aria-hidden="true"
+                          ></ion-icon>
+
+                          <span class="span">2019/10/21</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+              <nav aria-label="pagination" class="pagination">
+                <a href="#" class="pagination-btn" aria-label="previous page">
+                  <ion-icon name="arrow-back" aria-hidden="true"></ion-icon>
+                </a>
+
+                <a href="#" class="pagination-btn">1</a>
+                <a href="#" class="pagination-btn">2</a>
+                <a href="#" class="pagination-btn">3</a>
+                <a href="#" class="pagination-btn" aria-label="more page"
+                  >...</a
+                >
+
+                <a href="#" class="pagination-btn" aria-label="next page">
+                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                </a>
+              </nav>
+            </div>
+
+            <div class="post-aside grid-list">
+              <div class="card aside-card">
+                <h3 class="headline headline-2 aside-title">
+                  <span class="span">Our Fathers</span>
+                </h3>
+
+                <ul class="popular-list">
+                  <li>
+                    <div class="popular-card">
+                      <figure
+                        class="card-banner img-holder"
+                        style="--width: 64; --height: 64"
+                      >
+                        <img
+                          src="/images/shenouda fathy.jpg"
+                          width="64"
+                          height="64"
+                          loading="lazy"
+                          alt="Father Shenouda Fathy"
+                          class="img-cover"
+                        />
+                      </figure>
+
+                      <div class="card-content">
+                        <h4 class="headline headline-4 card-title">
+                          <a
+                            href="https://www.facebook.com/shenouda.fathy.39"
+                            class="link hover-2"
+                            >Father Shenouda Fathy</a
+                          >
+                        </h4>
+
+                        <div class="warpper">
+                          <time class="publish-date" datetime="2022-04-15"
+                            >25 November 1988</time
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="popular-card">
+                      <figure
+                        class="card-banner img-holder"
+                        style="--width: 64; --height: 64"
+                      >
+                        <img
+                          src="/images/shenouda fathy.jpg"
+                          width="64"
+                          height="64"
+                          loading="lazy"
+                          alt="Father Shenouda Fathy"
+                          class="img-cover"
+                        />
+                      </figure>
+
+                      <div class="card-content">
+                        <h4 class="headline headline-4 card-title">
+                          <a
+                            href="https://www.facebook.com/shenouda.fathy.39"
+                            class="link hover-2"
+                            >Father Shenouda Fathy</a
+                          >
+                        </h4>
+
+                        <div class="warpper">
+                          <time class="publish-date" datetime="2022-04-15"
+                            >25 November 1988</time
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="popular-card">
+                      <figure
+                        class="card-banner img-holder"
+                        style="--width: 64; --height: 64"
+                      >
+                        <img
+                          src="/images/shenouda fathy.jpg"
+                          width="64"
+                          height="64"
+                          loading="lazy"
+                          alt="Father Shenouda Fathy"
+                          class="img-cover"
+                        />
+                      </figure>
+
+                      <div class="card-content">
+                        <h4 class="headline headline-4 card-title">
+                          <a
+                            href="https://www.facebook.com/shenouda.fathy.39"
+                            class="link hover-2"
+                            >Father Shenouda Fathy</a
+                          >
+                        </h4>
+
+                        <div class="warpper">
+                          <time class="publish-date" datetime="2022-04-15"
+                            >25 November 1988</time
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="popular-card">
+                      <figure
+                        class="card-banner img-holder"
+                        style="--width: 64; --height: 64"
+                      >
+                        <img
+                          src="/images/shenouda fathy.jpg"
+                          width="64"
+                          height="64"
+                          loading="lazy"
+                          alt="Father Shenouda Fathy"
+                          class="img-cover"
+                        />
+                      </figure>
+
+                      <div class="card-content">
+                        <h4 class="headline headline-4 card-title">
+                          <a
+                            href="https://www.facebook.com/shenouda.fathy.39"
+                            class="link hover-2"
+                            >Father Shenouda Fathy</a
+                          >
+                        </h4>
+
+                        <div class="warpper">
+                          <time class="publish-date" datetime="2022-04-15"
+                            >25 November 1988</time
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="popular-card">
+                      <figure
+                        class="card-banner img-holder"
+                        style="--width: 64; --height: 64"
+                      >
+                        <img
+                          src="/images/shenouda fathy.jpg"
+                          width="64"
+                          height="64"
+                          loading="lazy"
+                          alt="Father Shenouda Fathy"
+                          class="img-cover"
+                        />
+                      </figure>
+
+                      <div class="card-content">
+                        <h4 class="headline headline-4 card-title">
+                          <a
+                            href="https://www.facebook.com/shenouda.fathy.39"
+                            class="link hover-2"
+                            >Father Shenouda Fathy</a
+                          >
+                        </h4>
+
+                        <div class="warpper">
+                          <time class="publish-date" datetime="2022-04-15"
+                            >25 November 1988</time
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <!-- 
+    - #FOOTER
+  -->
+    <%- include("./components/footer") %>
+
+    <!-- 
+    - #BACK TO TOP
+  -->
+    <a
+      href="#top"
+      class="back-top-btn"
+      aria-label="back to top"
+      data-back-top-btn
+    >
+      <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon>
+    </a>
+
+    <!-- 
+    - custom js link
+  -->
+    <script src="/js/script.js"></script>
+    <script src="/js/theme.js"></script>
+
+    <!-- 
+  - ion icon link
+-->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

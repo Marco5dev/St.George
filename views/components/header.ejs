@@ -1,0 +1,98 @@
+<header class="header" data-header>
+    <div class="container">
+      <a href="/#" class="logo">
+        <h1 class="logo">St.George</h1>
+      </a>
+
+      <nav class="navbar" data-navbar>
+        <div class="navbar-top">
+          <a href="/#" class="logo">
+            <h1 class="logo">St.George</h1>
+          </a>
+
+          <button
+            class="nav-close-btn"
+            aria-label="close menu"
+            data-nav-toggler
+          >
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+        </div>
+
+        <ul class="navbar-list">
+          <li>
+            <a href="/" class="navbar-link hover-1" data-nav-toggler
+              >Home</a
+            >
+          </li>
+          
+          <li>
+            <a href="/#topWinners" class="navbar-link hover-1" data-nav-toggler
+              >Top 5 Winners</a
+            >
+          </li>
+
+          <li>
+            <a
+              href="/#recent-post"
+              class="navbar-link hover-1"
+              data-nav-toggler
+              >Recent Posts</a
+            >
+          </li>
+
+          <li>
+            <a
+              href="/#recent-champions"
+              class="navbar-link hover-1"
+              data-nav-toggler
+              >Recent Champions</a
+            >
+          </li>
+
+          <li>
+            <label class="all">
+              <span class="navbar-link hover-1"
+                >Toggle Dark Mode</span
+              >
+              <input class="darkmode-mobile" type="checkbox" id="color_mode2" onclick="dark()" checked/></span>
+            </label>
+          </li>
+
+          <br />
+        </ul>
+
+        <p class="copyright-text">
+          Copyright 2023 © Mark Maher - Developed by Mark Maher Ewida
+        </p>
+      </nav>
+
+      <a
+        href="https://www.facebook.com/saint.george.portsaid"
+        class="btn btn-primary"
+        >Contact us
+      </a>
+
+      <div class="theme-container">
+        <label class="switch btn-color-mode-switch">
+          <input
+            type="checkbox"
+            name="color_mode"
+            id="color_mode"
+            value="1"
+            checked
+          />
+          <label
+            for="color_mode"
+            data-on="Dark"
+            data-off="Light"
+            class="btn-color-mode-switch-inner"
+          ></label>
+        </label>
+      </div>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+      </button>
+    </div>
+  </header>

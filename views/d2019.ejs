@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./components/head") %>
+
+  <body id="top" class="light">
+    <!-- 
+    - #HEADER
+  -->
+    <%- include("./components/header") %>
+
+    <!-- 
+    - Main
+   -->
+    <main>
+      <article>
+        <article>
+          <section
+            class="section feature"
+            aria-label="feature"
+            id="recent-post"
+          >
+            <div class="container">
+              <h2 class="headline headline-2 section-title">
+                <span class="span">2019 Data</span>
+              </h2>
+
+              <p class="section-text">
+                كل من حصل على مركز بمسابقات الكرازه لعام 2019
+              </p>
+
+              <ul class="feature-list">
+                <% arr2019.forEach(item2019 => { %>
+                <li>
+                  <div class="card feature-card">
+                    <figure
+                      class="card-banner img-holder"
+                      style="--width: 600; --height: 600"
+                    >
+                      <img
+                        src="<%- item2019.image || '/images/404.png' %>"
+                        width="600"
+                        height="600"
+                        loading="lazy"
+                        alt=""
+                        class="img-cover"
+                      />
+                    </figure>
+
+                    <div class="card-content">
+                      <div class="card-wrapper">
+                        <div class="card-tag">
+                          <p class="span hover-2"><%- item2019.rank %></p>
+                        </div>
+                      </div>
+
+                      <h3 class="headline headline-3">
+                        <a
+                          href="<%- item2019.social %>"
+                          class="card-title hover-2"
+                          style="
+                            font-family: var(--fontFamily-noto_sans_arabic);
+                          "
+                        >
+                          <%- item2019.name %>
+                        </a>
+                      </h3>
+
+                      <div class="card-wrapper">
+                        <div class="profile-card">
+                          <div>
+                            <p class="card-title">
+                              <%- item2019.competition %>
+                            </p>
+
+                            <p class="card-subtitle"><%- item2019.edu %></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <% }); %>
+              </ul>
+            </div>
+
+            <img
+              src="/images/shadow-3.svg"
+              width="500"
+              height="1500"
+              loading="lazy"
+              alt=""
+              class="feature-bg"
+            />
+          </section>
+        </article>
+      </article>
+    </main>
+
+    <!-- 
+    - #FOOTER
+  -->
+    <%- include("./components/footer") %>
+
+    <!-- 
+    - #BACK TO TOP
+  -->
+    <a
+      href="#top"
+      class="back-top-btn"
+      aria-label="back to top"
+      data-back-top-btn
+    >
+      <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon>
+    </a>
+
+    <!-- 
+    - custom js link
+  -->
+    <script src="/js/script.js"></script>
+    <script src="/js/theme.js"></script>
+
+    <!-- 
+  - ion icon link
+-->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

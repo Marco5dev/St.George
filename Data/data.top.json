@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "64beec12e9eec4d26b765a22"
+  },
+  "social": "",
+  "image": "",
+  "name": "كيرمينا جورج ثابت",
+  "rank": "1st",
+  "competition": "فنون تشكيلة(اشغال فنية)",
+  "date": "2019",
+  "edu": "مرحلة اعدادى"
+},
+{
+  "_id": {
+    "$oid": "64beedb3e9eec4d26b765a39"
+  },
+  "social": "https://www.facebook.com/profile.php?id=100083989630527",
+  "image": "https://scontent.fcai20-1.fna.fbcdn.net/v/t39.30808-6/343981460_2132721986923626_20903197911197633_n.jpg?_nc_cat=101&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Wymy7mygSaIAX-B9ILs&_nc_ht=scontent.fcai20-1.fna&oh=00_AfBYpNtlq4YFozo6iVxRhXSmQPzdbgxJ7W9C0ErJ-QsO8A&oe=64C48CBA",
+  "name": "مريم كمال فتحى",
+  "rank": "1st",
+  "competition": "لغة قبطية",
+  "date": "2021",
+  "edu": "مرحلة خامسة وسادسة"
+},
+{
+  "_id": {
+    "$oid": "64beec79e9eec4d26b765a30"
+  },
+  "social": "https://www.facebook.com/profile.php?id=100009053910797",
+  "image": "https://scontent.fcai20-1.fna.fbcdn.net/v/t39.30808-6/248618537_2917753708536398_1126972216032197847_n.jpg?_nc_cat=101&cb=99be929b-3346023f&ccb=1-7&_nc_sid=e3f864&_nc_ohc=zOE0F6TcMwsAX8JntYi&_nc_ht=scontent.fcai20-1.fna&oh=00_AfBtbWwg24AIgSbUS2S3w0c4WkMjNsvf26zP6rgLEWxxQw&oe=64C7922C",
+  "name": "ميرا عماد عبده",
+  "rank": "2nd",
+  "competition": "عزف فردى",
+  "date": "2022",
+  "edu": "مرحلة ثانوى"
+},
+{
+  "_id": {
+    "$oid": "64beedb3e9eec4d26b765a37"
+  },
+  "social": "https://www.facebook.com/profile.php?id=100036610399860",
+  "image": "https://scontent.fcai20-1.fna.fbcdn.net/v/t39.30808-6/306921382_767527704477569_7525029666495518851_n.jpg?_nc_cat=108&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=SgiN7v0q6QMAX8lPZvk&_nc_ht=scontent.fcai20-1.fna&oh=00_AfC6mXahaFM8pUXa_H0OS8w8z8iBEgDT6MWpBvq95INnjQ&oe=64C67029",
+  "name": "ابانوب مجدى رفعت",
+  "rank": "2nd",
+  "competition": "كمبيوتر",
+  "date": "2021",
+  "edu": "مرحلة(ثالثة ورابعة)"
+},
+{
+  "_id": {
+    "$oid": "64beec12e9eec4d26b765a23"
+  },
+  "social": "https://www.facebook.com/Roma.Magdy.7393264",
+  "image": "https://scontent.fcai20-2.fna.fbcdn.net/v/t39.30808-6/358574783_1760709311029625_3149180083218300264_n.jpg?_nc_cat=107&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=D_S3VCdP7YQAX-8Ki1r&_nc_ht=scontent.fcai20-2.fna&oh=00_AfDwRK7Zq_45zELoUvIB0jmontLnMPP1NNzz4fZNJ2nm2Q&oe=64C63BD1",
+  "name": "مريم مجدى مسعد",
+  "rank": "2nd",
+  "competition": "دراسية",
+  "date": "2019",
+  "edu": "مرحلة ثالثه ورابعة"
+}]

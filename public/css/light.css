@@ -1,0 +1,41 @@
+/*-----------------------------------*\
+  #CUSTOM PROPERTY
+\*-----------------------------------*/
+
+:root {
+  --bg-wild-blue-yonder: hsl(336, 0%, 32%);
+  --bg-carolina-blue: hsl(319, 0%, 51%);
+  --bg-prussian-blue: hsl(0, 0%, 89%);
+  --bg-oxford-blue: hsl(0, 0%, 93%);
+  --bg-oxford-blue-2: hsl(0, 0%, 100%);
+
+  /** Text colors */
+  --text-white: hsla(0, 0%, 0%, 1);
+  --text-alice-blue: hsla(336, 0%, 5%, 1);
+  --text-columbia-blue: hsl(180, 90%, 43%);
+  --text-wild-blue-yonder: hsla(336, 0%, 32%, 1);
+  --text-carolina-blue: hsla(319, 0%, 51%, 1);
+
+  /** Gradient colors */
+  --gradient-1: linear-gradient(90deg, #9a9a9a, #202020 51%);
+  --gradient-2: linear-gradient(90deg, #9a9a9a, #202020 51%, #9a9a9a);
+  --gradient-3: linear-gradient(0deg, #1a0d00, transparent);
+
+  /** Border colors */
+  --border-wild-blue-yonder: hsla(336, 0%, 32%, 1);
+  --border-prussian-blue: hsla(336, 0%, 80%, 1);
+  --border-white: hsl(0, 0%, 0%);
+  --border-white-alpha-15: hsla(0, 0%, 0%, 0.15);
+
+  /** Default colors */
+  --white: hsl(0, 0%, 100%, 1);
+  --black: hsl(0, 0%, 0%, 1);
+  --transparency: hsla(0, 0%, 0%, 0);
+
+  /**
+     * BOX SHADOW
+     */
+
+  --shadow-1: 0 8px 20px 0 hsla(0, 0%, 0%, 0.05);
+  --shadow-2: 0px 3px 20px hsla(180, 90%, 43%, 0.2);
+}

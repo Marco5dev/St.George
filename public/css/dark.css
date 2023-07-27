@@ -1,0 +1,47 @@
+/*-----------------------------------*\
+  #CUSTOM PROPERTY
+\*-----------------------------------*/
+
+:root {
+  /**
+  
+  COLORS */
+  /** Background colors */
+  --bg-wild-blue-yonder: hsl(336, 0%, 68%);
+  --bg-carolina-blue: hsl(319, 0%, 49%);
+  --bg-prussian-blue: hsl(336, 0%, 20%);
+  --bg-oxford-blue: hsl(342, 0%, 13%);
+  --bg-oxford-blue-2: hsl(342, 0%, 11%);
+
+  /** Text colors */
+  --text-white: hsla(0, 0%, 100%, 1);
+  --text-alice-blue: hsla(336, 0%, 95%, 1);
+  --text-columbia-blue: hsl(180, 90%, 43%);
+  --text-wild-blue-yonder: hsla(336, 0%, 68%, 1);
+  --text-carolina-blue: hsla(319, 0%, 49%, 1);
+  --text-shadow-blue: hsla(337, 0%, 59%, 1);
+  --text-slate-gray: hsla(337, 0%, 48%, 1);
+
+  /** Gradient colors */
+  --gradient-1: linear-gradient(90deg, #9a9a9a, #d1d1d1 51%);
+  --gradient-2: linear-gradient(90deg, #9a9a9a, #d1d1d1 51%, #9a9a9a);
+  --gradient-3: linear-gradient(0deg, #1a0d00, transparent);
+
+  /** Border colors */
+  --border-wild-blue-yonder: hsla(336, 0%, 68%, 1);
+  --border-prussian-blue: hsla(336, 0%, 20%, 1);
+  --border-white: hsl(0, 0%, 100%);
+  --border-white-alpha-15: hsla(0, 0%, 100%, 0.15);
+
+  /** Default colors */
+  --white: hsl(0, 0%, 100%, 1);
+  --black: hsl(0, 0%, 0%, 1);
+  --transparency: hsla(0, 0%, 0%, 0);
+
+  /**
+   * BOX SHADOW
+   */
+
+  --shadow-1: 0 8px 20px 0 hsla(0, 0%, 0%, 0.05);
+  --shadow-2: 0px 3px 20px hsla(180, 90%, 43%, 0.2);
+}

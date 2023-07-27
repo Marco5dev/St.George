@@ -1,0 +1,24 @@
+[{
+  "_id": {
+    "$oid": "64beec79e9eec4d26b765a2f"
+  },
+  "social": "https://www.facebook.com/profile.php?id=100079732574360",
+  "image": "https://scontent.fcai20-1.fna.fbcdn.net/v/t39.30808-6/356440136_249707841030300_4077786455769087258_n.jpg?_nc_cat=110&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=hiIfF6tia0AAX9cAqTk&_nc_oc=AQl-MOIp4Rxztlczj8INotw3Td-vzkP5EFqACjmWVQegkknBsH2ettUpILzWsBrX7m4&_nc_ht=scontent.fcai20-1.fna&oh=00_AfCB6_YQe6tZO0K7Rr8UW2-ImtU3zZfSuXqINtd0RYh0LA&oe=64C6AC32",
+  "name": "يوسف ماجد فتحى",
+  "rank": "3rd",
+  "competition": "كمبيوتر(مالتى ميديا)",
+  "date": "2022",
+  "edu": "مرحلة اعدادى"
+},
+{
+  "_id": {
+    "$oid": "64beec79e9eec4d26b765a30"
+  },
+  "social": "https://www.facebook.com/profile.php?id=100009053910797",
+  "image": "https://scontent.fcai20-1.fna.fbcdn.net/v/t39.30808-6/248618537_2917753708536398_1126972216032197847_n.jpg?_nc_cat=101&cb=99be929b-3346023f&ccb=1-7&_nc_sid=e3f864&_nc_ohc=zOE0F6TcMwsAX8JntYi&_nc_ht=scontent.fcai20-1.fna&oh=00_AfBtbWwg24AIgSbUS2S3w0c4WkMjNsvf26zP6rgLEWxxQw&oe=64C7922C",
+  "name": "ميرا عماد عبده",
+  "rank": "2nd",
+  "competition": "عزف فردى",
+  "date": "2022",
+  "edu": "مرحلة ثانوى"
+}]
