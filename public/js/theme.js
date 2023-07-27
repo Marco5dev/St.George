@@ -60,22 +60,12 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
   container.classList.remove("light");
   container.classList.add("dark");
   themeStylesheet.href = "./css/dark.css";
-} else {
-  container.classList.remove("dark");
-  container.classList.add("light");
-  themeStylesheet.href = "./css/light.css";
-}
-
-if (container.classList.contains('light')) {
-  // If the "light" class is present, uncheck the checkbox
   checkbox1.checked = true;
-  container.classList.remove("light");
-  container.classList.add("dark");
-  themeStylesheet.href = "./css/dark.css";
+  checkbox2.checked = true;
 } else {
-  // If the "light" class is not present, check the checkbox
-  checkbox1.checked = false;
   container.classList.remove("dark");
   container.classList.add("light");
   themeStylesheet.href = "./css/light.css";
+  checkbox1.checked = false;
+  checkbox2.checked = false;
 }
