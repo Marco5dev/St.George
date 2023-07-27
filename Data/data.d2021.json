@@ -48,13 +48,13 @@
 },
 {
   "_id": {
-    "$oid": "64beedb3e9eec4d26b765a37"
+    "$oid": "64c1b811c6789f12fbde5615"
   },
   "social": "https://www.facebook.com/profile.php?id=100036610399860",
   "image": "https://scontent.fcai20-1.fna.fbcdn.net/v/t39.30808-6/306921382_767527704477569_7525029666495518851_n.jpg?_nc_cat=108&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=SgiN7v0q6QMAX8lPZvk&_nc_ht=scontent.fcai20-1.fna&oh=00_AfC6mXahaFM8pUXa_H0OS8w8z8iBEgDT6MWpBvq95INnjQ&oe=64C67029",
   "name": "ابانوب مجدى رفعت",
-  "rank": "2nd",
-  "competition": "كمبيوتر",
+  "rank": "3rd",
+  "competition": "دراسية",
   "date": "2021",
   "edu": "مرحلة(ثالثة ورابعة)"
 }]
