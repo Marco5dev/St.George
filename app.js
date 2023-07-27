@@ -38,20 +38,12 @@ const d2023Router = require("./routers/d2023Router");
 
 // mongoose
 mongoose
-  .connect(LD, { useNewUrlParser: true })
+  .connect(OD, { useNewUrlParser: true })
   .then(() =>
     console.log("\x1b[32m[successfully]:\x1b[0m Connected to local MongoDB")
   )
   .catch((err) => {
-    console.log("\x1b[31m[Error]:\x1b[0m trying the online MongoDB");
-    mongoose
-      .connect(OD, { useNewUrlParser: true })
-      .then(() =>
-        console.log("\x1b[32m[successfully]:\x1b[0m Connected to Online MongoDB")
-      )
-      .catch((err) => {
-        console.log("\x1b[31m[Error]:\x1b[0m " + err);
-      });
+    console.log("\x1b[31m[Error]:\x1b[0m " + err);
   });
 
 // Schemas
