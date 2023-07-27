@@ -11,3 +11,5 @@
 .git
 .vscode
 ./views/dashboard.html
+.replit
+/replit.nix
