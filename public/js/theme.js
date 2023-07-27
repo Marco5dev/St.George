@@ -56,17 +56,38 @@ function synchronizeCheckboxes(event) {
 
 
 // Check if dark mode is preferred
-const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+function setDarkModePreference() {
+  const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-if (isDarkMode) {
-  container.classList.remove("light");
-  container.classList.add("dark");
-  themeStylesheet.href = "./css/dark.css";
-} else {
-  container.classList.remove("dark");
-  container.classList.add("light");
-  themeStylesheet.href = "./css/light.css";
+  if (isDarkMode) {
+    container.classList.remove("light");
+    container.classList.add("dark");
+    themeStylesheet.href = "./css/dark.css";
+  } else {
+    container.classList.remove("dark");
+    container.classList.add("light");
+    themeStylesheet.href = "./css/light.css";
+  }
+
+  checkbox1.checked = isDarkMode;
+  checkbox2.checked = isDarkMode;
 }
 
-checkbox1.checked = isDarkMode;
-checkbox2.checked = isDarkMode;
+// Call the function on page load
+setDarkModePreference();
+
+// Add a listener for changes in the system theme
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+  if (event.matches) {
+    container.classList.remove("light");
+    container.classList.add("dark");
+    themeStylesheet.href = "./css/dark.css";
+  } else {
+    container.classList.remove("dark");
+    container.classList.add("light");
+    themeStylesheet.href = "./css/light.css";
+  }
+
+  checkbox1.checked = event.matches;
+  checkbox2.checked = event.matches;
+});
