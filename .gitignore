@@ -10,3 +10,4 @@
 .env
 .git
 .vscode
+./views/dashboard.html
