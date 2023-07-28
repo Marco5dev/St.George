@@ -13,86 +13,80 @@
    -->
     <main>
       <article>
-        <article>
-          <section
-            class="section feature"
-            aria-label="feature"
-            id="recent-post"
-          >
-            <div class="container">
-              <h2 class="headline headline-2 section-title">
-                <span class="span">2021 Data</span>
-              </h2>
+        <section
+          class="section feature feature-phone"
+          aria-label="feature"
+          id="recent-post"
+        >
+          <div class="container">
+            <h2 class="headline headline-2 section-title">
+              <span class="span">2021 Data</span>
+            </h2>
 
-              <p class="section-text">
-                كل من حصل على مركز بمسابقات الكرازه لعام 2021
-              </p>
+            <p class="section-text">
+              كل من حصل على مركز بمسابقات الكرازه لعام 2021
+            </p>
 
-              <ul class="feature-list">
-                <% arr2021.forEach(item2021 => { %>
-                <li>
-                  <div class="card feature-card">
-                    <figure
-                      class="card-banner img-holder"
-                      style="--width: 600; --height: 600"
-                    >
-                      <img
-                        src="<%- item2021.image || '/images/404.png' %>"
-                        width="600"
-                        height="600"
-                        loading="lazy"
-                        alt="<%- item2021.name %>"
-                        class="img-cover"
-                      />
-                    </figure>
+            <ul class="feature-list">
+              <% arr2021.forEach(item2021 => { %>
+              <li>
+                <div class="card feature-card">
+                  <figure
+                    class="card-banner img-holder"
+                    style="--width: 600; --height: 600"
+                  >
+                    <img
+                      src="<%- item2021.image || '/images/404.png' %>"
+                      width="600"
+                      height="600"
+                      loading="lazy"
+                      alt="<%- item2021.name %>"
+                      class="img-cover"
+                    />
+                  </figure>
 
-                    <div class="card-content">
-                      <div class="card-wrapper">
-                        <div class="card-tag">
-                          <p class="span hover-2"><%- item2021.rank %></p>
-                        </div>
+                  <div class="card-content">
+                    <div class="card-wrapper">
+                      <div class="card-tag">
+                        <p class="span hover-2"><%- item2021.rank %></p>
                       </div>
+                    </div>
 
-                      <h3 class="headline headline-3">
-                        <a
-                          href="<%- item2021.social %>"
-                          class="card-title hover-2"
-                          style="
-                            font-family: var(--fontFamily-noto_sans_arabic);
-                          "
-                        >
-                          <%- item2021.name %>
-                        </a>
-                      </h3>
+                    <h3 class="headline headline-3">
+                      <a
+                        href="<%- item2021.social %>"
+                        class="card-title hover-2"
+                        style="font-family: var(--fontFamily-noto_sans_arabic)"
+                      >
+                        <%- item2021.name %>
+                      </a>
+                    </h3>
 
-                      <div class="card-wrapper">
-                        <div class="profile-card">
-                          <div>
-                            <p class="card-title">
-                              <%- item2021.competition %>
-                            </p>
+                    <div class="card-wrapper">
+                      <div class="profile-card">
+                        <div>
+                          <p class="card-title"><%- item2021.competition %></p>
 
-                            <p class="card-subtitle"><%- item2021.edu %></p>
-                          </div>
+                          <p class="card-subtitle"><%- item2021.edu %></p>
                         </div>
                       </div>
                     </div>
                   </div>
-                </li>
-                <% }); %>
-              </ul>
-            </div>
+                </div>
+              </li>
+              <% }); %>
+            </ul>
+          </div>
 
-            <img
-              src="/images/shadow-3.svg"
-              width="500"
-              height="1500"
-              loading="lazy"
-              alt=""
-              class="feature-bg"
-            />
-          </section>
-        </article>
+          <img
+            src="/images/shadow-3.svg"
+            width="500"
+            height="1500"
+            loading="lazy"
+            alt=""
+            class="feature-bg"
+          />
+        </section>
       </article>
     </main>
 
@@ -102,22 +96,9 @@
     <%- include("./components/footer") %>
 
     <!-- 
-    - #BACK TO TOP
-  -->
-    <a
-      href="#top"
-      class="back-top-btn"
-      aria-label="back to top"
-      data-back-top-btn
-    >
-      <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon>
-    </a>
-
-    <!-- 
     - custom js link
   -->
-    <script src="/js/script.js"></script>
-    <script src="/js/theme.js"></script>
+    <%- include("./components/javascript") %>
 
     <!-- 
   - ion icon link

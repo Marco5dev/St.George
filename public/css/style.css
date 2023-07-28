@@ -181,16 +181,6 @@ body.nav-active {
   color: var(--text-carolina-blue);
 }
 
-.profile-card {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.profile-card .profile-banner {
-  border-radius: var(--radius-circle);
-}
-
 .headline {
   color: var(--text-columbia-blue);
   line-height: var(--lineHeight-1);
@@ -296,7 +286,7 @@ body.nav-active {
   margin-block: 20px;
 }
 
-.card-wrapper :is(.card-tag, .wrapper) {
+.card-wrapper :is(.card-Year, .wrapper) {
   display: flex;
   gap: 3px;
   align-items: center;
@@ -405,6 +395,102 @@ label {
 .btn-color-mode-switch input[type="checkbox"]:checked ~ .alert {
   display: block;
 }
+
+
+/*-----------------------------------*\
+  #DROPDOWN
+\*-----------------------------------*/
+
+
+.dropdown {
+  margin: 0;
+}
+
+.dropdown {
+margin-top: 5px;
+min-width: 10em;
+position: relative;
+}
+
+.dropdown * {
+box-sizing: border-box;
+}
+
+.select {
+color: var(--white-to-dark);
+display: flex;
+justify-content: space-around;
+align-items: center;
+border: 2px var(--text-columbia-blue);
+border-radius: 0.5em;
+padding: 1em;
+cursor: pointer;
+}
+
+.select-clicked {
+border: 2px var(--text-columbia-blue);
+box-shadow: 0 0 0.8em var(--text-columbia-blue);
+}
+
+.select:hover {
+border: 2px var(--text-columbia-blue);
+box-shadow: 0 0 0.8em var(--text-columbia-blue);
+}
+
+.caret {
+width: 0;
+height: 0;
+border-left: 5px solid transparent;
+border-right: 5px solid transparent;
+border-top: 6px solid var(--white-to-dark);
+transition: 0.3s;
+}
+
+.caret-rotate {
+transform: rotate(180deg);
+}
+
+.menu {
+margin-top: 20px;
+list-style: none;
+background-color: var(--transparency);
+backdrop-filter: blur(25px);
+-webkit-backdrop-filter: blur(25px);
+padding: 0.2em 0.5em;
+border: 1px #363a43 solid;
+box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+border-radius: 0.5em;
+color: var(--white-to-dark);
+position: absolute;
+top: 3em;
+left: 50%;
+width: 100%;
+transform: translateX(-50%);
+display: none;
+}
+
+.menu li {
+padding: 0.7em 0.5em;
+margin: 0.3em 0;
+border-radius: 0.5em;
+cursor: pointer;
+}
+
+.menu li a{
+text-decoration: none;
+}
+
+.menu li:hover {
+border: 2px var(--text-columbia-blue);
+box-shadow: 0 0 0.8em var(--text-columbia-blue);
+}
+
+.menu-open {
+display: block;
+}
+
+
+
 
 /*-----------------------------------*\
   #HEADER
@@ -841,19 +927,23 @@ label {
   margin-block-start: 30px;
 }
 
+.feature-phone {
+  margin-top: 50px;
+}
+
 /*-----------------------------------*\
-  #POPULAR TAGS
+  #POPULAR YearS
 \*-----------------------------------*/
 
-.tags {
+.Years {
   margin-bottom: 50px;
 }
 
-.tags .grid-list {
+.Years .grid-list {
   grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
 }
 
-.tag-btn {
+.Year-btn {
   width: 100%;
   display: flex;
   align-items: center;
@@ -862,7 +952,7 @@ label {
   border-radius: var(--radius-16);
 }
 
-.tag-btn:is(:hover, :focus-visible) {
+.Year-btn:is(:hover, :focus-visible) {
   box-shadow: var(--shadow-2);
   background-image: linear-gradient(
       var(--bg-oxford-blue),
@@ -875,7 +965,7 @@ label {
   transition: var(--transition-1);
 }
 
-.tag-btn img {
+.Year-btn img {
   width: 100%;
   max-width: 32px;
 }
@@ -940,7 +1030,7 @@ label {
   display: flex;
 }
 
-.recent-post-card .card-tag {
+.recent-post-card .card-Year {
   gap: 15px;
   color: var(--text-slate-gray);
 }
@@ -1135,7 +1225,7 @@ label {
   color: hsl(214, 100%, 50%);
 }
 
-.instagram :is(:hover, :focus-visible) {
+.insYearram :is(:hover, :focus-visible) {
   background: linear-gradient(
     45deg,
     #405de6,
@@ -1153,7 +1243,7 @@ label {
 }
 
 .github :is(:hover, :focus-visible) {
-  color: var(--git);
+  color: var(--white-to-dark);
 }
 
 /*-----------------------------------*\
@@ -1428,10 +1518,10 @@ label {
   }
 
   /**
-   * TAGS
+   * YearS
    */
 
-  .tags .grid-list {
+  .Years .grid-list {
     grid-template-columns: repeat(4, 1fr);
   }
 
@@ -1459,6 +1549,10 @@ label {
 
   .copyright {
     margin-block-end: 0;
+  }
+
+  .dropdown {
+    margin: 0;
   }
 }
 
@@ -1538,10 +1632,10 @@ label {
   }
 
   /**
-   * TAGS
+   * YearS
    */
 
-  .tags .grid-list {
+  .Years .grid-list {
     grid-template-columns: repeat(6, 1fr);
   }
 

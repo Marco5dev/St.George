@@ -23,7 +23,7 @@
     color: #fff;
     display: flex;
     justify-content: space-around;
-    align-items: baseline;
+    align-items: center;
     border: 2px #2a2f3b;
     border-radius: 0.5em;
     padding: 1em;
@@ -49,7 +49,7 @@
     transition: 0.3s;
   }
 
-  .caret-routate {
+  .caret-rotate {
     transform: rotate(180deg);
   }
 
@@ -66,9 +66,8 @@
     left: 50%;
     width: 100%;
     transform: translateX(-50%);
-    opacity: 0;
-    display: none;
-    z-index: 5;
+    display: block;
+    z-index: 1;
   }
 
   .menu li {
@@ -86,11 +85,9 @@
     background: #23242a;
   }
 
-  .meu-open {
+  .menu-open {
     display: block;
-    opacity: 1;
   }
-
 </style>
 
 <div class="dropdown">
@@ -102,40 +99,25 @@
     <li>Framer</li>
     <li>Sketch</li>
     <li>Invinsion Stodio</li>
-    <li class="active">figma</li>
+    <li>figmar</li>
     <li>adobe XD</li>
   </ul>
 </div>
 
-
 <script>
-  const dropdowns = document.querySelectorAll('.dropdown')
+  const dropdowns = document.querySelectorAll(".dropdown");
 
-  dropdowns.forEach(dropdown => {
-    const select = dropdown.querySelector('.select');
-    const caret = dropdown.querySelector('.caret');
-    const menu = dropdown.querySelector('.menu');
-    const options = dropdown.querySelector('.options');
-    const selected = dropdown.querySelector('.selected');
+  dropdowns.forEach((dropdown) => {
+    const select = dropdown.querySelector(".select");
+    const caret = dropdown.querySelector(".caret");
+    const menu = dropdown.querySelector(".menu");
+    const options = dropdown.querySelector(".menu li");
+    const selected = dropdown.querySelector(".selected");
 
-
-    select,addEventListener('click', () => {
-      select.classList.toggle('select-clicked');
-      caret.classList.toggle('caret-rotate');
-      menu.classList.toggle('menu-open');
-    })
-
-    options.forEach(option => {
-      option.addEventListener('click', () => {
-        selected.innerText = option.innerText;
-        select.classList.remove('select-clicked')
-        caret.classList.remove('caret-rotate')
-        menu.classList.remove('menu-open')
-        options.forEach(option => {
-          option.classList.remove('active')
-        });
-        option.classList.add('active')
-      });
+    select.addEventListener("click", () => {
+      select.classList.toggle("select-clicked");
+      caret.classList.toggle("caret-rotate");
+      menu.classList.toggle("menu-open");
     });
   });
 </script>

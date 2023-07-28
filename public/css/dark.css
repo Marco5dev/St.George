@@ -45,5 +45,5 @@
   --shadow-1: 0 8px 20px 0 hsla(0, 0%, 0%, 0.05);
   --shadow-2: 0px 3px 20px hsla(180, 90%, 43%, 0.2);
 
-  --git: hsl(0, 0%, 100%, 1);
+  --white-to-dark: hsl(0, 0%, 100%, 1);
 }

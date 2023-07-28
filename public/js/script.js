@@ -114,7 +114,3 @@ window.addEventListener("resize", handleResize);
 // Initial setup
 updateSliderData();
 moveSliderItem();
-
-function goTo() {
-  movr;
-}
