@@ -40,7 +40,7 @@ const d2023Router = require("./routers/d2023Router");
 mongoose
   .connect(OD, { useNewUrlParser: true })
   .then(() =>
-    console.log("\x1b[32m[successfully]:\x1b[0m Connected to local MongoDB")
+    console.log("\x1b[32m[successfully]:\x1b[0m Connected to MongoDB")
   )
   .catch((err) => {
     console.log("\x1b[31m[Error]:\x1b[0m " + err);
