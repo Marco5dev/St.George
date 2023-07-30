@@ -14,7 +14,7 @@
   "main": "app.js",
   "scripts": {
     "start-prod": "nodemon app.js",
-    "build": "node app.js"
+    "build": "mkdir cache"
   },
   "author": "Mark Maher Ewida",
   "license": "ISC",
