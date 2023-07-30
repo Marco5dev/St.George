@@ -13,7 +13,8 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "build": "nodemon app.js"
   },
   "author": "Mark Maher Ewida",
   "license": "ISC",
