@@ -13,7 +13,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start-prod": "nodemon app.js",
     "build": "node app.js"
   },
   "author": "Mark Maher Ewida",
