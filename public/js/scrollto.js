@@ -26,6 +26,3 @@ scrollTo.addEventListener("click", scrollToTop);
 
 // Attach the toggleScrollTo function to the scroll event
 window.addEventListener("scroll", toggleScrollTo);
-
-// Initially call the function to check the visibility of the button on page load
-toggleScrollTo();
