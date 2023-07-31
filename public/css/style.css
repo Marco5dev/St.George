@@ -670,7 +670,7 @@ label {
 }
 
 .dark-mode-input:checked + .dark-mode-slider:before {
-  left: calc(100% - 3.4rem);
+  left: calc(100% - 3rem);
   background: #37393f;
   box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
 }
