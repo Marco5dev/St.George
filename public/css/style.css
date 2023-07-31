@@ -1231,7 +1231,7 @@ label {
   color: hsl(214, 100%, 50%);
 }
 
-.insYearram :is(:hover, :focus-visible) {
+.instagram :is(:hover, :focus-visible) {
   background: linear-gradient(
     45deg,
     #405de6,
