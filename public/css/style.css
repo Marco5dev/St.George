@@ -1242,10 +1242,8 @@ label {
     #fd1d1d
   );
   background-clip: text;
-  text-fill-color: transparent;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
+  color: transparent;
 }
 
 .github :is(:hover, :focus-visible) {
