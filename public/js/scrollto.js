@@ -13,7 +13,6 @@ function scrollToTop() {
 // Function to check visibility and add the "active" class
 function toggleScrollTo() {
   const scrollY = window.scrollY;
-  const windowHeight = window.innerHeight;
 
   if (scrollY > 3) {
     scrollTo.classList.add("active");
@@ -29,4 +28,4 @@ scrollTo.addEventListener("click", scrollToTop);
 window.addEventListener("scroll", toggleScrollTo);
 
 // Initially call the function to check the visibility of the button on page load
-togglescrollTo();
+toggleScrollTo();
