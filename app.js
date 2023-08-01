@@ -1,11 +1,11 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 require("dotenv").config();
 const ejs = require("ejs");
-const colors = "colors.js";
+const colors = "./middleware/colors.js";
 const expressip = require("express-ip");
+const dataAccess = require("./middleware/dataAccess");
 const app = express();
 const port = process.env.PORT;
 const LD = process.env.LD;
@@ -36,33 +36,14 @@ const d2021Router = require("./routers/d2021Router");
 const d2022Router = require("./routers/d2022Router");
 const d2023Router = require("./routers/d2023Router");
 
-// mongoose
-mongoose
-  .connect(OD)
-  .then(() =>
-    console.log("\x1b[32m[successfully]:\x1b[0m Connected to MongoDB")
-  )
-  .catch((err) => {
-    console.log("\x1b[31m[Error]:\x1b[0m " + err);
-  });
-
-// Schemas
-const D2018 = require("./models/d2018Schema.js");
-const D2019 = require("./models/d2019Schema.js");
-const D2020 = require("./models/d2020Schema.js");
-const D2021 = require("./models/d2021Schema.js");
-const D2022 = require("./models/d2022Schema.js");
-const D2023 = require("./models/d2023Schema.js");
-const Top = require("./models/topSchema.js");
-
 // Routers
 app.use("/", homeRouter);
-app.use("/d2018", d2018Router);
-app.use("/d2019", d2019Router);
-app.use("/d2020", d2020Router);
-app.use("/d2021", d2021Router);
-app.use("/d2022", d2022Router);
-app.use("/d2023", d2023Router);
+app.use("/2018", d2018Router);
+app.use("/2019", d2019Router);
+app.use("/2020", d2020Router);
+app.use("/2021", d2021Router);
+app.use("/2022", d2022Router);
+app.use("/2023", d2023Router);
 
 // server
 app.listen(port, () => {

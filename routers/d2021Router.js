@@ -1,17 +1,14 @@
 const express = require("express");
 const router = express.Router();
-
-// Schemas
-const D2021 = require("../models/d2021Schema.js");
+const dataAccess = require("../middleware/dataAccess");
 
 // Home route
 router.get("/", async (req, res) => {
   try {
-    // Perform multiple Mongoose operations
-    const d2021Data = await D2021.find();
+    const allData = dataAccess.getDataFromJSONFile(2021);
 
     res.render("d2021.ejs", {
-      arr2021: d2021Data,
+      arr2021: allData,
 
       title: "2021 Data",
       description: "all data about year 2021",

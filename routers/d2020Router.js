@@ -1,16 +1,14 @@
 const express = require("express");
 const router = express.Router();
-
-// Schemas
-const D2020 = require("../models/d2020Schema.js");
+const dataAccess = require("../middleware/dataAccess");
 
 // Home route
 router.get("/", async (req, res) => {
   try {
-    const d2020Data = await D2020.find();
+    const allData = dataAccess.getDataFromJSONFile(2020);
 
     res.render("d2020.ejs", {
-      arr2020: d2020Data,
+      arr2020: allData,
 
       title: "2020 Data",
       description: "all data about year 2020",
