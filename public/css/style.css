@@ -451,7 +451,7 @@ label {
 .menu {
   margin-top: 20px;
   list-style: none;
-  background-color: var(--transparency);
+  background-color: var(--bg-oxford-blue-2);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   padding: 0.2em 0.5em;
