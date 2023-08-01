@@ -18,8 +18,27 @@ toggle.addEventListener("change", function () {
   }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  // Get reference to the dark-mode-text element
+  const darkModeText = document.querySelector(".dark-mode-text");
+
+  // Add event listener to the dark-mode-text element
+  darkModeText.addEventListener("click", function darkModeText() {
+    // Toggle the checked state of checkbox2 (color_mode2)
+    const checkbox2 = document.getElementById("color_mode2");
+    const checkbox = document.getElementById("color_mode");
+    checkbox2.checked = !checkbox2.checked;
+    checkbox.checked = !checkbox.checked;
+
+    // Manually trigger the change event on checkbox2 to update the dark mode
+    const event = new Event("change");
+    checkbox2.dispatchEvent(event);
+    dark()
+  });
+});
+
 function dark() {
-    const a = document.getElementById("color_mode2");
+  const a = document.getElementById("color_mode2");
   if (a.checked) {
     container.classList.remove("light");
     container.classList.add("dark");
@@ -54,10 +73,11 @@ function synchronizeCheckboxes(event) {
   }
 }
 
-
 // Check if dark mode is preferred
 function setDarkModePreference() {
-  const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDarkMode =
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
 
   if (isDarkMode) {
     container.classList.remove("light");
@@ -77,17 +97,19 @@ function setDarkModePreference() {
 setDarkModePreference();
 
 // Add a listener for changes in the system theme
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
-  if (event.matches) {
-    container.classList.remove("light");
-    container.classList.add("dark");
-    themeStylesheet.href = "./css/dark.css";
-  } else {
-    container.classList.remove("dark");
-    container.classList.add("light");
-    themeStylesheet.href = "./css/light.css";
-  }
+window
+  .matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener("change", (event) => {
+    if (event.matches) {
+      container.classList.remove("light");
+      container.classList.add("dark");
+      themeStylesheet.href = "./css/dark.css";
+    } else {
+      container.classList.remove("dark");
+      container.classList.add("light");
+      themeStylesheet.href = "./css/light.css";
+    }
 
-  checkbox1.checked = event.matches;
-  checkbox2.checked = event.matches;
-});
+    checkbox1.checked = event.matches;
+    checkbox2.checked = event.matches;
+  });
