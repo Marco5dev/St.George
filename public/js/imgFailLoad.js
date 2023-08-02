@@ -5,12 +5,6 @@ function replaceWithErrorImage(img) {
   if (img.src === "") {
     // Set the src to the blank image path.
     img.src = blankImagePath;
-  } else {
-    // Check if the image failed to load.
-    if (img.alt !== "") {
-      // Set the src to the blank image path.
-      img.src = blankImagePath;
-    }
   }
 }
 
