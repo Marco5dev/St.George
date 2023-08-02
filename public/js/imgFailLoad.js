@@ -7,7 +7,7 @@ function replaceWithErrorImage(img) {
     img.src = blankImagePath;
   } else {
     // Check if the image failed to load.
-    if (img.src = blankImagePath) {
+    if (img.alt !== "") {
       // Set the src to the blank image path.
       img.src = blankImagePath;
     }
