@@ -114,12 +114,13 @@
                         style="--width: 507; --height: 618"
                       >
                         <img
-                          src="<%- itemTop.image || '/images/404.png' %>"
+                          src="<%- itemTop.image %>"
                           width="507"
                           height="618"
                           loading="lazy"
                           alt="<%- itemTop.name %>"
                           class="img-cover"
+                          onerror="replaceWithErrorImage(this)"
                         />
                       </figure>
 

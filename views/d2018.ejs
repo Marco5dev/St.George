@@ -36,12 +36,13 @@
                     style="--width: 600; --height: 600"
                   >
                     <img
-                      src="<%- item2018.image || '/images/404.png' %>"
+                      src="<%- item2018.image %>"
                       width="600"
                       height="600"
                       loading="lazy"
-                      alt=""
+                      alt="<%- item2018.name %>"
                       class="img-cover"
+                      onerror="replaceWithErrorImage(this)"
                     />
                   </figure>
 
