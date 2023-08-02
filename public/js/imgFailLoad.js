@@ -1,3 +1,5 @@
+const blankImagePath = "/images/blank photo.png";
+
 function replaceWithErrorImage(img) {
   // Check if the src attribute is empty.
   if (img.src === "") {
@@ -12,5 +14,4 @@ function replaceWithErrorImage(img) {
   }
 }
 
-// Attach the onerror event listener to the image element.
-img.addEventListener("error", replaceWithErrorImage);
+export default replaceWithErrorImage;
