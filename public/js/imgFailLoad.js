@@ -14,4 +14,5 @@ function replaceWithErrorImage(img) {
   }
 }
 
-export default replaceWithErrorImage;
+// Attach the onerror event listener to the image element.
+img.addEventListener("error", replaceWithErrorImage);
