@@ -45,6 +45,10 @@ app.use("/2021", d2021Router);
 app.use("/2022", d2022Router);
 app.use("/2023", d2023Router);
 
+app.use((req, res, next) => {
+  res.status(404).render("404.ejs");
+});
+
 // server
 app.listen(port, () => {
   console.log(

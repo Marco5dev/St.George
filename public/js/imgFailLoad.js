@@ -1,30 +1,18 @@
-// JavaScript to handle the error for all image tags
-document.addEventListener("DOMContentLoaded", function () {
-  const imageContainers = document.querySelectorAll(".image-container");
-
-  imageContainers.forEach(function (container) {
-    const image = container.querySelector("img");
-    const errorImage = new Image();
-    errorImage.src = "/images/blank photo.png";
-
-    image.addEventListener("load", function () {
-      // Image loaded successfully, show the image and resize the container to fit the image
-      container.style.width = image.width + "px";
-      container.style.height = image.height + "px";
-    });
-
-    image.addEventListener("error", function () {
-      // Image failed to load, replace it with the error image and resize the container
-      image.style.display = "none"; // Hide the original image
-      container.appendChild(errorImage);
-      container.style.width = errorImage.width + "px";
-      container.style.height = errorImage.height + "px";
-    });
-  });
-});
-
 function replaceWithErrorImage(image) {
-  // Define the URL of the replacement image here
-  const replacementImageUrl = "/images/blank photo.png";
-  image.src = replacementImageUrl;
+  // Save the original src attribute value (external link)
+  const originalSrc = image.src;
+
+  // Replace the image source with the local image path
+  image.src = "/images/blank photo.png";
+
+  // Check if the image loads successfully from the external link
+  image.onload = function () {
+    // If the image loaded successfully, remove the onerror event handler
+    image.onerror = null;
+  };
+
+  // If the image failed to load from the external link, reset the source to the local path
+  image.onerror = function () {
+    image.src = "/images/blank photo.png";
+  };
 }
