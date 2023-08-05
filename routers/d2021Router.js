@@ -15,7 +15,10 @@ router.get("/", async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.status(500).render("500.ejs");
+    res.status(500).render("500.ejs", {
+      title: "There is no data for this year",
+      description: "sorry we couldn't find any data for this year",
+    });
   }
 });
 

@@ -1,84 +1,86 @@
-[{
-  "_id": {
-    "$oid": "64beec12e9eec4d26b765a21"
+[
+  {
+    "_id": {
+      "$oid": "64beec12e9eec4d26b765a21"
+    },
+    "social": "",
+    "image": "",
+    "name": "متثال مجلع قدرى",
+    "rank": "1st",
+    "competition": "فنون تشكيلية(اشغال فنية)",
+    "date": "2019",
+    "edu": "مرحلة خريجين"
   },
-  "social": "",
-  "image": "",
-  "name": "متثال مجلع قدرى",
-  "rank": "1st",
-  "competition": "فنون تشكيلية(اشغال فنية)",
-  "date": "2019",
-  "edu": "مرحلة خريجين"
-},
-{
-  "_id": {
-    "$oid": "64beec12e9eec4d26b765a22"
+  {
+    "_id": {
+      "$oid": "64beec12e9eec4d26b765a22"
+    },
+    "social": "",
+    "image": "",
+    "name": "كيرمينا جورج ثابت",
+    "rank": "1st",
+    "competition": "فنون تشكيلة(اشغال فنية)",
+    "date": "2019",
+    "edu": "مرحلة اعدادى"
   },
-  "social": "",
-  "image": "",
-  "name": "كيرمينا جورج ثابت",
-  "rank": "1st",
-  "competition": "فنون تشكيلة(اشغال فنية)",
-  "date": "2019",
-  "edu": "مرحلة اعدادى"
-},
-{
-  "_id": {
-    "$oid": "64beec12e9eec4d26b765a23"
+  {
+    "_id": {
+      "$oid": "64beec12e9eec4d26b765a23"
+    },
+    "social": "https://www.facebook.com/Roma.Magdy.7393264",
+    "image": "https://scontent.fcai20-2.fna.fbcdn.net/v/t39.30808-6/358574783_1760709311029625_3149180083218300264_n.jpg?_nc_cat=107&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=DExMWf-fh40AX9sTWzJ&_nc_ht=scontent.fcai20-2.fna&oh=00_AfCkfoFw28nPVr3E7pHP9xHDSnyvNP37Ityc1u5B8vqiRQ&oe=64D01F11",
+    "name": "مريم مجدى مسعد",
+    "rank": "2nd",
+    "competition": "دراسية",
+    "date": "2019",
+    "edu": "مرحلة ثالثه ورابعة"
   },
-  "social": "https://www.facebook.com/Roma.Magdy.7393264",
-  "image": "https://scontent.fcai20-2.fna.fbcdn.net/v/t39.30808-6/358574783_1760709311029625_3149180083218300264_n.jpg?_nc_cat=107&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=DExMWf-fh40AX9sTWzJ&_nc_ht=scontent.fcai20-2.fna&oh=00_AfCkfoFw28nPVr3E7pHP9xHDSnyvNP37Ityc1u5B8vqiRQ&oe=64D01F11",
-  "name": "مريم مجدى مسعد",
-  "rank": "2nd",
-  "competition": "دراسية",
-  "date": "2019",
-  "edu": "مرحلة ثالثه ورابعة"
-},
-{
-  "_id": {
-    "$oid": "64beec12e9eec4d26b765a24"
+  {
+    "_id": {
+      "$oid": "64beec12e9eec4d26b765a24"
+    },
+    "social": "https://www.facebook.com/profile.php?id=100083989630527",
+    "image": "https://scontent.fcai20-1.fna.fbcdn.net/v/t39.30808-6/343981460_2132721986923626_20903197911197633_n.jpg?_nc_cat=101&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Wymy7mygSaIAX-B9ILs&_nc_ht=scontent.fcai20-1.fna&oh=00_AfBYpNtlq4YFozo6iVxRhXSmQPzdbgxJ7W9C0ErJ-QsO8A&oe=64C48CBA",
+    "name": "مريم كمال فتحى",
+    "rank": "2nd",
+    "competition": "فنون تشكيلية (رسم وتصوير)",
+    "date": "2019",
+    "edu": "مرحلة ابتدائي"
   },
-  "social": "https://www.facebook.com/profile.php?id=100083989630527",
-  "image": "https://scontent.fcai20-1.fna.fbcdn.net/v/t39.30808-6/343981460_2132721986923626_20903197911197633_n.jpg?_nc_cat=101&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Wymy7mygSaIAX-B9ILs&_nc_ht=scontent.fcai20-1.fna&oh=00_AfBYpNtlq4YFozo6iVxRhXSmQPzdbgxJ7W9C0ErJ-QsO8A&oe=64C48CBA",
-  "name": "مريم كمال فتحى",
-  "rank": "2nd",
-  "competition": "فنون تشكيلية (رسم وتصوير)",
-  "date": "2019",
-  "edu": "مرحلة ابتدائي"
-},
-{
-  "_id": {
-    "$oid": "64beec12e9eec4d26b765a25"
+  {
+    "_id": {
+      "$oid": "64beec12e9eec4d26b765a25"
+    },
+    "social": "https://www.facebook.com/moreen.queen.3",
+    "image": "https://scontent.fcai20-2.fna.fbcdn.net/v/t39.30808-6/357731834_1968611780153609_5435187092483882587_n.jpg?_nc_cat=100&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=tBU7bR777jkAX-2znLi&_nc_ht=scontent.fcai20-2.fna&oh=00_AfCMcihixcRPc9CtnsuarsEGUWwVKIKVVnbthj68nFVQ-Q&oe=64D02505",
+    "name": "مورين عماد سامى نظير",
+    "rank": "درع",
+    "competition": "فنون تشكيلية(اشغال فنية) تميز",
+    "date": "2019",
+    "edu": "مرحلة اعدادى"
   },
-  "social": "https://www.facebook.com/moreen.queen.3",
-  "image": "https://scontent.fcai20-2.fna.fbcdn.net/v/t39.30808-6/357731834_1968611780153609_5435187092483882587_n.jpg?_nc_cat=100&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=tBU7bR777jkAX-2znLi&_nc_ht=scontent.fcai20-2.fna&oh=00_AfCMcihixcRPc9CtnsuarsEGUWwVKIKVVnbthj68nFVQ-Q&oe=64D02505",
-  "name": "مورين عماد سامى نظير",
-  "rank": "درع",
-  "competition": "فنون تشكيلية(اشغال فنية) تميز",
-  "date": "2019",
-  "edu": "مرحلة اعدادى"
-},
-{
-  "_id": {
-    "$oid": "64beec12e9eec4d26b765a26"
+  {
+    "_id": {
+      "$oid": "64beec12e9eec4d26b765a26"
+    },
+    "social": "",
+    "image": "",
+    "name": "اميرة سامى فوزى ميخائيل",
+    "rank": "درع",
+    "competition": "(بحوث نظرية)تميز",
+    "date": "2019",
+    "edu": "مرحلة ثانوى"
   },
-  "social": "",
-  "image": "",
-  "name": "اميرة سامى فوزى ميخائيل",
-  "rank": "درع",
-  "competition": "(بحوث نظرية)تميز",
-  "date": "2019",
-  "edu": "مرحلة ثانوى"
-},
-{
-  "_id": {
-    "$oid": "64beec12e9eec4d26b765a27"
-  },
-  "social": "https://www.facebook.com/profile.php?id=100035593882300",
-  "image": "https://scontent.fcai20-2.fna.fbcdn.net/v/t1.6435-9/61119427_128440331685762_5865915961776799744_n.jpg?_nc_cat=103&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=k8rhnDSfOToAX-jsvLF&_nc_ht=scontent.fcai20-2.fna&oh=00_AfB59oJu5aTLEW4Xdx7ZfC01X9Rj5wa5mo-C_PmIJG3g0Q&oe=64E90561",
-  "name": "بيتر ماجد فتحى",
-  "rank": "درع",
-  "competition": "(رياضية) - مسابقة جرى",
-  "date": "2019",
-  "edu": "مرحله اولى"
-}]
+  {
+    "_id": {
+      "$oid": "64beec12e9eec4d26b765a27"
+    },
+    "social": "https://www.facebook.com/profile.php?id=100035593882300",
+    "image": "https://scontent.fcai20-2.fna.fbcdn.net/v/t1.6435-9/61119427_128440331685762_5865915961776799744_n.jpg?_nc_cat=103&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=k8rhnDSfOToAX-jsvLF&_nc_ht=scontent.fcai20-2.fna&oh=00_AfB59oJu5aTLEW4Xdx7ZfC01X9Rj5wa5mo-C_PmIJG3g0Q&oe=64E90561",
+    "name": "بيتر ماجد فتحى",
+    "rank": "درع",
+    "competition": "(رياضية) - مسابقة جرى",
+    "date": "2019",
+    "edu": "مرحله اولى"
+  }
+]

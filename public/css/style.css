@@ -939,6 +939,83 @@ label {
 }
 
 /*-----------------------------------*\
+  #FEATURED
+\*-----------------------------------*/
+
+.post-bg {
+  display: none;
+}
+
+.post-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.post-card {
+  padding: 20px;
+  border-radius: var(--radius-16);
+  transition: var(--transition-1);
+}
+
+.post-card:is(:hover, :focus-within) {
+  transform: translateY(-5px);
+}
+
+.post-card .card-banner {
+  border-radius: var(--radius-16);
+}
+
+.post-card .card-wrapper {
+  margin-block-start: 24px;
+}
+
+.post .profile-card :is(.card-title, .card-subtitle) {
+  color: var(--text-slate-gray);
+}
+
+.post .profile-card .card-title {
+  font-weight: var(--weight-bold-ar);
+}
+
+.post .profile-card .card-subtitle,
+.post .card-wrapper .card-btn {
+  font-size: var(--fontSize-6);
+}
+
+.post-card .card-wrapper:last-child {
+  font-size: var(--fontSize-4);
+  margin-block-end: 0;
+}
+
+.post .card-wrapper .card-btn {
+  position: relative;
+  color: var(--text-wild-blue-yonder);
+  z-index: 1;
+}
+
+.post .card-wrapper .card-btn::before {
+  content: "";
+  position: absolute;
+  top: -13px;
+  left: -20px;
+  width: 48px;
+  height: 48px;
+  background-color: var(--bg-oxford-blue-2);
+  border-radius: var(--radius-circle);
+  z-index: -1;
+}
+
+.post .btn {
+  margin-inline: auto;
+  margin-block-start: 30px;
+}
+
+.post-phone {
+  margin-top: 50px;
+}
+
+/*-----------------------------------*\
   #POPULAR YearS
 \*-----------------------------------*/
 
@@ -1402,6 +1479,21 @@ label {
     right: 0;
     pointer-events: none;
   }
+  /**
+   * post
+   */
+
+  .post {
+    position: relative;
+  }
+
+  .post-bg {
+    display: block;
+    position: absolute;
+    top: -100px;
+    right: 0;
+    pointer-events: none;
+  }
 
   /**
    * RECENT POST
@@ -1519,6 +1611,21 @@ label {
   }
 
   .feature-list li:nth-child(n + 3) .headline-3 {
+    --fontSize-2: 2rem;
+  }
+  /**
+   * post
+   */
+
+  .post-list li:nth-child(-n + 2) {
+    width: calc(50% - 15px);
+  }
+
+  .post-list li:nth-child(n) {
+    width: calc(33.33% - 20px);
+  }
+
+  .post-list li:nth-child(n + 3) .headline-3 {
     --fontSize-2: 2rem;
   }
 

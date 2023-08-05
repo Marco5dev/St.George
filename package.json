@@ -8,13 +8,14 @@
     "morgan": "^1.10.0",
     "nodemon": "^3.0.1"
   },
-  "name": "stgeorge",
-  "version": "2.0.0",
+  "name": "st-george",
+  "version": "2.0.2",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "dash": "nodemon dashboard.js"
   },
   "author": "Mark Maher Ewida",
-  "license": "ISC",
-  "description": ""
+  "license": "CC0",
+  "description": "St.George Church Website for every member who joined the El-Keraza Competition with this church"
 }

@@ -114,7 +114,7 @@
                         style="--width: 507; --height: 618"
                       >
                         <img
-                          src="<%- itemTop.image || '/images/blank photo.png' %>"
+                          src="<%- itemTop.image || '/images/blank-photo.png' %>"
                           width="507"
                           height="618"
                           loading="lazy"
@@ -579,6 +579,69 @@
               </li>
             </ul>
           </div>
+        </section>
+
+        <!-- 
+          - OUR FATHERS
+         -->
+        <section
+          class="section post post-phone"
+          aria-label="post"
+          id="recent-post"
+        >
+          <div class="container">
+            <h2 class="headline headline-2 section-title">
+              <span class="span">Our Fathers</span>
+            </h2>
+
+            <p class="section-text">All our fathers in our church</p>
+
+            <ul class="post-list">
+              <% arrFathers.forEach(itemFather => { %>
+              <li>
+                <div class="card post-card">
+                  <figure
+                    class="card-banner img-holder"
+                    style="--width: 600; --height: 600"
+                  >
+                    <img
+                      src="<%- itemFather.image || '/images/blank-photo.png' %>"
+                      width="600"
+                      height="600"
+                      loading="lazy"
+                      alt="<%- itemFather.name %>"
+                      class="img-cover"
+                      onerror="replaceWithErrorImage(this)"
+                    />
+                  </figure>
+
+                  <div class="card-content">
+                    <div class="card-wrapper"></div>
+
+                    <h3 class="headline headline-3">
+                      <a
+                        href="<%- itemFather.social %>"
+                        class="card-title hover-2"
+                        style="font-family: var(--fontFamily-noto_sans_arabic)"
+                      >
+                        <%- itemFather.name %>
+                      </a>
+                    </h3>
+                  </div>
+                </div>
+              </li>
+              <% }); %>
+            </ul>
+          </div>
+
+          <img
+            src="/images/shadow-3.svg"
+            width="500"
+            height="1500"
+            loading="lazy"
+            alt=""
+            class="post-bg"
+          />
         </section>
       </article>
     </main>

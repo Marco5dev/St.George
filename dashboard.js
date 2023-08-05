@@ -1,14 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
-const path = require("path");
 require("dotenv").config();
 const ejs = require("ejs");
 const colors = "./middleware/colors.js";
 const expressip = require("express-ip");
 const dataAccess = require("./middleware/dataAccess");
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT2;
 const LD = process.env.LD;
 const OD = process.env.OD;
 
@@ -45,20 +44,6 @@ app.use("/2020", d2020Router);
 app.use("/2021", d2021Router);
 app.use("/2022", d2022Router);
 app.use("/2023", d2023Router);
-
-app.get("/dash", (req, res) => {
-  // Get the client's IP address from the request object
-  const clientIP = expressip().getIpInfo(req.ip);
-  // Define the IP address you want to check against
-  const targetIP = "197.54.107.214";
-
-  // Compare the client's IP with the target IP
-  if (clientIP === targetIP) {
-    res.send("Hello!"); // If the client IP matches the target IP, send 'Hello!'
-  } else {
-    res.send("Sorry!"); // If the client IP doesn't match the target IP, send 'Sorry!'
-  }
-});
 
 app.use((req, res, next) => {
   res.status(404).render("404.ejs", {
