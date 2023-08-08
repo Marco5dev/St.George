@@ -2,7 +2,7 @@
 const axios = require('axios');
 
 const checkIPAddress = async (req, res, next) => {
-  const allowedIP = '197.54.107.214';
+  const allowedIP = '34.168.11.26';
 
   try {
     const response = await axios.get('http://httpbin.org/ip');
