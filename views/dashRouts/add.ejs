@@ -1,0 +1,36 @@
+<h1>Add New Data</h1>
+<form action="/addData" method="POST">
+  <label for="filename">Select Year</label>
+  <select id="filename" name="filename" required>
+    <option value="2023">2023</option>
+    <option value="2022">2022</option>
+    <option value="2021">2021</option>
+    <option value="2020">2020</option>
+    <option value="2019">2019</option>
+    <option value="2018">2018</option>
+    <option value="Top">Top winners</option>
+  </select><br>
+
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required><br>
+
+  <label for="social">Social:</label>
+  <input type="text" id="social" name="social" required><br>
+
+  <label for="image">upload image:</label>
+  <input type="file" id="image" name="image" required><br>
+
+  <label for="rank">Rank:</label>
+  <input type="text" id="rank" name="rank" required><br>
+
+  <label for="competition">Competition:</label>
+  <input type="text" id="competition" name="competition" required><br>
+
+  <label for="date">date:</label>
+  <input type="date" id="date" name="date" required><br>
+
+  <label for="edu">Education:</label>
+  <input type="text" id="edu" name="edu" required><br>
+
+  <button type="submit">Add Data</button>
+</form>

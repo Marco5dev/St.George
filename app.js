@@ -36,6 +36,7 @@ const d2020Router = require("./routers/d2020Router");
 const d2021Router = require("./routers/d2021Router");
 const d2022Router = require("./routers/d2022Router");
 const d2023Router = require("./routers/d2023Router");
+const dashRouter = require("./routers/dashRouter");
 
 // Routers
 app.use("/", homeRouter);
@@ -45,20 +46,7 @@ app.use("/2020", d2020Router);
 app.use("/2021", d2021Router);
 app.use("/2022", d2022Router);
 app.use("/2023", d2023Router);
-
-app.get("/dash", (req, res) => {
-  // Get the client's IP address from the request object
-  const clientIP = expressip().getIpInfo(req.ip);
-  // Define the IP address you want to check against
-  const targetIP = "197.54.107.214";
-
-  // Compare the client's IP with the target IP
-  if (clientIP === targetIP) {
-    res.send("Hello!"); // If the client IP matches the target IP, send 'Hello!'
-  } else {
-    res.send("Sorry!"); // If the client IP doesn't match the target IP, send 'Sorry!'
-  }
-});
+app.use("/dash", dashRouter);
 
 app.use((req, res, next) => {
   res.status(404).render("404.ejs", {
