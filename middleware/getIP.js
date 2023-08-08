@@ -1,15 +1,17 @@
+// middleware/checkIPAddress.js
 const checkIPAddress = (req, res, next) => {
-  const allowedIP = process.env.IP;
-  let clientIP = req.ip; // Express provides the IP in req.ip
+  const allowedIP = '197.54.107.214';
+  let clientIP = req.ip;
 
-  // Handle IPv4-mapped IPv6 addresses
-  if (clientIP.startsWith("::ffff:")) {
-    clientIP = clientIP.split(":").pop(); // Extract the IPv4 part
+  if (clientIP.startsWith('::ffff:')) {
+    clientIP = clientIP.split(':').pop();
   }
 
   if (clientIP === allowedIP) {
-    next(); // Allow access to the route
+    next();
   } else {
-    res.status(404).send("Not Found"); // Deny access with a 404 response
+    res.status(404).send('Not Found');
   }
 };
+
+module.exports = checkIPAddress;

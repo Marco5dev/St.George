@@ -6,7 +6,7 @@ const expressip = require("express-ip");
 const multer = require("multer");
 const path = require("path");
 const upload = multer({ dest: "uploads/" });
-const getIP = require("../middleware/getIP");
+const checkIPAddress = require("../middleware/getIP");
 
 app.use(expressip().getIpInfoMiddleware);
 

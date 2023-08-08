@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 const path = require("path");
+const multer = require('multer');
 require("dotenv").config();
 const ejs = require("ejs");
 const colors = "./middleware/colors.js";
@@ -27,6 +28,18 @@ app.use(
     extended: true,
   })
 );
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    const extname = path.extname(file.originalname);
+    cb(null, Date.now() + extname);
+  },
+});
+
+const upload = multer({ storage });
 
 // Import the Routers
 const homeRouter = require("./routers/homeRouter");

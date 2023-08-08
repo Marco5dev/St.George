@@ -10,7 +10,7 @@
     "nodemon": "^3.0.1"
   },
   "name": "st-george",
-  "version": "2.0.2",
+  "version": "2.2.3",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
