@@ -1,4 +1,3 @@
-// middleware/checkIPAddress.js
 const axios = require('axios');
 
 const checkIPAddress = async (req, res, next) => {
