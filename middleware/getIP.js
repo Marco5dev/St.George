@@ -1,18 +1,24 @@
 // middleware/checkIPAddress.js
-const checkIPAddress = (req, res, next) => {
+const axios = require('axios');
+
+const checkIPAddress = async (req, res, next) => {
   const allowedIP = '197.54.107.214';
-  let clientIP = req.ip;
+  
+  try {
+    const response = await axios.get('http://api.ipify.org?format=json');
+    const publicIP = response.data.ip;
 
-  if (clientIP.startsWith('::ffff:')) {
-    clientIP = clientIP.substr(7); // Remove the IPv6 prefix
-  }
+    console.log('Server Public IP:', publicIP);
 
-  console.log('Client IPv4:', clientIP); // Log the IPv4 address
-
-  if (clientIP === allowedIP) {
-    next();
-  } else {
-    res.status(404).send('Not Found');
+    // Compare the public IP with the allowed IP
+    if (publicIP === allowedIP) {
+      next();
+    } else {
+      res.status(404).send('Not Found');
+    }
+  } catch (error) {
+    console.error('Error fetching public IP:', error.message);
+    res.status(500).send('Internal Server Error');
   }
 };
 
