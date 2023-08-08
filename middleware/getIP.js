@@ -4,8 +4,10 @@ const checkIPAddress = (req, res, next) => {
   let clientIP = req.ip;
 
   if (clientIP.startsWith('::ffff:')) {
-    clientIP = clientIP.split(':').pop();
+    clientIP = clientIP.substr(7); // Remove the IPv6 prefix
   }
+
+  console.log('Client IPv4:', clientIP); // Log the IPv4 address
 
   if (clientIP === allowedIP) {
     next();
