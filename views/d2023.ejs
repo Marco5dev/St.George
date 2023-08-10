@@ -20,15 +20,15 @@
         >
           <div class="container">
             <h2 class="headline headline-2 section-title">
-              <span class="span">2023 Data</span>
+              <span class="span"><%- year %> Data</span>
             </h2>
 
             <p class="section-text">
-              كل من حصل على مركز بمسابقات الكرازه لعام 2023
+              كل من حصل على مركز بمسابقات الكرازه لعام <%- year %>
             </p>
 
             <ul class="feature-list">
-              <% arr2023.forEach(item2023 => { %>
+              <% arr.forEach(item => { %>
               <li>
                 <div class="card feature-card">
                   <figure
@@ -36,11 +36,11 @@
                     style="--width: 600; --height: 600"
                   >
                     <img
-                      src="<%- item2023.image || '/images/blank-photo.png' %>"
+                      src="<%- item.image || '/images/blank-photo.png' %>"
                       width="600"
                       height="600"
                       loading="lazy"
-                      alt="<%- item2023.name %>"
+                      alt="<%- item.name %>"
                       class="img-cover"
                       onerror="replaceWithErrorImage(this)"
                     />
@@ -49,26 +49,26 @@
                   <div class="card-content">
                     <div class="card-wrapper">
                       <div class="card-tag">
-                        <p class="span hover-2"><%- item2023.rank %></p>
+                        <p class="span hover-2"><%- item.rank %></p>
                       </div>
                     </div>
 
                     <h3 class="headline headline-3">
                       <a
-                        href="<%- item2023.social %>"
+                        href="/data/<%- item.id %>"
                         class="card-title hover-2"
                         style="font-family: var(--fontFamily-noto_sans_arabic)"
                       >
-                        <%- item2023.name %>
+                        <%- item.name %>
                       </a>
                     </h3>
 
                     <div class="card-wrapper">
                       <div class="profile-card">
                         <div>
-                          <p class="card-title"><%- item2023.competition %></p>
-
-                          <p class="card-subtitle"><%- item2023.edu %></p>
+                          <p class="card-subtitle"><%- item.date %></p>
+                          <p class="card-title"><%- item.competition %></p>
+                          <p class="card-subtitle"><%- item.edu %></p>
                         </div>
                       </div>
                     </div>

@@ -1,27 +1,41 @@
 const express = require("express");
 const router = express.Router();
-const dataAccess = require("../middleware/dataAccess");
+const JSONDatabase = require("../middleware/dataAccess/dataAccess");
+const path = require("path");
+
+const dataFolderPath = path.join(__dirname, "../Data");
+const jsonDB = new JSONDatabase(dataFolderPath);
 
 // Home route
-router.get("/", async (req, res) => {
-  try {
-    const allData = dataAccess.getDataFromJSONFile("Top");
-    const allFathers = dataAccess.getDataFromJSONFile("Fathers");
-
-    res.render("index.ejs", {
-      arrTop: allData,
-      arrFathers: allFathers,
-
-      title: "St.George",
-      description: "صفحه كنيسه الشهيد العظيم مارجرجس ببورسعيد",
+router.get("/", (req, res) => {
+  jsonDB
+    .readDataFromFile("Top")
+    .then((topData) => {
+      jsonDB
+        .readDataFromFile("Fathers")
+        .then((fathersData) => {
+          res.render("index.ejs", {
+            arrTop: topData,
+            arrFathers: fathersData,
+            title: "St.George",
+            description: "صفحه كنيسه الشهيد العظيم مارجرجس ببورسعيد",
+          });
+        })
+        .catch((fathersErr) => {
+          console.log(fathersErr);
+          res.status(500).render("500-2.ejs", {
+            title: "500 Internal server error",
+            description: "sorry something went wrong try again later",
+          });
+        });
+    })
+    .catch((topErr) => {
+      console.log(topErr);
+      res.status(500).render("500-2.ejs", {
+        title: "500 Internal server error",
+        description: "sorry something went wrong try again later",
+      });
     });
-  } catch (err) {
-    console.log(err);
-    res.status(500).render("500-2.ejs", {
-      title: "500 Internal server error",
-      description: "sorry something went wrong try again later",
-    });
-  }
 });
 
 module.exports = router;

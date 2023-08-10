@@ -4,17 +4,20 @@ const logger = require("morgan");
 const path = require("path");
 const multer = require('multer');
 const axios = require('axios');
+const uuid = require('uuid');
 require("dotenv").config();
 const ejs = require("ejs");
 const colors = "./middleware/colors.js";
 const expressip = require("express-ip");
-const dataAccess = require("./middleware/dataAccess");
+const dataAccess = require("./middleware/dataAccess/dataAccess");
 const app = express();
 const port = process.env.PORT;
 const LD = process.env.LD;
 const OD = process.env.OD;
 
 // statics
+app.use(express.static(path.join(__dirname, 'uploads')));
+app.use(express.static('uploads'));
 app.use(express.json());
 app.use(logger("dev"));
 app.use(expressip().getIpInfoMiddleware);
@@ -51,6 +54,7 @@ const d2021Router = require("./routers/d2021Router");
 const d2022Router = require("./routers/d2022Router");
 const d2023Router = require("./routers/d2023Router");
 const dashRouter = require("./routers/dashRouter");
+const dataRouter = require("./routers/dataRouter")
 
 // Routers
 app.use("/", homeRouter);
@@ -61,6 +65,7 @@ app.use("/2021", d2021Router);
 app.use("/2022", d2022Router);
 app.use("/2023", d2023Router);
 app.use("/dash", dashRouter);
+app.use("/data", dataRouter)
 
 app.use((req, res, next) => {
   res.status(404).render("404.ejs", {

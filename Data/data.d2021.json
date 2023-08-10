@@ -1,8 +1,6 @@
 [
   {
-    "_id": {
-      "$oid": "64beedb3e9eec4d26b765a37"
-    },
+    "id": "64beedb3e9eec4d26b765a37",
     "social": "https://www.facebook.com/profile.php?id=100036610399860",
     "image": "https://scontent.fcai20-1.fna.fbcdn.net/v/t39.30808-6/306921382_767527704477569_7525029666495518851_n.jpg?_nc_cat=108&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=oLH7ma4ThhMAX_tcIAc&_nc_ht=scontent.fcai20-1.fna&oh=00_AfDVYrEVqCpWsH1Ncd2zd_ZF6oVUjDPcptqPgbyDsF9zQw&oe=64CE5929",
     "name": "ابانوب مجدى رفعت",
@@ -12,9 +10,7 @@
     "edu": "مرحلة(ثالثة ورابعة)"
   },
   {
-    "_id": {
-      "$oid": "64beedb3e9eec4d26b765a38"
-    },
+    "id": "64beedb3e9eec4d26b765a38",
     "social": "",
     "image": "",
     "name": "جوناثان عماد سعد جرجس",
@@ -24,9 +20,7 @@
     "edu": "مرحلة (اولى وثانية)"
   },
   {
-    "_id": {
-      "$oid": "64beedb3e9eec4d26b765a39"
-    },
+    "id": "64beedb3e9eec4d26b765a39",
     "social": "https://www.facebook.com/profile.php?id=100083989630527",
     "image": "https://scontent.fcai20-1.fna.fbcdn.net/v/t39.30808-6/343981460_2132721986923626_20903197911197633_n.jpg?_nc_cat=101&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=KK7Bv2Cxx7cAX8T3Ku1&_nc_ht=scontent.fcai20-1.fna&oh=00_AfA5eiNJojxhGQOCGQfXlBY9mvXgKEUK7acPcbwx_J9V7w&oe=64CE6FFA",
     "name": "مريم كمال فتحى",
@@ -36,9 +30,7 @@
     "edu": "مرحلة خامسة وسادسة"
   },
   {
-    "_id": {
-      "$oid": "64beedb3e9eec4d26b765a3a"
-    },
+    "id": "64beedb3e9eec4d26b765a3a",
     "social": "https://www.facebook.com/saint.george.portsaid",
     "image": "https://scontent.fcai20-1.fna.fbcdn.net/v/t39.30808-6/327189470_479636621036763_4893626156732985710_n.jpg?_nc_cat=106&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=4nIrK2bmwjYAX-cnFxf&_nc_ht=scontent.fcai20-1.fna&oh=00_AfCSHlUOdT3XZECNNpt26j3HKpfTmW5gkFdV4-vAdQQLBw&oe=64CEC153",
     "name": "فريق العزف جماعى",
@@ -48,9 +40,7 @@
     "edu": "مرحلة(ابتدائي)"
   },
   {
-    "_id": {
-      "$oid": "64c1b811c6789f12fbde5615"
-    },
+    "id": "64c1b811c6789f12fbde5615",
     "social": "https://www.facebook.com/profile.php?id=100036610399860",
     "image": "https://scontent.fcai20-1.fna.fbcdn.net/v/t39.30808-6/306921382_767527704477569_7525029666495518851_n.jpg?_nc_cat=108&cb=99be929b-3346023f&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=oLH7ma4ThhMAX_tcIAc&_nc_ht=scontent.fcai20-1.fna&oh=00_AfDVYrEVqCpWsH1Ncd2zd_ZF6oVUjDPcptqPgbyDsF9zQw&oe=64CE5929",
     "name": "ابانوب مجدى رفعت",

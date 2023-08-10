@@ -597,7 +597,7 @@
             <p class="section-text">All our fathers in our church</p>
 
             <ul class="post-list">
-              <% arrFathers.forEach(itemFather => { %>
+              <% (arrFathers || []).forEach(itemFather => { %>
               <li>
                 <div class="card post-card">
                   <figure

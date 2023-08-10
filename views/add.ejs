@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./components/head") %>
+
+  <body id="top" class="light">
+    <%- include("./components/header") %>
+
+    <main>
+      <article>
+        <!-- Recent Post Section for Adding Data -->
+        <section
+          class="section post post-phone"
+          aria-label="post"
+          id="recent-post"
+        >
+          <div class="container">
+            <h2 class="headline headline-2 section-title">
+              <span class="span">Add New Data</span>
+            </h2>
+            <form method="POST" action="/dash/add" enctype="multipart/form-data">
+              <label for="filename">Select Year</label>
+              <select id="filename" name="filename" required>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="Top">Top winners</option>
+              </select>
+              <br />
+
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="input-field"
+                  placeholder="Name:"
+                /><br />
+              </div>
+
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="social"
+                  name="social"
+                  class="input-field"
+                  placeholder="Facebook link:"
+                /><br />
+              </div>
+
+              <label for="image" class="drop-container" id="dropcontainer">
+                <span class="drop-title">Drop image here</span>
+                or
+                <input
+                  type="file"
+                  id="image"
+                  name="image"
+                  accept=".png, .jpg, .jpeg"
+                />
+              </label>
+
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="rank"
+                  name="rank"
+                  required
+                  class="input-field"
+                  placeholder="his/her Rank:"
+                /><br />
+              </div>
+
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="competition"
+                  required
+                  name="competition"
+                  class="input-field"
+                  placeholder="Competition:"
+                /><br />
+              </div>
+
+              <div class="input-wrapper">
+                <input
+                  type="date"
+                  id="date"
+                  required
+                  name="date"
+                  class="input-field"
+                  placeholder="Date:"
+                /><br />
+              </div>
+
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="edu"
+                  required
+                  name="edu"
+                  class="input-field"
+                  placeholder="Education:"
+                /><br />
+              </div>
+
+              <div>
+                <button class="btn btn-primary" type="submit">
+                  Add Data
+                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <%- include("./components/footer") %>
+
+    <a
+      href="#top"
+      class="back-top-btn"
+      aria-label="back to top"
+      data-back-top-btn
+    >
+      <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon>
+    </a>
+
+    <!-- Custom JavaScript -->
+    <%- include("./components/javascript") %>
+
+    <!-- Ion Icons -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script>
+      document.querySelectorAll(".button").forEach((button) =>
+        button.addEventListener("click", (e) => {
+          if (!button.classList.contains("delete")) {
+            button.classList.add("delete");
+            setTimeout(() => button.classList.remove("delete"), 3200);
+          }
+          e.preventDefault();
+        })
+      );
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".delete-button").forEach((button) => {
+          button.addEventListener("click", async (event) => {
+            const btnelement = document.querySelector(".delete-button");
+            const dataId = btnelement.getAttribute("data-id");
+            if (confirm("Are you sure you want to delete this data?")) {
+              try {
+                const response = await fetch(`/dash/${dataId}`, {
+                  method: "POST",
+                });
+
+                if (response.ok) {
+                  console.log("Data deleted successfully");
+                } else {
+                  console.error("Error deleting data");
+                  // Handle error scenario here
+                }
+              } catch (error) {
+                console.error("Error deleting data:", error);
+                // Handle error scenario here
+              }
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

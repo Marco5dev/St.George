@@ -38,11 +38,11 @@ i used in this web app
 
 1- First you need to install `node_modules` by this command `npm i ` <br>
 2- run `npm run start` to start the project <br>
-3- (working on it) run `npm run dash` to run the dashboard
+
 
 `don't worry the dashboard is connect to everything and it can edit, add, delete, ...etc`
 
-you can now open the website on `http://localhost:${PORT}` & the dashboard on `https://localhost:${PORT2}`
+you can now open the website on `http://localhost:${PORT}` 
 
 # <span style="  display: inline-block; background-image: linear-gradient(90deg, #9a9a9a, #d1d1d1 51%);display: inline-block; -webkit-text-fill-color: transparent; -webkit-background-clip: text; background-clip: text;">Important ! </span>
 
