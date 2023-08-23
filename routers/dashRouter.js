@@ -8,6 +8,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const fs = require("fs").promises;
 
+
 const dataFolderPath = path.join(__dirname, "../Data");
 const jsonDB = new JSONDatabase(dataFolderPath);
 const PASSWORD = process.env.PASS; // Set your desired password here
@@ -42,6 +43,7 @@ router.use(async (req, res, next) => {
   }
 });
 
+// security
 router.post("/login", async (req, res) => {
   const enteredUsername = req.body.username;
   const enteredPassword = req.body.password;
@@ -59,7 +61,13 @@ router.post("/login", async (req, res) => {
     );
 
     if (validUser) {
-      res.cookie("dashboard_login", "true"); // Always set the cookie
+      if (rememberMe) {
+        res.cookie("dashboard_login_persistent", "true", {
+          maxAge: 30 * 24 * 60 * 60 * 1000,
+        }); // Set a persistent cookie for "Remember Me" (30 days)
+      } else {
+        req.session.dashboard_login_session = true; // Set a session cookie for non-remembered login
+      }
       res.redirect("/dash");
     } else {
       res.render("loginForm.ejs", {
@@ -75,8 +83,11 @@ router.post("/login", async (req, res) => {
 
 // Display all the website data
 router.get("/", (req, res) => {
-  const isLoggedIn = req.cookies["dashboard_login"] === "true";
-  if (isLoggedIn) {
+  const isPersistentLoggedIn =
+    req.cookies["dashboard_login_persistent"] === "true";
+  const isSessionLoggedIn = req.session.dashboard_login_session === true;
+
+  if (isPersistentLoggedIn || isSessionLoggedIn) {
     console.log("User is authenticated");
     try {
       res.render("dash.ejs", {
@@ -260,7 +271,7 @@ router.get("/edit/:id", async (req, res) => {
   }
 });
 
-// Update data by ID
+// Edit data by ID
 router.post("/edit/:id", upload.single("image"), async (req, res) => {
   const id = req.params.id;
   const { name, social, rank, competition, date, edu } = req.body;

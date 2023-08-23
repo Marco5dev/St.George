@@ -8,6 +8,7 @@ const ejs = require("ejs");
 const axios = require("axios");
 const opn = require("opn");
 const cookieParser = require("cookie-parser");
+const session = require("express-session");
 require("dotenv").config();
 
 // Import middleware and routers
@@ -27,6 +28,13 @@ app.use(express.json());
 app.use(logger("dev"));
 app.use(expressip().getIpInfoMiddleware);
 app.use(cookieParser());
+app.use(
+  session({
+    secret: "your-secret-key", // Replace with your own secret key
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
