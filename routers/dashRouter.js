@@ -66,7 +66,14 @@ router.post("/login", async (req, res) => {
       } else {
         req.session.dashboard_login_session = true; // Set a session cookie for non-remembered login
       }
-      res.redirect("/dash/add");
+      if (req.originalUrl === "/dash") {
+        res.redirect("/dash")
+      } else {
+        if (req.originalUrl === "/dash/login") {
+          res.redirect("/dash/add")
+        }
+      }
+      console.log("Access accepted");
     } else {
       console.log("pass is wrong");
       res.render("loginForm.ejs", {
@@ -88,17 +95,16 @@ router.get("/", (req, res) => {
 
   if (isPersistentLoggedIn || isSessionLoggedIn) {
     console.log("User is authenticated");
-    try {
-      res.render("dash.ejs", {
-        title: "All the Data",
-        description: "Browse all the data on the website",
-      });
-    } catch (err) {
-      console.error(err);
-      res.status(500).send("Internal Server Error");
-    }
+    // If there's a stored original URL, redirect to it
+
+    res.render("dash.ejs", {
+      title: "All the Data",
+      description: "Browse all the data on the website",
+    });
   } else {
     // User is not authenticated
+    // Store the original URL in session
+    req.session.originalUrl = req.originalUrl;
     res.render("loginForm.ejs", {
       title: "Login",
       description: "Please enter your credentials to access the dashboard.",
@@ -113,21 +119,30 @@ router.get("/add", (req, res) => {
   const isSessionLoggedIn = req.session.dashboard_login_session === true;
   if (isPersistentLoggedIn || isSessionLoggedIn) {
     console.log("User is authenticated");
-    try {
-      res.render("add.ejs", {
-        title: "Add Data",
-        description: "Add new data to the website",
-      });
-    } catch (err) {
-      console.error(err);
-      res.status(500).render("500-2.ejs", {
-        title: "500 Internal server error",
-        description: "Sorry, something went wrong. Please try again later.",
-      });
+    // If there's a stored original URL, redirect to it
+    if (req.session.originalUrl) {
+      const originalUrl = req.session.originalUrl;
+      req.session.originalUrl = null; // Clear the stored URL
+      res.redirect(originalUrl);
+    } else {
+      try {
+        res.render("add.ejs", {
+          title: "Add Data",
+          description: "Add new data to the website",
+        });
+      } catch (err) {
+        console.error(err);
+        res.status(500).render("500-2.ejs", {
+          title: "500 Internal server error",
+          description: "Sorry, something went wrong. Please try again later.",
+        });
+      }
     }
   } else {
     // User is not authenticated
     console.log("Sorry try again");
+    // Store the original URL in session
+    req.session.originalUrl = req.originalUrl;
     res.render("loginForm.ejs", {
       title: "Login",
       description: "Please enter your credentials to access the dashboard.",
