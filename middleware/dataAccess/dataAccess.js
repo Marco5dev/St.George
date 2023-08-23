@@ -6,10 +6,9 @@ class JSONDatabase {
     this.dataFolderPath = dataFolderPath;
   }
 
-  getFilePath(dataName) {
-    const sanitizedDataName = dataName.replace(/[^a-z0-9]/gi, ""); // Remove non-alphanumeric characters
-    return path.join(this.dataFolderPath, `data.d${sanitizedDataName}.json`);
-  }
+   getFilePath(dataName) {
+    return path.join(this.dataFolderPath, `data.d${dataName}.json`);
+  } 
 
   async readDataFromFile(dataName) {
     const filePath = this.getFilePath(dataName);
