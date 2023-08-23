@@ -5,53 +5,33 @@ const multer = require("multer");
 const upload = require("../middleware/upload");
 const uuid = require("uuid");
 const path = require("path");
-const readline = require("readline");
+const cookieParser = require("cookie-parser");
 
 const dataFolderPath = path.join(__dirname, "../Data");
 const jsonDB = new JSONDatabase(dataFolderPath);
+const PASSWORD = process.env.PASS; // Set your desired password here
+const COOKIE_NAME = "dashboard_access";
 
-// Create a readline interface for reading from the console
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-// Define the password you want to use for authentication
-const correctPassword = process.env.PASS; // Change this to your desired password
-
-// Middleware to check for password before allowing access
-const checkPassword = (req, res, next) => {
-  rl.question("Please enter the password: ", (password) => {
-    if (password === correctPassword) {
-      next(); // Password is correct, allow access
-    } else {
-      res.status(404).render("404.ejs", {
-        title: "404 Not Found",
-        description: "sorry we couldn't find that page",
-      }); // Password is incorrect, deny access
-    }
-  });
-};
-
-// Display all the website data
-router.get("/", checkPassword, async (req, res) => {
+// Middleware to load common data for rendering views
+router.use(async (req, res, next) => {
   try {
     const allData = await jsonDB.getAllData();
 
-    const yearData = {};
     const years = ["2018", "2019", "2020", "2021", "2022", "2023", "Top"]; // Update with your years
-
-    for (const year of years) {
-      yearData[`arr${year}`] = await jsonDB.readDataFromFile(year);
-    }
-
-    res.render("dash.ejs", {
-      ...yearData,
-      year: years,
-      arrAll: allData,
-      title: "all the data",
-      description: "Here you can browse all the data in the website",
+    const yearDataPromises = years.map(async (year) => {
+      return jsonDB.readDataFromFile(year);
     });
+    const yearData = await Promise.all(yearDataPromises);
+
+    res.locals.yearData = yearData.reduce((accumulator, data, index) => {
+      accumulator[`arr${years[index]}`] = data;
+      return accumulator;
+    }, {});
+
+    res.locals.years = years;
+    res.locals.arrAll = allData;
+
+    next();
   } catch (err) {
     console.error(err);
     res.status(500).render("500-2.ejs", {
@@ -61,45 +41,76 @@ router.get("/", checkPassword, async (req, res) => {
   }
 });
 
-router.get("/add", checkPassword, async (req, res, next) => {
-  try {
-    const allData = await jsonDB.getAllData();
+router.post("/login", (req, res) => {
+  const enteredUsername = req.body.username;
+  const enteredPassword = req.body.password;
+  const rememberMe = req.body.remember === "on";
 
-    const yearData = {};
-    const years = ["2018", "2019", "2020", "2021", "2022", "2023", "Top"]; // Update with your years
+  // Perform authentication (replace with your authentication logic)
+  const validUsername = process.env.USER1;
+  const validPassword = process.env.PASS1;
 
-    for (const year of years) {
-      yearData[`arr${year}`] = await jsonDB.readDataFromFile(year);
+  if (enteredUsername === validUsername && enteredPassword === validPassword) {
+    if (rememberMe) {
+      res.cookie("dashboard_login", "true"); // Set the cookie
     }
-
-    res.render("add.ejs", {
-      ...yearData,
-      year: years,
-      arrAll: allData,
-      title: "all the data",
-      description: "Here you can browse all the data in the website",
+    res.redirect("/dash");
+  } else {
+    res.render("loginForm.ejs", {
+      title: "Login",
+      description: "Incorrect credentials. Please try again.",
     });
-  } catch (err) {
-    console.error(err);
-    res.status(500).render("500-2.ejs", {
-      title: "500 Internal server error",
-      description: "Sorry, something went wrong. Please try again later.",
+  }
+});
+
+// Display all the website data
+router.get("/", (req, res) => {
+  const isLoggedIn = req.cookies["dashboard_login"] === "true";
+  if (isLoggedIn) {
+    console.log("User is authenticated");
+    try {
+      res.render("dash.ejs", {
+        title: "All the Data",
+        description: "Browse all the data on the website",
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Internal Server Error");
+    }
+  } else {
+    // User is not authenticated
+    res.render("loginForm.ejs", {
+      title: "Login",
+      description: "Please enter your credentials to access the dashboard.",
     });
   }
 });
 
 // Add data
+router.get("/add", (req, res) => {
+  try {
+    res.render("add.ejs", {
+      title: "Add Data",
+      description: "Add new data to the website",
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).render("500-2.ejs", {
+      title: "500 Internal server error",
+      description: "Sorry, something went wrong. Please try again later.",
+    });
+  }
+});
+
 router.post("/add", upload.single("image"), async (req, res) => {
   try {
-    const { filename, name, social, rank, competition, date, edu } = req.body;
+    const { dataName, name, social, rank, competition, date, edu } = req.body;
 
-    // Generate a random unique ID
     const uniqueID = uuid.v4();
-
     const newData = {
       id: uniqueID,
       social,
-      image: req.file.filename,
+      image: req.file.dataName,
       name,
       rank,
       competition,
@@ -107,9 +118,9 @@ router.post("/add", upload.single("image"), async (req, res) => {
       edu,
     };
 
-    await jsonDB.addData(filename, newData);
+    await jsonDB.addData(dataName, newData);
 
-    res.redirect(`/dash`); // Redirect to the data display page
+    res.redirect(`/dash`);
     console.log(req.file);
   } catch (err) {
     console.error(err);
@@ -120,19 +131,9 @@ router.post("/add", upload.single("image"), async (req, res) => {
   }
 });
 
-// dynamic dash data
-router.get("/:id", checkPassword, async (req, res) => {
+// Display dynamic data
+router.get("/:id", async (req, res) => {
   const id = req.params.id;
-
-  const blacklist = new Set(["data.dFathers.json", ""]);
-  const allData = await jsonDB.getAllData();
-
-  const yearData = {};
-  const years = ["2018", "2019", "2020", "2021", "2022", "2023", "Top"]; // Update with your years
-
-  for (const year of years) {
-    yearData[`arr${year}`] = await jsonDB.readDataFromFile(year);
-  }
 
   try {
     const result = await jsonDB.findDataById(id);
@@ -142,8 +143,6 @@ router.get("/:id", checkPassword, async (req, res) => {
         title: result.name,
         description: result.competition,
         item: result,
-        ...yearData,
-        arrAll: allData,
       });
     } else {
       res.status(404).render("404.ejs", {
@@ -163,15 +162,70 @@ router.get("/:id", checkPassword, async (req, res) => {
 // Delete data by ID
 router.delete("/:id", async (req, res) => {
   const id = req.params.id;
-  jsonDB
-    .deleteDataById(id)
-    .then(() => {
-      res.sendStatus(200);
-    })
-    .catch((err) => {
-      console.error(err); // Log the error to the console
-      res.status(500).send("An error occurred while deleting data");
+  try {
+    await jsonDB.deleteDataById(id);
+    res.sendStatus(200);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while deleting data");
+  }
+});
+
+// Edit data by ID
+router.get("/edit/:id", async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const result = await jsonDB.findDataById(id);
+
+    if (result) {
+      res.render("edit.ejs", {
+        title: "Edit Data",
+        description: "Edit the selected data item",
+        item: result,
+      });
+    } else {
+      res.status(404).render("404.ejs", {
+        title: "Not Found",
+        description: "Sorry, the requested data was not found.",
+      });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).render("500-2.ejs", {
+      title: "500 Internal server error",
+      description: "Sorry, something went wrong. Please try again later.",
     });
+  }
+});
+
+// Update data by ID
+router.post("/edit/:id", upload.single("image"), async (req, res) => {
+  const id = req.params.id;
+  const { name, social, rank, competition, date, edu } = req.body;
+
+  const newData = {
+    social,
+    image: req.file.filename,
+    name,
+    rank,
+    competition,
+    date,
+    edu,
+  };
+
+  const updatedData = newData;
+
+  try {
+    await jsonDB.editData(id, updatedData);
+    res.redirect(`/dash/${id}`);
+  } catch (err) {
+    console.error(err);
+    res.status(500).render("500-2.ejs", {
+      title: "500 Internal server error",
+      description: "Sorry, something went wrong. Please try again later.",
+    });
+  }
 });
 
 module.exports = router;

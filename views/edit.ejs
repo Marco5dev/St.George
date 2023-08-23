@@ -7,7 +7,6 @@
 
     <main>
       <article>
-        <!-- Recent Post Section for Adding Data -->
         <section
           class="section post post-phone"
           aria-label="post"
@@ -15,27 +14,34 @@
         >
           <div class="container">
             <h2 class="headline headline-2 section-title">
-              <span class="span">Add New Data</span>
+              <span class="span">Edit <%= item.name %></span>
             </h2>
-            <form method="POST" action="/dash/add" enctype="multipart/form-data">
-              <label for="filename">Select Year</label>
-              <select id="filename" name="filename" required>
-                <option value="2023">2023</option>
-                <option value="2022">2022</option>
-                <option value="2021">2021</option>
-                <option value="2020">2020</option>
-                <option value="2019">2019</option>
-                <option value="2018">2018</option>
-                <option value="Top">Top winners</option>
-              </select>
-              <br />
-
+            <form
+              method="POST"
+              action="/dash/edit/<%- item.id %>"
+              enctype="multipart/form-data"
+            >
+              <figure
+                class="card-banner img-holder"
+                style="--width: 250; --height: 250; border-radius: 10%; width: 250px; height: 250px;"
+                
+              >
+                <img
+                  src="<%- item.image || '/images/blank-photo.png' %>"
+                  width="250"
+                  height="250"
+                  loading="lazy"
+                  alt="<%- item.name %>"
+                  class="img-cover"
+                  onerror="replaceWithErrorImage(this)"
+                />
+              </figure>
               <div class="input-wrapper">
                 <input
                   type="text"
                   id="name"
                   name="name"
-                  required
+                  value="<%- item.name %>"
                   class="input-field"
                   placeholder="Name:"
                 /><br />
@@ -46,6 +52,7 @@
                   type="text"
                   id="social"
                   name="social"
+                  value="<%- item.social %>"
                   class="input-field"
                   placeholder="Facebook link:"
                 /><br />
@@ -57,6 +64,7 @@
                 <input
                   type="file"
                   id="image"
+                  value="<%- item.image %>"
                   name="image"
                   accept=".png, .jpg, .jpeg"
                 />
@@ -67,7 +75,7 @@
                   type="text"
                   id="rank"
                   name="rank"
-                  required
+                  value="<%- item.rank %>"
                   class="input-field"
                   placeholder="his/her Rank:"
                 /><br />
@@ -77,7 +85,7 @@
                 <input
                   type="text"
                   id="competition"
-                  required
+                  value="<%- item.competition %>"
                   name="competition"
                   class="input-field"
                   placeholder="Competition:"
@@ -88,7 +96,7 @@
                 <input
                   type="date"
                   id="date"
-                  required
+                  value="<%- item.date %>"
                   name="date"
                   class="input-field"
                   placeholder="Date:"
@@ -99,7 +107,7 @@
                 <input
                   type="text"
                   id="edu"
-                  required
+                  value="<%- item.edu %>"
                   name="edu"
                   class="input-field"
                   placeholder="Education:"
@@ -108,7 +116,7 @@
 
               <div>
                 <button class="btn btn-primary" type="submit">
-                  Add Data
+                  Edit Data
                   <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
                 </button>
               </div>

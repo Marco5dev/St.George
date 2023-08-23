@@ -10,11 +10,11 @@ toggle.addEventListener("change", function () {
   if (toggle.checked) {
     container.classList.remove("light");
     container.classList.add("dark");
-    themeStylesheet.href = "./css/dark.css";
+    themeStylesheet.href = "/css/dark.css";
   } else {
     container.classList.remove("dark");
     container.classList.add("light");
-    themeStylesheet.href = "./css/light.css";
+    themeStylesheet.href = "/css/light.css";
   }
 });
 
@@ -42,11 +42,11 @@ function dark() {
   if (a.checked) {
     container.classList.remove("light");
     container.classList.add("dark");
-    themeStylesheet.href = "./css/dark.css";
+    themeStylesheet.href = "/css/dark.css";
   } else {
     container.classList.remove("dark");
     container.classList.add("light");
-    themeStylesheet.href = "./css/light.css";
+    themeStylesheet.href = "/css/light.css";
   }
 }
 
@@ -82,11 +82,11 @@ function setDarkModePreference() {
   if (isDarkMode) {
     container.classList.remove("light");
     container.classList.add("dark");
-    themeStylesheet.href = "./css/dark.css";
+    themeStylesheet.href = "/css/dark.css";
   } else {
     container.classList.remove("dark");
     container.classList.add("light");
-    themeStylesheet.href = "./css/light.css";
+    themeStylesheet.href = "/css/light.css";
   }
 
   checkbox1.checked = isDarkMode;
@@ -103,11 +103,11 @@ window
     if (event.matches) {
       container.classList.remove("light");
       container.classList.add("dark");
-      themeStylesheet.href = "./css/dark.css";
+      themeStylesheet.href = "/css/dark.css";
     } else {
       container.classList.remove("dark");
       container.classList.add("light");
-      themeStylesheet.href = "./css/light.css";
+      themeStylesheet.href = "/css/light.css";
     }
 
     checkbox1.checked = event.matches;

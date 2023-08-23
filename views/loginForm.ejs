@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login for the dashboard</title>
+  <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+  <div class="wrapper">
+    <form method="post" action="/dash/login">
+      <h2>Login</h2>
+        <div class="input-field">
+          <input type="text" id="username" name="username" required>
+        <label>Enter your user name</label>
+      </div>
+      <div class="input-field">
+        <input type="password" id="password" name="password" required>
+        <label>Enter your password</label>
+      </div>
+      <div class="forget">
+        <label for="remember">
+          <input type="checkbox" id="remember" name="remember">
+          <p>Remember me</p>
+        </label>
+        <a href="#">Forgot password?</a>
+      </div>
+      <button type="submit">Log In</button>
+      <div class="register">
+        <p>Don't have an account? <a href="#">Register</a></p>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
