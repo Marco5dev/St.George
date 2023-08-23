@@ -8,7 +8,6 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const fs = require("fs").promises;
 
-
 const dataFolderPath = path.join(__dirname, "../Data");
 const jsonDB = new JSONDatabase(dataFolderPath);
 const PASSWORD = process.env.PASS; // Set your desired password here
@@ -66,7 +65,7 @@ router.post("/login", async (req, res) => {
           maxAge: 30 * 24 * 60 * 60 * 1000,
         }); // Set a persistent cookie for "Remember Me" (30 days)
       } else {
-        req.session.dashboard_login_session = true; // Set a session cookie for non-remembered login
+        res.cookie("dashboard_login_persistent", "false");
       }
       res.redirect("/dash");
     } else {
