@@ -1,5 +1,5 @@
-{
-    "_id": "",
+[{
+    "id": "",
     "social": "",
     "image": "",
     "name": "",
@@ -7,4 +7,10 @@
     "competition": "",
     "date": "",
     "edu": ""
-}
+},{
+    "name": "",
+    "email": "",
+    "username": "",
+    "mobile": "",
+    "password": ""
+}]

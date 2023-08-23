@@ -18,8 +18,8 @@
               <span class="span">Add New Data</span>
             </h2>
             <form method="POST" action="/dash/add" enctype="multipart/form-data">
-              <label for="filename">Select Year</label>
-              <select id="filename" name="filename" required>
+              <label for="dataName">Select Year</label>
+              <select id="dataName" name="dataName" required>
                 <option value="2023">2023</option>
                 <option value="2022">2022</option>
                 <option value="2021">2021</option>
@@ -86,7 +86,8 @@
 
               <div class="input-wrapper">
                 <input
-                  type="date"
+                  type="number"
+                  min="1900" max="2099"
                   id="date"
                   required
                   name="date"

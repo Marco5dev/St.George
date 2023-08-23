@@ -47,7 +47,7 @@ router.post("/login", async (req, res) => {
   const enteredPassword = req.body.password;
   const rememberMe = req.body.remember === "on"; // Check if "Remember Me" is selected
 
-  const usersFilePath = path.join(dataFolderPath, "data.dAdmin.json");
+  const usersFilePath = path.join(dataFolderPath, "users.json");
 
   try {
     const usersData = await fs.readFile(usersFilePath, "utf8");
@@ -65,6 +65,7 @@ router.post("/login", async (req, res) => {
         }); // Set a persistent cookie for "Remember Me" (30 days)
       } else {
         req.session.dashboard_login_session = true; // Set a session cookie for non-remembered login
+        
       }
       if (req.originalUrl === "/dash") {
         res.redirect("/dash")
@@ -163,7 +164,7 @@ router.post("/add", upload.single("image"), async (req, res) => {
       const newData = {
         id: uniqueID,
         social,
-        image: req.file.dataName,
+        image: req.file.filename,
         name,
         rank,
         competition,
@@ -232,7 +233,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Delete data by ID
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", async (req, res, next) => {
   const id = req.params.id;
 
   const isPersistentLoggedIn =
@@ -242,7 +243,7 @@ router.delete("/:id", async (req, res) => {
     console.log("User is authenticated");
     try {
       await jsonDB.deleteDataById(id);
-      res.sendStatus(200);
+      res.sendStatus(200)
     } catch (err) {
       console.error(err);
       res.status(500).send("An error occurred while deleting data");
@@ -300,6 +301,7 @@ router.get("/edit/:id", async (req, res) => {
 router.post("/edit/:id", upload.single("image"), async (req, res) => {
   const id = req.params.id;
   const { name, social, rank, competition, date, edu } = req.body;
+  const dataName = req.body.date
 
   const isPersistentLoggedIn =
     req.cookies["dashboard_login_persistent"] === "true";
@@ -320,7 +322,7 @@ router.post("/edit/:id", upload.single("image"), async (req, res) => {
     const updatedData = newData;
 
     try {
-      await jsonDB.editData(id, updatedData);
+      await jsonDB.editData(id, dataName, updatedData);
       res.redirect(`/dash/${id}`);
     } catch (err) {
       console.error(err);

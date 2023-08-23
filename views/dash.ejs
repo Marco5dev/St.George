@@ -69,7 +69,7 @@
                         <button
                           class="button delete-button"
                           data-id="<%- item2018.id %>"
-                          style="margin-bottom: 10px;"
+                          style="margin-bottom: 10px"
                         >
                           <i class="fa-solid fa-trash-can"></i>
                         </button>
@@ -146,7 +146,7 @@
                         <button
                           class="button delete-button"
                           data-id="<%- item2019.id %>"
-                          style="margin-bottom: 10px;"
+                          style="margin-bottom: 10px"
                         >
                           <i class="fa-solid fa-trash-can"></i>
                         </button>
@@ -228,7 +228,7 @@
                         <button
                           class="button delete-button"
                           data-id="<%- item2020.id %>"
-                          style="margin-bottom: 10px;"
+                          style="margin-bottom: 10px"
                         >
                           <i class="fa-solid fa-trash-can"></i>
                         </button>
@@ -310,7 +310,7 @@
                         <button
                           class="button delete-button"
                           data-id="<%- item2021.id %>"
-                          style="margin-bottom: 10px;"
+                          style="margin-bottom: 10px"
                         >
                           <i class="fa-solid fa-trash-can"></i>
                         </button>
@@ -392,14 +392,11 @@
                         <button
                           class="button delete-button"
                           data-id="<%- item2022.id %>"
-                          style="margin-bottom: 10px;"
+                          style="margin-bottom: 10px"
                         >
                           <i class="fa-solid fa-trash-can"></i>
                         </button>
-                        <a
-                          class="button delete-button"
-                          href="/dash/edit/<%- item2022.id %>"
-                        >
+                        <a href="/dash/edit/<%- item2022.id %>" class="button">
                           <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                       </div>
@@ -469,14 +466,11 @@
                         <button
                           class="button delete-button"
                           data-id="<%- item2023.id %>"
-                          style="margin-bottom: 10px;"
+                          style="margin-bottom: 10px"
                         >
                           <i class="fa-solid fa-trash-can"></i>
                         </button>
-                        <a
-                          class="button delete-button"
-                          href="/dash/edit/<%- item2023.id %>"
-                        >
+                        <a class="button" href="/dash/edit/<%- item2023.id %>">
                           <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                       </div>
@@ -493,14 +487,27 @@
 
     <%- include("./components/footer") %>
 
-    <a
-      href="#top"
-      class="back-top-btn"
-      aria-label="back to top"
-      data-back-top-btn
-    >
-      <ion-icon name=" yearData.arrow-up-outline" aria-hidden="true"></ion-icon>
-    </a>
+    <div>
+      <a
+        href="#top"
+        class="back-top-btn"
+        aria-label="back to top"
+        data-back-top-btn
+      >
+        <ion-icon
+          name=" yearData.arrow-up-outline"
+          aria-hidden="true"
+        ></ion-icon>
+      </a>
+      <a
+        href="/dash/add"
+        class="add-btn"
+        aria-label="Add New Data"
+        data-back-top-btn
+      >
+        <i class="fa-solid fa-plus"></i>
+      </a>
+    </div>
 
     <!-- Custom JavaScript -->
     <%- include("./components/javascript") %>
@@ -539,12 +546,8 @@
               method: "DELETE",
               success: function (response) {
                 if (response.status === 200) {
-                  // Remove the deleted item from the UI
-                  const listItem = event.currentTarget.closest("li");
-                  if (listItem) {
-                    listItem.style.display = none;
-                    console.log("li is removed");
-                  }
+                  window.location.reload();
+                  console.log("reloaded");
                 } else {
                   console.error("Failed to delete data.");
                 }

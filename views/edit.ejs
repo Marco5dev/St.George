@@ -21,21 +21,6 @@
               action="/dash/edit/<%- item.id %>"
               enctype="multipart/form-data"
             >
-              <figure
-                class="card-banner img-holder"
-                style="--width: 250; --height: 250; border-radius: 10%; width: 250px; height: 250px;"
-                
-              >
-                <img
-                  src="<%- item.image || '/images/blank-photo.png' %>"
-                  width="250"
-                  height="250"
-                  loading="lazy"
-                  alt="<%- item.name %>"
-                  class="img-cover"
-                  onerror="replaceWithErrorImage(this)"
-                />
-              </figure>
               <div class="input-wrapper">
                 <input
                   type="text"
@@ -94,7 +79,9 @@
 
               <div class="input-wrapper">
                 <input
-                  type="date"
+                  type="number"
+                  min="1900"
+                  max="2099"
                   id="date"
                   value="<%- item.date %>"
                   name="date"
@@ -122,6 +109,65 @@
               </div>
             </form>
           </div>
+          <div
+            class="container"
+            style="align-content: center; align-items: center"
+          >
+            <p class="headline headline-2 section-title">
+              <span class="span"></span>
+            </p>
+            <ul class="feature-list">
+              <li>
+                <div class="card feature-card">
+                  <figure
+                    class="card-banner img-holder"
+                    style="--width: 600; --height: 600"
+                  >
+                    <img
+                      src="<%- item.image || '/images/blank-photo.png' %>"
+                      width="600"
+                      height="600"
+                      loading="lazy"
+                      alt="<%- item.name %>"
+                      class="img-cover"
+                      onerror="replaceWithErrorImage(this)"
+                      class="image"
+                    />
+                  </figure>
+
+                  <div class="card-content">
+                    <div class="card-wrapper">
+                      <div class="card-tag">
+                        <p class="span hover-2 rank"><%- item.rank %></p>
+                      </div>
+                    </div>
+
+                    <h3 class="headline headline-3">
+                      <a
+                        href="<%- item.social %>"
+                        class="card-title hover-2 name"
+                        style="font-family: var(--fontFamily-noto_sans_arabic)"
+                      >
+                        <%- item.name %>
+                      </a>
+                    </h3>
+
+                    <div class="card-wrapper">
+                      <div class="profile-card">
+                        <div>
+                          <p class="card-title competition">
+                            <%- item.competition %>
+                          </p>
+
+                          <p class="card-subtitle edu"><%- item.edu %></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
         </section>
       </article>
     </main>
@@ -145,6 +191,36 @@
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
     ></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const nameInput = document.getElementById("name");
+        const nameLabel = document.querySelector(".name");
+        const eduInput = document.getElementById("edu");
+        const eduLabel = document.querySelector(".edu");
+        const competitionInput = document.getElementById("competition");
+        const competitionLabel = document.querySelector(".competition");
+        const rankInput = document.getElementById("rank");
+        const rankLabel = document.querySelector(".rank");
+        const imageInput = document.getElementById("image");
+        const imageLabel = document.querySelector(".image");
+
+        nameInput.addEventListener("input", function () {
+          nameLabel.textContent = nameInput.value;
+        });
+        eduInput.addEventListener("input", function () {
+          eduLabel.textContent = eduInput.value;
+        });
+        rankInput.addEventListener("input", function () {
+          rankLabel.textContent = rankInput.value;
+        });
+        competitionInput.addEventListener("input", function () {
+          competitionLabel.textContent = competitionInput.value;
+        });
+        imageInput.addEventListener("input", function () {
+          imageLabel.fileContent = imageInput.href;
+        });
+      });
+    </script>
     <script
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
