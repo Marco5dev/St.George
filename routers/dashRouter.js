@@ -45,9 +45,9 @@ router.use(async (req, res, next) => {
 router.post("/login", async (req, res) => {
   const enteredUsername = req.body.username;
   const enteredPassword = req.body.password;
-  const rememberMe = req.body.remember === "on";
+  const rememberMe = req.body.remember === "on"; // Check if "Remember Me" is selected
 
-  const usersFilePath = path.join(dataFolderPath, "data.dAdmin.json"); // Correct path to users.json
+  const usersFilePath = path.join(dataFolderPath, "data.dAdmin.json");
 
   try {
     const usersData = await fs.readFile(usersFilePath, "utf8");
@@ -59,9 +59,7 @@ router.post("/login", async (req, res) => {
     );
 
     if (validUser) {
-      if (rememberMe) {
-        res.cookie("dashboard_login", "true"); // Set the cookie
-      }
+      res.cookie("dashboard_login", "true"); // Always set the cookie
       res.redirect("/dash");
     } else {
       res.render("loginForm.ejs", {
