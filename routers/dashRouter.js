@@ -8,10 +8,8 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const fs = require("fs").promises;
 
-
 const dataFolderPath = path.join(__dirname, "../Data");
 const jsonDB = new JSONDatabase(dataFolderPath);
-const PASSWORD = process.env.PASS; // Set your desired password here
 const COOKIE_NAME = "dashboard_access";
 
 // Middleware to load common data for rendering views
@@ -68,8 +66,9 @@ router.post("/login", async (req, res) => {
       } else {
         req.session.dashboard_login_session = true; // Set a session cookie for non-remembered login
       }
-      res.redirect("/dash");
+      res.redirect("/dash/add");
     } else {
+      console.log("pass is wrong");
       res.render("loginForm.ejs", {
         title: "Login",
         description: "Incorrect credentials. Please try again.",
@@ -109,8 +108,10 @@ router.get("/", (req, res) => {
 
 // Add data
 router.get("/add", (req, res) => {
-  const isLoggedIn = req.cookies["dashboard_login"] === "true";
-  if (isLoggedIn) {
+  const isPersistentLoggedIn =
+    req.cookies["dashboard_login_persistent"] === "true";
+  const isSessionLoggedIn = req.session.dashboard_login_session === true;
+  if (isPersistentLoggedIn || isSessionLoggedIn) {
     console.log("User is authenticated");
     try {
       res.render("add.ejs", {
@@ -126,6 +127,7 @@ router.get("/add", (req, res) => {
     }
   } else {
     // User is not authenticated
+    console.log("Sorry try again");
     res.render("loginForm.ejs", {
       title: "Login",
       description: "Please enter your credentials to access the dashboard.",
@@ -134,8 +136,10 @@ router.get("/add", (req, res) => {
 });
 
 router.post("/add", upload.single("image"), async (req, res) => {
-  const isLoggedIn = req.cookies["dashboard_login"] === "true";
-  if (isLoggedIn) {
+  const isPersistentLoggedIn =
+    req.cookies["dashboard_login_persistent"] === "true";
+  const isSessionLoggedIn = req.session.dashboard_login_session === true;
+  if (isPersistentLoggedIn || isSessionLoggedIn) {
     console.log("User is authenticated");
     try {
       const { dataName, name, social, rank, competition, date, edu } = req.body;
@@ -176,8 +180,10 @@ router.post("/add", upload.single("image"), async (req, res) => {
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
 
-  const isLoggedIn = req.cookies["dashboard_login"] === "true";
-  if (isLoggedIn) {
+  const isPersistentLoggedIn =
+    req.cookies["dashboard_login_persistent"] === "true";
+  const isSessionLoggedIn = req.session.dashboard_login_session === true;
+  if (isPersistentLoggedIn || isSessionLoggedIn) {
     console.log("User is authenticated");
     try {
       const result = await jsonDB.findDataById(id);
@@ -214,8 +220,10 @@ router.get("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const id = req.params.id;
 
-  const isLoggedIn = req.cookies["dashboard_login"] === "true";
-  if (isLoggedIn) {
+  const isPersistentLoggedIn =
+    req.cookies["dashboard_login_persistent"] === "true";
+  const isSessionLoggedIn = req.session.dashboard_login_session === true;
+  if (isPersistentLoggedIn || isSessionLoggedIn) {
     console.log("User is authenticated");
     try {
       await jsonDB.deleteDataById(id);
@@ -237,8 +245,10 @@ router.delete("/:id", async (req, res) => {
 router.get("/edit/:id", async (req, res) => {
   const id = req.params.id;
 
-  const isLoggedIn = req.cookies["dashboard_login"] === "true";
-  if (isLoggedIn) {
+  const isPersistentLoggedIn =
+    req.cookies["dashboard_login_persistent"] === "true";
+  const isSessionLoggedIn = req.session.dashboard_login_session === true;
+  if (isPersistentLoggedIn || isSessionLoggedIn) {
     console.log("User is authenticated");
     try {
       const result = await jsonDB.findDataById(id);
@@ -276,8 +286,10 @@ router.post("/edit/:id", upload.single("image"), async (req, res) => {
   const id = req.params.id;
   const { name, social, rank, competition, date, edu } = req.body;
 
-  const isLoggedIn = req.cookies["dashboard_login"] === "true";
-  if (isLoggedIn) {
+  const isPersistentLoggedIn =
+    req.cookies["dashboard_login_persistent"] === "true";
+  const isSessionLoggedIn = req.session.dashboard_login_session === true;
+  if (isPersistentLoggedIn || isSessionLoggedIn) {
     console.log("User is authenticated");
 
     const newData = {
