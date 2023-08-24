@@ -109,8 +109,17 @@ const handleResize = function () {
   moveSliderItem();
 };
 
+
 window.addEventListener("resize", handleResize);
+
+function profileToggle() {
+  var menuDiv = document.querySelector('.header .action .menu');
+  menuDiv.classList.toggle('active');
+}
+
 
 // Initial setup
 updateSliderData();
 moveSliderItem();
+profileToggle()
+

@@ -2,9 +2,11 @@ const express = require("express");
 const router = express.Router();
 const JSONDatabase = require("../middleware/dataAccess/dataAccess");
 const path = require("path");
+const cookieParser = require("cookie-parser");
 
 const dataFolderPath = path.join(__dirname, "../Data");
 const jsonDB = new JSONDatabase(dataFolderPath);
+
 
 // Route handler for different years
 const yearRoutes = [
@@ -18,10 +20,17 @@ const yearRoutes = [
 
 yearRoutes.forEach((route) => {
   router.get(`/${route.year}`, async (req, res) => {
+
+    const isPersistentLoggedIn =
+    req.cookies["dashboard_login_persistent"] === "true";
+    const isSessionLoggedIn = req.session.dashboard_login_session === true;
+
     jsonDB
       .readDataFromFile(route.year)
       .then((result) => {
         res.render(`yearData.ejs`, {
+          adminName: req.cookies["dashboard-user"],
+          isPersistentLoggedIn: isPersistentLoggedIn,
           arr: result,
           title: route.title,
           description: route.description,
@@ -31,6 +40,8 @@ yearRoutes.forEach((route) => {
       .catch((err) => {
         console.error(err);
         res.status(500).render("500-2.ejs", {
+          adminName: req.cookies["dashboard-user"],
+          isPersistentLoggedIn: isPersistentLoggedIn,
           title: "500 Internal server error",
           description: "Sorry, something went wrong. Please try again later.",
         });

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include("./components/head") %>
+  <%- include("../components/head") %>
 
   <body id="top" class="light">
-    <%- include("./components/header") %>
+    <%- include("../components/header", { isPersistentLoggedIn: isPersistentLoggedIn }) %>
 
     <main>
       <article>
@@ -485,7 +485,7 @@
       </article>
     </main>
 
-    <%- include("./components/footer") %>
+    <%- include("../components/footer") %>
 
     <div>
       <a
@@ -510,7 +510,7 @@
     </div>
 
     <!-- Custom JavaScript -->
-    <%- include("./components/javascript") %>
+    <%- include("../components/javascript") %>
 
     <!-- Ion Icons -->
     <script

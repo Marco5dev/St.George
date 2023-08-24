@@ -47,7 +47,7 @@ router.post("/login", async (req, res) => {
   const enteredPassword = req.body.password;
   const rememberMe = req.body.remember === "on"; // Check if "Remember Me" is selected
 
-  const usersFilePath = path.join(dataFolderPath, "users.json");
+  const usersFilePath = path.join(dataFolderPath, "data.dUsers.json");
 
   try {
     const usersData = await fs.readFile(usersFilePath, "utf8");
@@ -62,6 +62,9 @@ router.post("/login", async (req, res) => {
       if (rememberMe) {
         res.cookie("dashboard_login_persistent", "true", {
           maxAge: 30 * 24 * 60 * 60 * 1000,
+        });
+        res.cookie("dashboard-user", `${enteredUsername}`, {
+          maxAge: 30 * 24 * 60 * 60 * 1000, 
         }); // Set a persistent cookie for "Remember Me" (30 days)
       } else {
         req.session.dashboard_login_session = true; // Set a session cookie for non-remembered login
@@ -77,7 +80,7 @@ router.post("/login", async (req, res) => {
       console.log("Access accepted");
     } else {
       console.log("pass is wrong");
-      res.render("loginForm.ejs", {
+      res.render("./admin/loginForm.ejs", {
         title: "Login",
         description: "Incorrect credentials. Please try again.",
       });
@@ -88,6 +91,25 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// login gust
+router.get("/guest", (req, res) => {
+  res.cookie("dashboard_login_persistent", "false", {
+    maxAge: 30 * 24 * 60 * 60 * 1000, // Set the cookie to expire in 30 days
+  });
+  res.redirect("/"); // Redirect back to the home page or any desired page
+});
+
+// logout
+router.get("/logout", (req, res) => {
+  res.clearCookie("dashboard_login_persistent"); // Clear the persistent login cookie
+  res.clearCookie("dashboard-user"); // Clear the username cookie
+  req.session.destroy(); // Destroy the session
+  
+  // Redirect to the login page or any other desired page
+  res.redirect("/dash/login");
+});
+
+
 // Display all the website data
 router.get("/", (req, res) => {
   const isPersistentLoggedIn =
@@ -96,20 +118,21 @@ router.get("/", (req, res) => {
 
   if (isPersistentLoggedIn || isSessionLoggedIn) {
     console.log("User is authenticated");
-    // If there's a stored original URL, redirect to it
-
-    res.render("dash.ejs", {
-      title: "All the Data",
-      description: "Browse all the data on the website",
+    res.render("./admin/dash.ejs", {
+      adminName: req.cookies["dashboard-user"],
+      isPersistentLoggedIn: isPersistentLoggedIn,
+      title: "Dashboard St.George",
+      description: "Add, Edit, Delete any data you want as admin",
     });
   } else {
     // User is not authenticated
     // Store the original URL in session
     req.session.originalUrl = req.originalUrl;
-    res.render("loginForm.ejs", {
+    res.render("./admin/loginForm.ejs", {
       title: "Login",
       description: "Please enter your credentials to access the dashboard.",
     });
+    console.log(req.cookies["dashboard-user"])
   }
 });
 
@@ -127,13 +150,17 @@ router.get("/add", (req, res) => {
       res.redirect(originalUrl);
     } else {
       try {
-        res.render("add.ejs", {
+        res.render("./admin/add.ejs", {
+          adminName: req.cookies["dashboard-user"],
+          isPersistentLoggedIn: isPersistentLoggedIn,
           title: "Add Data",
           description: "Add new data to the website",
         });
       } catch (err) {
         console.error(err);
         res.status(500).render("500-2.ejs", {
+          adminName: req.cookies["dashboard-user"],
+          isPersistentLoggedIn: isPersistentLoggedIn,
           title: "500 Internal server error",
           description: "Sorry, something went wrong. Please try again later.",
         });
@@ -144,7 +171,7 @@ router.get("/add", (req, res) => {
     console.log("Sorry try again");
     // Store the original URL in session
     req.session.originalUrl = req.originalUrl;
-    res.render("loginForm.ejs", {
+    res.render("./admin/loginForm.ejs", {
       title: "Login",
       description: "Please enter your credentials to access the dashboard.",
     });
@@ -179,6 +206,8 @@ router.post("/add", upload.single("image"), async (req, res) => {
     } catch (err) {
       console.error(err);
       res.status(500).render("500-2.ejs", {
+        adminName: req.cookies["dashboard-user"],
+        isPersistentLoggedIn: isPersistentLoggedIn,
         title: "500 Internal server error",
         description: "Sorry, something went wrong. Please try again later.",
       });
@@ -205,13 +234,17 @@ router.get("/:id", async (req, res) => {
       const result = await jsonDB.findDataById(id);
 
       if (result) {
-        res.render("data-1", {
+        res.render("./admin/data-1", {
+          adminName: req.cookies["dashboard-user"],
+          isPersistentLoggedIn: isPersistentLoggedIn,
           title: result.name,
           description: result.competition,
           item: result,
         });
       } else {
         res.status(404).render("404.ejs", {
+          adminName: req.cookies["dashboard-user"],
+          isPersistentLoggedIn: isPersistentLoggedIn,
           title: "Not Found",
           description: "Sorry, the requested data was not found.",
         });
@@ -219,13 +252,15 @@ router.get("/:id", async (req, res) => {
     } catch (err) {
       console.error(err);
       res.status(500).render("500-2.ejs", {
+        adminName: req.cookies["dashboard-user"],
+        isPersistentLoggedIn: isPersistentLoggedIn,
         title: "500 Internal server error",
         description: "Sorry, something went wrong. Please try again later.",
       });
     }
   } else {
     // User is not authenticated
-    res.render("loginForm.ejs", {
+    res.render("./admin/loginForm.ejs", {
       title: "Login",
       description: "Please enter your credentials to access the dashboard.",
     });
@@ -250,7 +285,7 @@ router.delete("/:id", async (req, res, next) => {
     }
   } else {
     // User is not authenticated
-    res.render("loginForm.ejs", {
+    res.render("./admin/loginForm.ejs", {
       title: "Login",
       description: "Please enter your credentials to access the dashboard.",
     });
@@ -270,13 +305,17 @@ router.get("/edit/:id", async (req, res) => {
       const result = await jsonDB.findDataById(id);
 
       if (result) {
-        res.render("edit.ejs", {
+        res.render("./admin/edit.ejs", {
+                adminName: req.cookies["dashboard-user"],
+      isPersistentLoggedIn: isPersistentLoggedIn,
           title: "Edit Data",
           description: "Edit the selected data item",
           item: result,
         });
       } else {
         res.status(404).render("404.ejs", {
+          adminName: req.cookies["dashboard-user"],
+          isPersistentLoggedIn: isPersistentLoggedIn,
           title: "Not Found",
           description: "Sorry, the requested data was not found.",
         });
@@ -284,13 +323,15 @@ router.get("/edit/:id", async (req, res) => {
     } catch (err) {
       console.error(err);
       res.status(500).render("500-2.ejs", {
+        adminName: req.cookies["dashboard-user"],
+        isPersistentLoggedIn: isPersistentLoggedIn,
         title: "500 Internal server error",
         description: "Sorry, something went wrong. Please try again later.",
       });
     }
   } else {
     // User is not authenticated
-    res.render("loginForm.ejs", {
+    res.render("./admin/loginForm.ejs", {
       title: "Login",
       description: "Please enter your credentials to access the dashboard.",
     });
@@ -327,13 +368,15 @@ router.post("/edit/:id", upload.single("image"), async (req, res) => {
     } catch (err) {
       console.error(err);
       res.status(500).render("500-2.ejs", {
+        adminName: req.cookies["dashboard-user"],
+        isPersistentLoggedIn: isPersistentLoggedIn,
         title: "500 Internal server error",
         description: "Sorry, something went wrong. Please try again later.",
       });
     }
   } else {
     // User is not authenticated
-    res.render("loginForm.ejs", {
+    res.render("./admin/loginForm.ejs", {
       title: "Login",
       description: "Please enter your credentials to access the dashboard.",
     });

@@ -72,6 +72,25 @@
             </a>
           </ul>
         </div>
+        <div class="action" style="display: block;" <% if (isPersistentLoggedIn === false) { %> style="display: none;" <% } %> >
+          <div class="profile" onclick="profileToggle()">
+            <img src="/images/blank-photo.png" alt="user">
+          </div>
+          <div class="menu">
+            <h3><%- adminName %></h3>    
+            <ul class="login" <% if (isPersistentLoggedIn) { %> style="display: none;" <% } %>>
+              <li><a href="/dash/login"><i class="fa-solid fa-toolbox"></i> Log in as admin</a></li>
+              <li><a href="/dash/gust"><i class="fa-solid fa-arrow-right-to-bracket"></i> Log in as guest</a></li>
+            </ul>
+            <ul class="logedin" <% if (!isPersistentLoggedIn) { %> style="display: none;" <% } %>>
+              <li><a href="/dash/profile"><i class="fa-regular fa-user"></i> My profile</a></li>
+              <li><a href="/dash/edit/:username"><i class="fa-regular fa-pen-to-square"></i> Edit profile</a></li>
+              <li><a href="/dash"><i class="fa-solid fa-chart-simple"></i> Dashboard</a></li>
+              <li><a href="/dash/add"><i class="fa-solid fa-plus"></i> Add Data</a></li>
+              <li><a href="/dash/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
     </nav>
 
     <div class="theme-container">
@@ -84,5 +103,6 @@
     <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
       <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
     </button>
+
   </div>
 </header>

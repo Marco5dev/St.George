@@ -5,12 +5,18 @@ const multer = require("multer");
 const upload = require("../middleware/upload");
 const uuid = require("uuid");
 const path = require("path");
+const cookieParser = require("cookie-parser");
+
 
 const dataFolderPath = path.join(__dirname, "../Data");
 const jsonDB = new JSONDatabase(dataFolderPath);
 
+
 // Display all the website data
 router.get("/", async (req, res) => {
+   const isPersistentLoggedIn =
+    req.cookies["dashboard_login_persistent"] === "true";
+  const isSessionLoggedIn = req.session.dashboard_login_session === true;
   try {
     const allData = await  jsonDB.getAllData();
 
@@ -55,6 +61,8 @@ router.get("/:id", async (req, res) => {
     .findDataById(id)
     .then((result) => {
       res.render("data-1", {
+        adminName: req.cookies["dashboard-user"],
+        isPersistentLoggedIn: isPersistentLoggedIn,
         title: result.name,
         description: result.competition,
         item: result,
