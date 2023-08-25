@@ -207,7 +207,7 @@ router.post("/add", upload.single("image"), async (req, res) => {
   if (isPersistentLoggedIn || isSessionLoggedIn) {
     console.log("User is authenticated");
     try {
-      const { dataName, name, social, rank, competition, date, edu } = req.body;
+      const { name, social, rank, competition, date, edu } = req.body;
 
       const uniqueID = uuid.v4();
       const newData = {
@@ -220,6 +220,8 @@ router.post("/add", upload.single("image"), async (req, res) => {
         date,
         edu,
       };
+
+      let dataName = date;
 
       await jsonDB.addData(dataName, newData);
 
