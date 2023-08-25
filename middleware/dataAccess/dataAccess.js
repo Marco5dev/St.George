@@ -100,8 +100,7 @@ class JSONDatabase {
         console.log(`Deleted item:`, dataItemToDelete);
         
         if (typeof window == "undefined") {
-          console.log("Hell yeahhhhhhhhhhhhhh!")
-          // location.href("/dash");
+          console.log("Item is deleted successfully!")
         }
       } else {
         console.log(`Item with id ${id} is already deleted.`);
