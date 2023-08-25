@@ -58,6 +58,9 @@ remember to add `.env` file and add this values
 <img src="./public/images/website-img3.png" alt="website image">
 <img src="./public/images/website-img5.png" alt="website image">
 <img src="./public/images/website-img6.png" alt="website image">
+<img src="./public/images/website-img7.png" alt="website image">
+<img src="./public/images/website-img8.png" alt="website image">
+<img src="./public/images/website-img9.png" alt="website image">
 
 <br><br>
 
