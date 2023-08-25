@@ -49,12 +49,6 @@ you can now open the website on `http://localhost:${PORT}`
 remember to add `.env` file and add this values
 
 - PORT
-- PORT2
-
-you still can add mongoose if you want it will be really simple just add this two more values
-
-- OD (Online Data Base)
-- LD (Local Data Base)
 
 # <span style="  display: inline-block; background-image: linear-gradient(90deg, #9a9a9a, #d1d1d1 51%);display: inline-block; -webkit-text-fill-color: transparent; -webkit-background-clip: text; background-clip: text; ">Some pics for the website</span>
 
