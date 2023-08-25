@@ -1,39 +1,23 @@
 const express = require("express");
 const router = express.Router();
 const JSONDatabase = require("../middleware/dataAccess/dataAccess");
-const multer = require("multer");
-const upload = require("../middleware/upload");
-const uuid = require("uuid");
 const path = require("path");
-const cookieParser = require("cookie-parser");
-
 
 const dataFolderPath = path.join(__dirname, "../Data");
 const jsonDB = new JSONDatabase(dataFolderPath);
 
-
-// Display all the website data
-router.get("/", async (req, res) => {
-   const isPersistentLoggedIn =
-    req.cookies["dashboard_login_persistent"] === "true";
-  const isSessionLoggedIn = req.session.dashboard_login_session === true;
+// Middleware to load common data for rendering views
+router.use(async (req, res, next) => {
   try {
-    const allData = await  jsonDB.getAllData();
-
-    const yearData = {};
-    const years = ["2018", "2019", "2020", "2021", "2022", "2023", "Top"]; // Update with your years
-
-    for (const year of years) {
-      yearData[`arr${year}`] = await  jsonDB.readDataFromFile(year);
+    const adminId = req.cookies["dashboard-user"];
+    if (adminId) {
+      const userData = await jsonDB.findDataById(adminId);
+      if (userData) {
+        res.locals.adminName = userData.name;
+      }
     }
 
-    res.render("data.ejs", {
-      ...yearData,
-      year: years,
-      arrAll: allData,
-      title: "all the data",
-      description: "Here you can browse all the data in the website",
-    });
+    next();
   } catch (err) {
     console.error(err);
     res.status(500).render("500-2.ejs", {
@@ -43,40 +27,82 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
-  const id = req.params.id;
+const years = ["2018", "2019", "2020", "2021", "2022", "2023", "Top"]; // Update with your years
 
-  const blacklist = new Set(["data.dFathers.json", ""]);
-  const allData = await jsonDB.getAllData();
-
-  const yearData = {};
-  const years = ["2018", "2019", "2020", "2021", "2022", "2023", "Top"]; // Update with your years
-
-  for (const year of years) {
-    yearData[`arr${year}`] = await jsonDB.readDataFromFile(year);
-  }
-  // DYNAMIC STORYS LINK
-
-  jsonDB
-    .findDataById(id)
-    .then((result) => {
-      res.render("data-1", {
-        adminName: req.cookies["dashboard-user"],
-        isPersistentLoggedIn: isPersistentLoggedIn,
-        title: result.name,
-        description: result.competition,
-        item: result,
-        ...yearData,
-        arrAll: allData,
-      });
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).render("500-2.ejs", {
-        title: "500 Internal server error",
-        description: "Sorry, something went wrong. Please try again later.",
-      });
+// Middleware to load common data for rendering views
+router.use(async (req, res, next) => {
+  try {
+    const isPersistentLoggedIn = req.cookies["dashboard_login_persistent"] === "true";
+    const dashboardLoginPersistentValue = req.cookies["dashboard_login_persistent"];
+    const allData = await jsonDB.getAllData();
+    
+    const yearData = await Promise.all(years.map(async year => ({
+      [`arr${year}`]: await jsonDB.readDataFromFile(year)
+    })));
+    
+    res.locals = {
+      adminName: res.locals.adminName,
+      isPersistentLoggedIn,
+      dashboardLoginPersistentValue,
+      ...yearData.reduce((acc, data) => ({ ...acc, ...data }), {}),
+      years,
+      arrAll: allData
+    };
+    
+    next();
+  } catch (err) {
+    console.error(err);
+    res.status(500).render("500-2.ejs", {
+      adminName: res.locals.adminName,
+      isPersistentLoggedIn: req.cookies["dashboard_login_persistent"] === "true",
+      dashboardLoginPersistentValue: req.cookies["dashboard_login_persistent"],
+      title: "500 Internal server error",
+      description: "Sorry, something went wrong. Please try again later."
     });
+  }
+});
+
+// Display all the website data
+router.get("/", async (req, res) => {
+  try {
+    res.render("data.ejs", {
+      title: "all the data",
+      description: "Here you can browse all the data in the website"
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).render("500-2.ejs", {
+      title: "500 Internal server error",
+      description: "Sorry, something went wrong. Please try again later."
+    });
+  }
+});
+
+// Display dynamic data
+router.get("/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const blacklist = new Set(["data.dFathers.json", ""]);
+    const allData = await jsonDB.getAllData();
+    
+    const result = await jsonDB.findDataById(id);
+    
+    if (!result) {
+      throw new Error("Data not found");
+    }
+    
+    res.render("data-1", {
+      title: result.name,
+      description: result.competition,
+      item: result
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).render("500-2.ejs", {
+      title: "500 Internal server error",
+      description: "Sorry, something went wrong. Please try again later."
+    });
+  }
 });
 
 module.exports = router;

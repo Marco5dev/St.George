@@ -299,6 +299,7 @@ body.nav-active {
 .theme-container {
   position: relative;
   display: none;
+  margin-top: 11px;
 }
 
 label {
@@ -423,6 +424,7 @@ label {
   border-radius: 0.5em;
   padding: 1em;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .select-clicked {
@@ -548,6 +550,8 @@ label {
 }
 
 .navbar {
+  display: inline;
+  gap: 20px;
   position: absolute;
   top: 0;
   right: -340px;
@@ -569,7 +573,7 @@ label {
 }
 
 .navbar-top {
-  display: flex;
+  display: block;
   justify-content: space-between;
   align-items: center;
   padding-block-end: 15px;
@@ -618,64 +622,62 @@ label {
   height: 100%;
   object-fit: cover;
 }
-.header .action .menu {
+.header .action .profile-menu {
   position: absolute;
   top: 80px;
-  left: -30px;
+  left: -134px;
   padding: 10px 20px;
-  background: #fff;
+  background: var(--dark-to-white);
   width: 200px;
   box-sizing: border-box;
   border-radius: 15px;
   transition: 0.5s;
   display: none;
 }
-.header .action .menu.active {
+.header .action .profile-menu.active {
   display: block;
 }
-.header .action .menu::before {
+.header .action .profile-menu::before {
   content: "";
   position: absolute;
   top: -5px;
   right: 30px;
   width: 20px;
   height: 20px;
-  background: #fff;
+  background: var(--dark-to-white);
   transform: rotate(45deg);
 }
-.header .action .menu h3 {
+.header .action .profile-menu h3 {
   width: 100%;
   text-align: center;
   font-size: 18px;
   padding: 20px 0;
   font-weight: var(--weight-semiBold);
-  color: #555;
+  color: var(--white-to-dark);
   line-height: 1.2em;
 }
-.header .action .menu h3 span {
+.header .action .profile-menu h3 span {
   font-size: 14px;
   color: var(--text-wild-blue-yonder);
   font-weight: var(--weight-medium);
 }
-.header .action .menu ul li {
+.header .action .profile-menu ul li {
   list-style: none;
   padding: 10px 0;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
+  opacity: 0.5;
 }
-.header .action .menu ul li:hover img {
-  opacity: 1;
-}
-.header .action .menu ul li a {
+.header .action .profile-menu ul li a {
   display: inline-block;
   text-decoration: none;
-  color: #555;
+  color: var(--white-to-dark);
   font-weight: var(--weight-medium);
   transition: 0.5s;
 }
-.header .action .menu ul li:hover a {
-  color: var(--text-columbia-blue);
+.header .action .profile-menu ul li:hover {
+  opacity: 1;
 }
 
 .navbar .link-list {
@@ -712,6 +714,8 @@ label {
 }
 
 .dark-mode-slider {
+  margin-top: 20px;
+  padding-top: 35px;
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -1516,28 +1520,27 @@ input[type="date"] {
 \*-----------------------------------*/
 
 .button {
-  --background: var(--text-columbia-blue);
-  --background-hover: var(--text-columbia-blue);
-  --text: #000;
-  --shadow: rgba(0, 9, 61, 0.2);
-  --paper: #5c86ff;
-  --paper-lines: #000;
-  --trash: #333;
-  --trash-lines: #333;
-  --check: #000;
-  --check-background: #5c86ff;
   position: relative;
   border: none;
-  outline: none;
   background: none;
   padding: 10px;
   border-radius: 7px;
   min-width: 10px;
-  cursor: pointer;
   display: flex;
-  color: var(--text);
-  background: var(--btn, var(--background));
-  box-shadow: 0 var(--shadow-y, 4px) var(--shadow-blur, 8px) var(--shadow);
+  color: var(--black);
+  background: var(--text-columbia-blue);
+}
+
+.edit-button {
+  position: relative;
+  border: none;
+  background: none;
+  padding: 10px;
+  border-radius: 7px;
+  min-width: 10px;
+  display: flex;
+  color: var(--black);
+  background: var(--text-columbia-blue);
 }
 
 /*-----------------------------------*\

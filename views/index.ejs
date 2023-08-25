@@ -6,7 +6,7 @@
     <!-- 
     - #HEADER
   -->
-    <%- include("./components/header", { isPersistentLoggedIn: isPersistentLoggedIn }) %>
+    <%- include("./components/header", { isPersistentLoggedIn: isPersistentLoggedIn, dashboardLoginPersistentValue: dashboardLoginPersistentValue }) %>
 
     <!-- 
     - Main
@@ -78,7 +78,7 @@
                   class="headline headline-2 section-title card-title"
                   id="topic-label"
                 >
-                  Top 5 Winners
+                  Some Winners
                 </h2>
 
                 <p class="card-text">
@@ -106,31 +106,63 @@
 
               <div class="slider" data-slider>
                 <ul class="slider-list" data-slider-container>
-                  <% arrTop.forEach(itemTop => { %>
+                  <% arr2022.forEach(item => { %>
                   <li class="slider-item">
-                    <a href="  <%- itemTop.social %> " class="slider-card">
+                    <a href="  <%- item.social %> " class="slider-card">
                       <figure
                         class="slider-banner img-holder"
                         style="--width: 507; --height: 618"
                       >
                         <img
-                          src="<%- itemTop.image || '/images/blank-photo.png' %>"
+                          src="<%- item.image || '/images/blank-photo.png' %>"
                           width="507"
                           height="618"
                           loading="lazy"
-                          alt="<%- itemTop.name %>"
+                          alt="<%- item.name %>"
                           class="img-cover"
                           onerror="replaceWithErrorImage(this)"
                         />
                       </figure>
 
                       <div class="slider-content">
-                        <span class="slider-title"> <%- itemTop.name %> </span>
+                        <span class="slider-title"> <%- item.name %> </span>
 
                         <p class="slider-subtitle">
-                          <%- itemTop.rank %> <br />
-                          <%- itemTop.competition %> <br />
-                          <%- itemTop.date %>
+                          <%- item.rank %> <br />
+                          <%- item.competition %> <br />
+                          <%- item.date %>
+                        </p>
+                      </div>
+                    </a>
+                  </li>
+
+                  <% }); %>
+
+                  <% arr2021.forEach(item => { %>
+                  <li class="slider-item">
+                    <a href="  <%- item.social %> " class="slider-card">
+                      <figure
+                        class="slider-banner img-holder"
+                        style="--width: 507; --height: 618"
+                      >
+                        <img
+                          src="<%- item.image || '/images/blank-photo.png' %>"
+                          width="507"
+                          height="618"
+                          loading="lazy"
+                          alt="<%- item.name %>"
+                          class="img-cover"
+                          onerror="replaceWithErrorImage(this)"
+                        />
+                      </figure>
+
+                      <div class="slider-content">
+                        <span class="slider-title"> <%- item.name %> </span>
+
+                        <p class="slider-subtitle">
+                          <%- item.rank %> <br />
+                          <%- item.competition %> <br />
+                          <%- item.date %>
                         </p>
                       </div>
                     </a>

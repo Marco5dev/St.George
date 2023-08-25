@@ -74,12 +74,34 @@ class JSONDatabase {
 
         console.log(`Item with id ${id} has been deleted.`);
         console.log(`Deleted item:`, dataItemToDelete);
+        
+        if (typeof window == "undefined") {
+          console.log("Hell yeahhhhhhhhhhhhhh!")
+          // location.href("/dash");
+        }
+      } else {
+        console.log(`Item with id ${id} is already deleted.`);
+      }
+    } catch (error) {
+      console.error("Error deleting data:", error);
+    }
+  }
 
-        // Automatically reload the page
-        // You can replace this with your actual reload logic
-        // This example demonstrates a browser-like page reload
-        if (typeof window !== "undefined") {
-          window.location.reload();
+  async deleteUserById(id) {
+    try {
+      const dataItemToDelete = await this.findDataById(id);
+
+      if (dataItemToDelete) {
+        const data = await this.readDataFromFile("Users");
+        const newData = data.filter((item) => item.id !== id);
+        await this.writeDataToFile("Users", newData);
+
+        console.log(`Item with id ${id} has been deleted.`);
+        console.log(`Deleted item:`, dataItemToDelete);
+        
+        if (typeof window == "undefined") {
+          console.log("Hell yeahhhhhhhhhhhhhh!")
+          // location.href("/dash");
         }
       } else {
         console.log(`Item with id ${id} is already deleted.`);

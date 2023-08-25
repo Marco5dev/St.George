@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Login | Ludiflex</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <!------------------ Login Box --------------------->
+        <div class="box-login" id="login">
+          <form method="post" action="/dash/login">
+            <div class="top-header">
+              <h3>Hello, Again</h3>
+              <small>We are happy to have you back.</small>
+            </div>
+            <div class="input-group">
+              <div class="input-field">
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  class="input-box"
+                  required
+                />
+                <label for="username">User Name</label>
+              </div>
+              <div class="input-field">
+                <input
+                  type="password"
+                  name="password"
+                  autocomplete="current-password"
+                  required
+                  id="logPassword"
+                  class="input-box"
+                  minlength="8"
+                  maxlength="23"
+                />
+                <label for="logPassword">Password</label>
+                <p id="error-message" class="error-message"></p>
+                <div class="eye-area">
+                  <div class="eye-box" onclick="myLogPassword()">
+                    <i class="fa-regular fa-eye" id="eye"></i>
+                    <i class="fa-regular fa-eye-slash" id="eye-slash"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="remember">
+                <input
+                  type="checkbox"
+                  id="remember formCheck-2"
+                  name="remember"
+                  class="check"
+                />
+                <label for="formCheck"> Remember Me</label>
+              </div>
+              <div class="input-field">
+                <button type="submit" class="input-submit">Log In</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      var x = document.getElementById("login");
+      var z = document.getElementById("btn");
+
+      function login() {
+        x.style.left = "27px";
+        y.style.right = "-350px";
+        z.style.left = "0px";
+      }
+
+      // view password codes
+
+      function myLogPassword() {
+        var a = document.getElementById("logPassword");
+        var b = document.getElementById("eye");
+        var c = document.getElementById("eye-slash");
+
+        if (a.type === "password") {
+          a.type = "text";
+          b.style.opacity = "0";
+          c.style.opacity = "1";
+        } else {
+          a.type = "password";
+          b.style.opacity = "1";
+          c.style.opacity = "0";
+        }
+      }
+
+      function myRegPassword() {
+        var d = document.getElementById("regPassword");
+        var b = document.getElementById("eye-2");
+        var c = document.getElementById("eye-slash-2");
+
+        if (d.type === "password") {
+          d.type = "text";
+          b.style.opacity = "0";
+          c.style.opacity = "1";
+        } else {
+          d.type = "password";
+          b.style.opacity = "1";
+          c.style.opacity = "0";
+        }
+      }
+
+      const usernameInput = document.querySelector("#username");
+      const passwordInput = document.querySelector("#logPassword");
+
+      usernameInput.addEventListener("blur", function () {
+        if (usernameInput.value !== "") {
+          usernameInput.classList.add("filled");
+        } else {
+          usernameInput.classList.remove("filled");
+        }
+      });
+
+      passwordInput.addEventListener("blur", function () {
+        if (passwordInput.value !== "") {
+          passwordInput.classList.add("filled");
+        } else {
+          passwordInput.classList.remove("filled");
+        }
+      });
+
+      // Check if password has value on page load
+      window.addEventListener("load", function () {
+        if (passwordInput.value !== "") {
+          passwordInput.classList.add("filled");
+        }
+      });
+    </script>
+  </body>
+</html>

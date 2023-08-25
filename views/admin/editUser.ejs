@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../components/head") %>
+
+  <body id="top" class="light">
+    <%- include("../components/header", { isPersistentLoggedIn:
+    isPersistentLoggedIn, dashboardLoginPersistentValue:
+    dashboardLoginPersistentValue }) %>
+
+    <main>
+      <article>
+        <section
+          class="section post post-phone"
+          aria-label="post"
+          id="recent-post"
+        >
+          <div class="container">
+            <h2 class="headline headline-2 section-title">
+              <span class="span">Edit <%= item.name %></span>
+            </h2>
+            <form
+              method="POST"
+              action="/dash/edit/user/<%- userId %>"
+              enctype="multipart/form-data"
+            >
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value="<%- item.name %>"
+                  required
+                  class="input-field"
+                  placeholder="Name:"
+                /><br />
+              </div>
+
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  class="input-field"
+                  placeholder="Username"
+                  value="<%- item.username %>"
+                /><br />
+              </div>
+
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="mobile"
+                  name="mobile"
+                  required
+                  class="input-field"
+                  placeholder="mobile: "
+                  value="<%- item.mobile %>"
+                /><br />
+              </div>
+
+              <div class="input-wrapper">
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  name="email"
+                  class="input-field"
+                  placeholder="Email:"
+                  value="<%- item.email %>"
+                /><br />
+              </div>
+
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="password"
+                  required
+                  name="password"
+                  class="input-field"
+                  placeholder="Password:"
+                  value="<%- item.password %>"
+                /><br />
+              </div>
+
+              <div>
+                <button class="btn btn-primary" type="submit">
+                  Edit User Data
+                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                </button>
+              </div>
+            </form>
+            <button
+              class="button delete-button"
+              data-id="<%- userId %>"
+              style="margin-bottom: 10px"
+            >
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <%- include("../components/footer") %>
+
+    <a
+      href="#top"
+      class="back-top-btn"
+      aria-label="back to top"
+      data-back-top-btn
+    >
+      <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon>
+    </a>
+
+    <!-- Custom JavaScript -->
+    <%- include("../components/javascript") %>
+
+    <!-- Ion Icons -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let button = document.querySelectorAll(".button");
+        const deleteButtons = document.querySelectorAll(".delete-button");
+        deleteButtons.forEach((button) => {
+          button.addEventListener("click", async (event) => {
+            console.log("hi");
+            try {
+              const id = button.getAttribute("data-id");
+    
+              $.ajax({
+                url: `/dash/edit/user/${id}?_=${Date.now()}`,
+                method: "DELETE",
+                success: function (response) {
+                  if (response.status === "success") {
+                    alert("Item deleted successfully.");
+                    // Navigate to the same page after successful delete
+                    window.location.href = "/dash/logout";
+                  } else {
+                    console.error("Failed to delete data.");
+                  }
+                },
+              });
+            } catch (error) {
+              console.error("An error occurred:", error);
+            }
+          });
+        });
+      });
+    </script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

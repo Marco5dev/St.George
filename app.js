@@ -64,7 +64,16 @@ app.use("/year", yearRouter); // Use the yearRouter for routes starting with /ye
 
 // 404 Handler
 app.use((req, res, next) => {
+  const isPersistentLoggedIn =
+    req.cookies["dashboard_login_persistent"] === "true";
+  const isSessionLoggedIn = req.session.dashboard_login_session === true;
+  // Determine the value of the "dashboard_login_persistent" cookie
+  const dashboardLoginPersistentValue =
+    req.cookies["dashboard_login_persistent"];
   res.status(404).render("404.ejs", {
+    adminName: res.locals.adminName,
+    isPersistentLoggedIn: isPersistentLoggedIn,
+    dashboardLoginPersistentValue: dashboardLoginPersistentValue,
     title: "404 Not Found",
     description: "Sorry, we couldn't find that page.",
   });

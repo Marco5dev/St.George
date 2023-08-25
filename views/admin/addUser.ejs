@@ -8,7 +8,6 @@
 
     <main>
       <article>
-        <!-- Recent Post Section for Adding Data -->
         <section
           class="section post post-phone"
           aria-label="post"
@@ -16,21 +15,9 @@
         >
           <div class="container">
             <h2 class="headline headline-2 section-title">
-              <span class="span">Add New Data</span>
+              <span class="span">Add New User</span>
             </h2>
-            <form method="POST" action="/dash/add" enctype="multipart/form-data">
-              <label for="dataName">Select Year</label>
-              <select id="dataName" name="dataName" required>
-                <option value="2023">2023</option>
-                <option value="2022">2022</option>
-                <option value="2021">2021</option>
-                <option value="2020">2020</option>
-                <option value="2019">2019</option>
-                <option value="2018">2018</option>
-                <option value="Top">Top winners</option>
-              </select>
-              <br />
-
+            <form method="POST" action="/dash/add/user" enctype="multipart/form-data">
               <div class="input-wrapper">
                 <input
                   type="text"
@@ -45,72 +32,49 @@
               <div class="input-wrapper">
                 <input
                   type="text"
-                  id="social"
-                  name="social"
+                  id="username"
+                  name="username"
                   class="input-field"
-                  placeholder="Facebook link:"
-                /><br />
-              </div>
-
-              <label for="image" class="drop-container" id="dropcontainer">
-                <span class="drop-title">Drop image here</span>
-                or
-                <input
-                  type="file"
-                  id="image"
-                  name="image"
-                  accept=".png, .jpg, .jpeg"
-                />
-              </label>
-
-              <div class="input-wrapper">
-                <input
-                  type="text"
-                  id="rank"
-                  name="rank"
-                  required
-                  class="input-field"
-                  placeholder="his/her Rank:"
+                  placeholder="Username"
                 /><br />
               </div>
 
               <div class="input-wrapper">
                 <input
                   type="text"
-                  id="competition"
+                  id="mobile"
+                  name="mobile"
                   required
-                  name="competition"
                   class="input-field"
-                  placeholder="Competition:"
+                  placeholder="mobile: "
                 /><br />
               </div>
-
+              
               <div class="input-wrapper">
                 <input
-                  type="number"
-                  min="1900" max="2099"
-                  id="date"
+                type="email"
+                  id="email"
                   required
-                  name="date"
+                  name="email"
                   class="input-field"
-                  placeholder="Year:"
-                /><br />
-              </div>
-
-              <div class="input-wrapper">
-                <input
-                  type="text"
-                  id="edu"
-                  required
-                  name="edu"
-                  class="input-field"
-                  placeholder="Education:"
-                /><br />
-              </div>
+                  placeholder="Email:"
+                  /><br />
+                </div>
+                
+                <div class="input-wrapper">
+                  <input
+                    type="text"
+                    id="password"
+                    required
+                    name="password"
+                    class="input-field"
+                    placeholder="Password:"
+                  /><br />
+                </div>
 
               <div>
                 <button class="btn btn-primary" type="submit">
-                  Add Data
+                  Add User
                   <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
                 </button>
               </div>

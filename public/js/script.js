@@ -113,7 +113,7 @@ const handleResize = function () {
 window.addEventListener("resize", handleResize);
 
 function profileToggle() {
-  var menuDiv = document.querySelector('.header .action .menu');
+  var menuDiv = document.querySelector('.header .action .profile-menu');
   menuDiv.classList.toggle('active');
 }
 
@@ -121,5 +121,3 @@ function profileToggle() {
 // Initial setup
 updateSliderData();
 moveSliderItem();
-profileToggle()
-

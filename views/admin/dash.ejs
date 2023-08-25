@@ -3,7 +3,9 @@
   <%- include("../components/head") %>
 
   <body id="top" class="light">
-    <%- include("../components/header", { isPersistentLoggedIn: isPersistentLoggedIn }) %>
+    <%- include("../components/header", { isPersistentLoggedIn:
+    isPersistentLoggedIn, dashboardLoginPersistentValue:
+    dashboardLoginPersistentValue }) %>
 
     <main>
       <article>
@@ -74,7 +76,7 @@
                           <i class="fa-solid fa-trash-can"></i>
                         </button>
                         <a
-                          class="button delete-button"
+                          class="edit-button"
                           href="/dash/edit/<%- item2018.id %>"
                         >
                           <i class="fa-solid fa-pen-to-square"></i>
@@ -151,7 +153,7 @@
                           <i class="fa-solid fa-trash-can"></i>
                         </button>
                         <a
-                          class="button delete-button"
+                          class="edit-button"
                           href="/dash/edit/<%- item2019.id %>"
                         >
                           <i class="fa-solid fa-pen-to-square"></i>
@@ -233,7 +235,7 @@
                           <i class="fa-solid fa-trash-can"></i>
                         </button>
                         <a
-                          class="button delete-button"
+                          class="edit-button"
                           href="/dash/edit/<%- item2020.id %>"
                         >
                           <i class="fa-solid fa-pen-to-square"></i>
@@ -315,7 +317,7 @@
                           <i class="fa-solid fa-trash-can"></i>
                         </button>
                         <a
-                          class="button delete-button"
+                          class="edit-button"
                           href="/dash/edit/<%- item2021.id %>"
                         >
                           <i class="fa-solid fa-pen-to-square"></i>
@@ -396,7 +398,10 @@
                         >
                           <i class="fa-solid fa-trash-can"></i>
                         </button>
-                        <a href="/dash/edit/<%- item2022.id %>" class="button">
+                        <a
+                          class="edit-button"
+                          href="/dash/edit/<%- item2022.id %>"
+                        >
                           <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                       </div>
@@ -470,7 +475,10 @@
                         >
                           <i class="fa-solid fa-trash-can"></i>
                         </button>
-                        <a class="button" href="/dash/edit/<%- item2023.id %>">
+                        <a
+                          class="edit-button"
+                          href="/dash/edit/<%- item2023.id %>"
+                        >
                           <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                       </div>
@@ -542,18 +550,16 @@
 
           try {
             $.ajax({
-              url: `/dash/${id}`,
+              url: `/dash/${id}?_=${Date.now()}`,
               method: "DELETE",
               success: function (response) {
-                if (response.status === 200) {
-                  window.location.reload();
-                  console.log("reloaded");
+                if (response.status === "success") {
+                  alert("Item deleted successfully.");
+                  // Navigate to the same page after successful delete
+                  window.location.href = window.location.href;
                 } else {
                   console.error("Failed to delete data.");
                 }
-              },
-              error: function (error) {
-                console.error("An error occurred while deleting data:", error);
               },
             });
           } catch (error) {
