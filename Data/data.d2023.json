@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "190b0e6e-7898-4a5c-95e4-4ff97508fb5c",
+    "social": "https://facbook.com/marco5dev",
+    "image": "/425605991_933590944935128_6016720509626105790_n.jpg",
+    "name": "Mark Maher Ewida",
+    "rank": "1st",
+    "competition": "Computer (Programing)",
+    "date": "2023",
+    "edu": "High School"
+  },
+  {
+    "id": "ec757c16-82c0-42ce-b962-c60658a8146d",
+    "social": "https://www.facebook.com/saint.george.portsaid?mibextid=ZbWKwL",
+    "image": "/IMG-20230908-WA0103.jpg",
+    "name": "فريق الكورال المجمع",
+    "rank": "2nd",
+    "competition": "كورال مجمع المستوى الاول",
+    "date": "2023",
+    "edu": "All"
+  },
+  {
+    "id": "1725827a-aace-482a-93b8-344643ec7e51",
+    "social": "https://facbook.com/marco.webdeveloper",
+    "image": "/IMG_20231201_004939.jpg",
+    "name": "Sandra Emad",
+    "rank": "3rd",
+    "competition": "عزف ريكورد",
+    "date": "2023",
+    "edu": "الصف الثانى الثانوى"
+  },
+  {
+    "id": "ed02f60c-4e39-416e-a947-e98d2bdd1ba7",
+    "social": "/404",
+    "image": "/IMG_20231201_004948.jpg",
+    "name": "Marly Marco",
+    "rank": "2nd",
+    "competition": "لغه قبطيه",
+    "date": "2023",
+    "edu": "الصف الثانى الابتدائى "
+  }
+]
