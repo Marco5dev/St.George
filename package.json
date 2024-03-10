@@ -20,8 +20,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "dash": "nodemon dashboard.js"
+    "start": "nodemon app.js"
   },
   "author": "Mark Maher Ewida",
   "license": "CC0",
