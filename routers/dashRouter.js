@@ -411,6 +411,16 @@ router.delete("/:id", async (req, res, next) => {
   if (isPersistentLoggedIn || isSessionLoggedIn) {
     console.log("User is authenticated");
     try {
+      await jsonDB.findDataById(id).then((data) => {
+        fs.unlink(__dirname + "/../uploads" + data.image, function() {
+          res.send ({
+            status: "200",
+            responseType: "string",
+            response: "success"
+          });     
+        });
+        
+      })
       await jsonDB.deleteDataById(id);
       res.status(200).json({ status: "success" });
     } catch (err) {
