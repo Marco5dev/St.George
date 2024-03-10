@@ -130,6 +130,7 @@ router.get("/", (req, res) => {
     console.log("User is authenticated");
     res.render("./admin/dash.ejs", {
       adminName: res.locals.adminName,
+      adminPerms: res.locals.perms,
       isPersistentLoggedIn: isPersistentLoggedIn,
       dashboardLoginPersistentValue: dashboardLoginPersistentValue, // Pass the value to the view
       title: "Dashboard St.George",
@@ -167,6 +168,7 @@ router.get("/add", (req, res) => {
       try {
         res.render("./admin/add.ejs", {
           adminName: res.locals.adminName,
+          adminPerms: res.locals.perms,
           isPersistentLoggedIn: isPersistentLoggedIn,
           dashboardLoginPersistentValue: dashboardLoginPersistentValue, // Pass the value to the view
           title: "Add Data",
@@ -176,6 +178,7 @@ router.get("/add", (req, res) => {
         console.error(err);
         res.status(500).render("500-2.ejs", {
           adminName: res.locals.adminName,
+          adminPerms: res.locals.perms,
           isPersistentLoggedIn: isPersistentLoggedIn,
           dashboardLoginPersistentValue: dashboardLoginPersistentValue, // Pass the value to the view
           title: "500 Internal server error",
@@ -231,6 +234,7 @@ router.post("/add", upload.single("image"), async (req, res) => {
       console.error(err);
       res.status(500).render("500-2.ejs", {
         adminName: res.locals.adminName,
+        adminPerms: res.locals.perms,
         isPersistentLoggedIn: isPersistentLoggedIn,
         dashboardLoginPersistentValue: dashboardLoginPersistentValue, // Pass the value to the view
         title: "500 Internal server error",
@@ -247,7 +251,7 @@ router.post("/add", upload.single("image"), async (req, res) => {
 });
 
 // Add user
-router.get("/add/user", (req, res) => {
+router.get("/user/add", (req, res) => {
   const isPersistentLoggedIn =
     req.cookies["dashboard_login_persistent"] === "true";
   const isSessionLoggedIn = req.session.dashboard_login_session === true;
@@ -267,6 +271,7 @@ router.get("/add/user", (req, res) => {
       try {
         res.render("./admin/addUser.ejs", {
           adminName: res.locals.adminName,
+          adminPerms: res.locals.perms,
           isPersistentLoggedIn: isPersistentLoggedIn,
           dashboardLoginPersistentValue: dashboardLoginPersistentValue, // Pass the value to the view
           title: "Add New User",
@@ -276,6 +281,7 @@ router.get("/add/user", (req, res) => {
         console.error(err);
         res.status(500).render("500-2.ejs", {
           adminName: res.locals.adminName,
+          adminPerms: res.locals.perms,
           isPersistentLoggedIn: isPersistentLoggedIn,
           dashboardLoginPersistentValue: dashboardLoginPersistentValue, // Pass the value to the view
           title: "500 Internal server error",
@@ -327,6 +333,7 @@ router.post("/add/user", upload.single("image"), async (req, res) => {
       console.error(err);
       res.status(500).render("500-2.ejs", {
         adminName: res.locals.adminName,
+        adminPerms: res.locals.perms,
         isPersistentLoggedIn: isPersistentLoggedIn,
         dashboardLoginPersistentValue: dashboardLoginPersistentValue, // Pass the value to the view
         title: "500 Internal server error",
@@ -362,6 +369,7 @@ router.get("/:id", async (req, res) => {
       if (result) {
         res.render("data-1.ejs", {
           adminName: res.locals.adminName,
+          adminPerms: res.locals.perms,
           isPersistentLoggedIn: isPersistentLoggedIn,
           dashboardLoginPersistentValue: dashboardLoginPersistentValue, // Pass the value to the view
           title: result.name,
@@ -371,6 +379,7 @@ router.get("/:id", async (req, res) => {
       } else {
         res.status(404).render("404.ejs", {
           adminName: res.locals.adminName,
+          adminPerms: res.locals.perms,
           isPersistentLoggedIn: isPersistentLoggedIn,
           dashboardLoginPersistentValue: dashboardLoginPersistentValue, // Pass the value to the view
           title: "Not Found",
@@ -381,6 +390,7 @@ router.get("/:id", async (req, res) => {
       console.error(err);
       res.status(500).render("500-2.ejs", {
         adminName: res.locals.adminName,
+        adminPerms: res.locals.perms,
         isPersistentLoggedIn: isPersistentLoggedIn,
         dashboardLoginPersistentValue: dashboardLoginPersistentValue, // Pass the value to the view
         title: "500 Internal server error",
@@ -456,6 +466,7 @@ router.get("/edit/:id", async (req, res) => {
       if (result) {
         res.render("./admin/edit.ejs", {
           adminName: res.locals.adminName,
+          adminPerms: res.locals.perms,
           isPersistentLoggedIn: isPersistentLoggedIn,
           dashboardLoginPersistentValue: dashboardLoginPersistentValue, // Pass the value to the view
           title: "Edit Data",
@@ -465,6 +476,7 @@ router.get("/edit/:id", async (req, res) => {
       } else {
         res.status(404).render("404.ejs", {
           adminName: res.locals.adminName,
+          adminPerms: res.locals.perms,
           isPersistentLoggedIn: isPersistentLoggedIn,
           dashboardLoginPersistentValue: dashboardLoginPersistentValue, // Pass the value to the view
           title: "Not Found",
@@ -475,6 +487,7 @@ router.get("/edit/:id", async (req, res) => {
       console.error(err);
       res.status(500).render("500-2.ejs", {
         adminName: res.locals.adminName,
+        adminPerms: res.locals.perms,
         isPersistentLoggedIn: isPersistentLoggedIn,
         dashboardLoginPersistentValue: dashboardLoginPersistentValue, // Pass the value to the view
         title: "500 Internal server error",
@@ -533,6 +546,7 @@ router.post("/edit/:id", upload.single("image"), async (req, res) => {
       console.error(err);
       res.status(500).render("500-2.ejs", {
         adminName: res.locals.adminName,
+        adminPerms: res.locals.perms,
         isPersistentLoggedIn: isPersistentLoggedIn,
         dashboardLoginPersistentValue: dashboardLoginPersistentValue,
         title: "500 Internal server error",
@@ -574,6 +588,7 @@ router.get("/edit/user/:userId", async (req, res) => {
         .then((result) => {
           res.render("./admin/editUser.ejs", {
             adminName: res.locals.adminName,
+            adminPerms: res.locals.perms,
             isPersistentLoggedIn: isPersistentLoggedIn,
             dashboardLoginPersistentValue: dashboardLoginPersistentValue,
             title: "Edit User Data",
@@ -586,6 +601,7 @@ router.get("/edit/user/:userId", async (req, res) => {
           console.log(err);
           res.status(500).render("500-2.ejs", {
             adminName: res.locals.adminName,
+            adminPerms: res.locals.perms,
             isPersistentLoggedIn: isPersistentLoggedIn,
             dashboardLoginPersistentValue: dashboardLoginPersistentValue,
             title: "500 Internal server error",
@@ -596,6 +612,7 @@ router.get("/edit/user/:userId", async (req, res) => {
       console.error(err);
       res.status(500).render("500-2.ejs", {
         adminName: res.locals.adminName,
+        adminPerms: res.locals.perms,
         isPersistentLoggedIn: isPersistentLoggedIn,
         dashboardLoginPersistentValue: dashboardLoginPersistentValue,
         title: "500 Internal server error",
@@ -634,7 +651,7 @@ router.post("/edit/user/:userId", upload.single("image"), async (req, res) => {
     console.log("User is authenticated");
 
     try {
-      const { name, email, username, mobile, password } = req.body;
+      const { name, email, username, mobile, perms, password } = req.body;
 
       const uniqueID = uuid.v4();
       const updatedData = {
@@ -642,6 +659,7 @@ router.post("/edit/user/:userId", upload.single("image"), async (req, res) => {
         email,
         username,
         mobile,
+        perms,
         password,
       };
       const dataName = "Users";
@@ -651,6 +669,7 @@ router.post("/edit/user/:userId", upload.single("image"), async (req, res) => {
       console.error(err);
       res.status(500).render("500-2.ejs", {
         adminName: res.locals.adminName,
+        adminPerms: res.locals.perms,
         isPersistentLoggedIn: isPersistentLoggedIn,
         dashboardLoginPersistentValue: dashboardLoginPersistentValue,
         title: "500 Internal server error",

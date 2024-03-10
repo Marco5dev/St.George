@@ -81,7 +81,10 @@
       <ul class="logedin">
         <li class="profile-li"><a href="/dash/edit/user/<%- adminName %>"><i class="fa-regular fa-pen-to-square"></i> Edit profile</a></li>
         <li class="profile-li"><a href="/dash"><i class="fa-solid fa-chart-simple"></i> Dashboard</a></li>
-        <li class="profile-li"><a href="/dash/add/user"><i class="fa-solid fa-plus"></i> Add New User</a></li>
+        <% if (adminPerms === "administrator") { %>
+          <li class="profile-li"><a href="/dash/users"><i class="fa-solid fa-users"></i> Admins</a></li>
+        <% } %>
+        <li class="profile-li"><a href="/dash/user/add"><i class="fa-solid fa-plus"></i> Add New User</a></li>
         <li class="profile-li"><a href="/dash/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
       </ul>
     <% } %>

@@ -59,18 +59,44 @@
                   class="input-field"
                   placeholder="Email:"
                   /><br />
-                </div>
-                
-                <div class="input-wrapper">
-                  <input
-                    type="text"
-                    id="password"
-                    required
-                    name="password"
+              </div>
+              
+              <div class="input-wrapper custom-select">
+                <select class="input-wrapper" required>
+                  <option value="" name="perms" id="perms" class="input-field" required>
+                    Select the permissions of the user
+                  </option>
+                  <option
+                    value="administrator"
+                    name="perms"
+                    id="perms"
                     class="input-field"
-                    placeholder="Password:"
-                  /><br />
-                </div>
+                    required
+                  >
+                    administrator
+                  </option>
+                  <option
+                    value="admin"
+                    name="perms"
+                    id="perms"
+                    class="input-field"
+                    required
+                  >
+                    normal admin
+                  </option>
+                </select>
+              </div>
+                
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="password"
+                  required
+                  name="password"
+                  class="input-field"
+                  placeholder="Password:"
+                /><br />
+              </div>
 
               <div>
                 <button class="btn btn-primary" type="submit">

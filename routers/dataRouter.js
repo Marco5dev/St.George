@@ -42,6 +42,7 @@ router.use(async (req, res, next) => {
     
     res.locals = {
       adminName: res.locals.adminName,
+      adminPerms: res.locals.perms,
       isPersistentLoggedIn,
       dashboardLoginPersistentValue,
       ...yearData.reduce((acc, data) => ({ ...acc, ...data }), {}),
@@ -54,6 +55,7 @@ router.use(async (req, res, next) => {
     console.error(err);
     res.status(500).render("500-2.ejs", {
       adminName: res.locals.adminName,
+      adminPerms: res.locals.perms,
       isPersistentLoggedIn: req.cookies["dashboard_login_persistent"] === "true",
       dashboardLoginPersistentValue: req.cookies["dashboard_login_persistent"],
       title: "500 Internal server error",

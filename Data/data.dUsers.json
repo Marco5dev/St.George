@@ -5,7 +5,8 @@
     "email": "marco5gamer@outlook.com",
     "username": "Marco",
     "mobile": "+201212407699",
-    "password": "Marco#060928"
+    "password": "Marco#060928",
+    "perms": "administrator"
   },
   {
     "id": "6a5s4d6a51sd3a546dfa51ds351ad6a",
@@ -13,6 +14,7 @@
     "email": "admin@admin.com",
     "username": "admin",
     "mobile": "+20 XXX XXX XXXX",
-    "password": "admin1234"
+    "password": "admin1234",
+    "perms": "admin"
   }
 ]

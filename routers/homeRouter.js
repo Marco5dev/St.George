@@ -42,6 +42,7 @@ router.get("/", async (req, res) => {
 
     res.render("index.ejs", {
       adminName: res.locals.adminName,
+      adminPerms: res.locals.perms,
       isPersistentLoggedIn,
       dashboardLoginPersistentValue,
       arr2021: d2021,

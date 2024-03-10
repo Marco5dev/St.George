@@ -53,6 +53,7 @@ yearRoutes.forEach((route) => {
       .then((result) => {
         res.render(`yearData.ejs`, {
           adminName: res.locals.adminName,
+          adminPerms: res.locals.perms,
           isPersistentLoggedIn: isPersistentLoggedIn,
           dashboardLoginPersistentValue: dashboardLoginPersistentValue, // Pass the value to the view
           arr: result,
@@ -65,6 +66,7 @@ yearRoutes.forEach((route) => {
         console.error(err);
         res.status(500).render("500-2.ejs", {
           adminName: res.locals.adminName,
+          adminPerms: res.locals.perms,
           isPersistentLoggedIn: isPersistentLoggedIn,
           title: "500 Internal server error",
           description: "Sorry, something went wrong. Please try again later.",
