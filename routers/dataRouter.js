@@ -34,6 +34,9 @@ router.use(async (req, res, next) => {
   try {
     const isPersistentLoggedIn = req.cookies["dashboard_login_persistent"] === "true";
     const dashboardLoginPersistentValue = req.cookies["dashboard_login_persistent"];
+    const adminCookie = req.cookies["dashboard-user"],
+    adminID = await jsonDB.findDataById(adminCookie);
+
     const allData = await jsonDB.getAllData();
     
     const yearData = await Promise.all(years.map(async year => ({
@@ -42,7 +45,8 @@ router.use(async (req, res, next) => {
     
     res.locals = {
       adminName: res.locals.adminName,
-      adminPerms: res.locals.perms,
+      adminPerms: adminID.perms,
+      adminImage: adminID.image,
       isPersistentLoggedIn,
       dashboardLoginPersistentValue,
       ...yearData.reduce((acc, data) => ({ ...acc, ...data }), {}),

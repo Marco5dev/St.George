@@ -33,6 +33,8 @@ router.get("/", async (req, res) => {
   try {
     const isPersistentLoggedIn = req.cookies["dashboard_login_persistent"] === "true";
     const dashboardLoginPersistentValue = req.cookies["dashboard_login_persistent"];
+    const adminCookie = req.cookies["dashboard-user"],
+    adminID = await jsonDB.findDataById(adminCookie);
 
     const [d2021, d2022, fathersData] = await Promise.all([
       jsonDB.readDataFromFile("2021"),
@@ -42,7 +44,8 @@ router.get("/", async (req, res) => {
 
     res.render("index.ejs", {
       adminName: res.locals.adminName,
-      adminPerms: res.locals.perms,
+      adminPerms: adminID.perms,
+      adminImage: adminID.image,
       isPersistentLoggedIn,
       dashboardLoginPersistentValue,
       arr2021: d2021,

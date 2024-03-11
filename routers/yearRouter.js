@@ -48,12 +48,16 @@ yearRoutes.forEach((route) => {
     const dashboardLoginPersistentValue =
       req.cookies["dashboard_login_persistent"];
 
+      const adminCookie = req.cookies["dashboard-user"],
+    adminID = await jsonDB.findDataById(adminCookie);
+
     jsonDB
       .readDataFromFile(route.year)
       .then((result) => {
         res.render(`yearData.ejs`, {
           adminName: res.locals.adminName,
-          adminPerms: res.locals.perms,
+          adminPerms: adminID.perms,
+          adminImage: adminID.image,
           isPersistentLoggedIn: isPersistentLoggedIn,
           dashboardLoginPersistentValue: dashboardLoginPersistentValue, // Pass the value to the view
           arr: result,
