@@ -2,11 +2,12 @@
   {
     "id": "52sa-1df35-51s35df-1s5d5a1-sd511fs-352d1f",
     "name": "Mark Maher Ewida",
-    "email": "marco5gamer@outlook.com",
-    "username": "Marco",
+    "email": "contact@marco5dev.site",
+    "username": "Marco5dev",
     "mobile": "+201212407699",
     "password": "Marco#060928",
-    "perms": "administrator"
+    "perms": "1",
+    "image": "/425605991_933590944935128_6016720509626105790_n.jpg"
   },
   {
     "id": "6a5s4d6a51sd3a546dfa51ds351ad6a",
@@ -15,6 +16,6 @@
     "username": "admin",
     "mobile": "+20 XXX XXX XXXX",
     "password": "admin1234",
-    "perms": "admin"
+    "perms": "1"
   }
 ]
