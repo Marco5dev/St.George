@@ -9,14 +9,17 @@ const axios = require("axios");
 const opn = require("opn");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const JSONDatabase = require("./middleware/dataAccess/dataAccess");
+const dataFolderPath = path.join(__dirname, "./Data");
+const jsonDB = new JSONDatabase(dataFolderPath);
 require("dotenv").config();
 
 // Import middleware and routers
 const colors = require("./middleware/colors");
-const dataAccess = require("./middleware/dataAccess/dataAccess");
 const homeRouter = require("./routers/homeRouter");
 const dashRouter = require("./routers/dashRouter");
 const dataRouter = require("./routers/dataRouter");
+const yearRouter = require("./routers/yearRouter");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -30,7 +33,7 @@ app.use(expressip().getIpInfoMiddleware);
 app.use(cookieParser());
 app.use(
   session({
-    secret: "your-secret-key", // Replace with your own secret key
+    secret: "Marco#060928060328", 
     resave: false,
     saveUninitialized: true,
   })
@@ -57,22 +60,26 @@ const upload = multer({ storage });
 app.use("/", homeRouter);
 app.use("/dash", dashRouter);
 app.use("/data", dataRouter);
-
-// Consolidated year router
-const yearRouter = require("./routers/yearRouter"); // Adjust the path accordingly
-app.use("/year", yearRouter); // Use the yearRouter for routes starting with /years
+app.use("/year", yearRouter); 
 
 // 404 Handler
-app.use((req, res, next) => {
+app.use(async (req, res) => {
   const isPersistentLoggedIn =
     req.cookies["dashboard_login_persistent"] === "true";
   const isSessionLoggedIn = req.session.dashboard_login_session === true;
   // Determine the value of the "dashboard_login_persistent" cookie
   const dashboardLoginPersistentValue =
     req.cookies["dashboard_login_persistent"];
+
+    const adminCookie = req.cookies["dashboard-user"],
+    adminID = await jsonDB.findDataById(adminCookie);
+
   res.status(404).render("404.ejs", {
     adminName: res.locals.adminName,
+    adminPerms: adminID.perms,
+    adminImage: adminID.image,
     isPersistentLoggedIn: isPersistentLoggedIn,
+    isSessionLoggedInValue: isSessionLoggedIn,
     dashboardLoginPersistentValue: dashboardLoginPersistentValue,
     title: "404 Not Found",
     description: "Sorry, we couldn't find that page.",
