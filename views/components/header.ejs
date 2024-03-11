@@ -67,28 +67,33 @@
 
         <div class="action" style="display: block;">
           <div class="profile" onclick="profileToggle()">
-            <img src="/images/blank-photo.png" alt="user">
+            <img src="<%- adminImage.image || '/images/blank-photo.png' %>" alt="user">
           </div>
-<div class="profile-menu">
-    <h3><%- adminName %></h3>
-    <!-- Check if the user is logged in or not -->
-    <% if (!isPersistentLoggedIn) { %>
-      <ul class="login">
-        <li class="profile-li"><a href="/dash/login"><i class="fa-solid fa-toolbox"></i> Log in as admin</a></li>
-      </ul>
-    <% } else if (isPersistentLoggedIn === true) { %>
-      <!-- If the user is logged in as admin -->
-      <ul class="logedin">
-        <li class="profile-li"><a href="/dash/edit/user/<%- adminName %>"><i class="fa-regular fa-pen-to-square"></i> Edit profile</a></li>
-        <li class="profile-li"><a href="/dash"><i class="fa-solid fa-chart-simple"></i> Dashboard</a></li>
-        <% if (adminPerms === "administrator") { %>
-          <li class="profile-li"><a href="/dash/users"><i class="fa-solid fa-users"></i> Admins</a></li>
-        <% } %>
-        <li class="profile-li"><a href="/dash/user/add"><i class="fa-solid fa-plus"></i> Add New User</a></li>
-        <li class="profile-li"><a href="/dash/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
-      </ul>
-    <% } %>
-  </div>
+          <div class="profile-menu">
+            <h3><%- adminName %></h3>
+            <!-- Check if the user is logged in or not -->
+            <% if (!isPersistentLoggedIn) { %>
+              <ul class="login">
+                <li class="profile-li"><a href="/dash/login"><i class="fa-solid fa-toolbox"></i> Log in as admin</a>
+                </li>
+              </ul>
+              <% } else if (isPersistentLoggedIn===true) { %>
+                <!-- If the user is logged in as admin -->
+                <ul class="logedin">
+                  <li class="profile-li"><a href="/dash/user/edit/profile"><i
+                        class="fa-regular fa-pen-to-square"></i> Edit profile</a></li>
+                  <li class="profile-li"><a href="/dash"><i class="fa-solid fa-chart-simple"></i> Dashboard</a></li>
+                  <% if (adminPerms === "1" ) { %>
+                    <li class="profile-li"><a href="/dash/admins/users"><i class="fa-solid fa-users"></i> Admins</a>
+                    </li>
+                    <li class="profile-li"><a href="/dash/user/add"><i class="fa-solid fa-plus"></i> Add New User</a>
+                    </li>
+                    <% } %>
+                      <li class="profile-li"><a href="/dash/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                          Logout</a></li>
+                </ul>
+                <% } %>
+          </div>
         </div>
     </nav>
 
