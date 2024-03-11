@@ -348,7 +348,7 @@ router.post("/add/user", upload.single("image"), async (req, res) => {
   if (isPersistentLoggedIn || isSessionLoggedIn) {
     console.log("User is authenticated");
     try {
-      const { name, email, username, mobile, perms, password } = req.body;
+      const { name, email, username, mobile, perms, password, image } = req.body;
 
       const uniqueID = uuid.v4();
       const newData = {
@@ -359,6 +359,7 @@ router.post("/add/user", upload.single("image"), async (req, res) => {
         mobile,
         perms,
         password,
+        image
       };
 
       await jsonDB.addData("Users", newData);
