@@ -67,7 +67,7 @@
 
         <div class="action" style="display: block;">
           <div class="profile" onclick="profileToggle()">
-            <img src="<%- adminImage.image || '/images/blank-photo.png' %>" alt="user">
+            <img src="<%- adminImage || '/images/blank-photo.png' %>" alt="user">
           </div>
           <div class="profile-menu">
             <h3><%- adminName %></h3>
@@ -80,10 +80,10 @@
               <% } else if (isPersistentLoggedIn===true) { %>
                 <!-- If the user is logged in as admin -->
                 <ul class="logedin">
-                  <li class="profile-li"><a href="/dash/user/edit/profile"><i
-                        class="fa-regular fa-pen-to-square"></i> Edit profile</a></li>
+                  <li class="profile-li"><a href="/dash/user/edit/profile"><i class="fa-regular fa-pen-to-square"></i>
+                      Edit profile</a></li>
                   <li class="profile-li"><a href="/dash"><i class="fa-solid fa-chart-simple"></i> Dashboard</a></li>
-                  <% if (adminPerms === "1" ) { %>
+                  <% if (adminPerms==="1" ) { %>
                     <li class="profile-li"><a href="/dash/admins/users"><i class="fa-solid fa-users"></i> Admins</a>
                     </li>
                     <li class="profile-li"><a href="/dash/user/add"><i class="fa-solid fa-plus"></i> Add New User</a>
