@@ -17,7 +17,6 @@
   <body>
     <div class="container">
       <div class="box">
-        <!------------------ Login Box --------------------->
         <div class="box-login" id="login">
           <form method="post" action="/dash/login">
             <div class="top-header">
@@ -47,7 +46,13 @@
                   maxlength="23"
                 />
                 <label for="logPassword">Password</label>
-                <p id="error-message" class="error-message"></p>
+                <p
+                  id="error-message"
+                  class="error-message"
+                  style="color: #ff0000; font-weight: bold"
+                >
+                  <%= errorMessage %>
+                </p>
                 <div class="eye-area">
                   <div class="eye-box" onclick="myLogPassword()">
                     <i class="fa-regular fa-eye" id="eye"></i>
