@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../components/head") %>
+
+  <body id="top" class="light">
+    <%- include("../components/header", { isPersistentLoggedIn: isPersistentLoggedIn, dashboardLoginPersistentValue: dashboardLoginPersistentValue, adminPerms: adminPerms, adminImage: adminImage  }) %>
+
+      <main>
+        <article>
+          <!-- All Data Section -->
+          <section class="section post post-phone" aria-label="post" id="recent-post">
+            <div class="container">
+              <h2 class="headline headline-2 section-title">
+                <span class="span">Admins in this website</span>
+              </h2>
+
+              <p class="section-text">
+                All the admins on this website who have permissions to add/edit/delete data in this website
+              </p>
+              <ul class="post-list">
+                <% item.forEach(user=> { %>
+                  <li>
+                    <div class="card post-card">
+                      <figure class="card-banner img-holder" style="--width: 600; --height: 600">
+                        <img src="<%- user.image || '/images/blank-photo.png' %>" width="600" height="600"
+                          loading="lazy" alt="<%- user.name %>" class="img-cover"
+                          onerror="replaceWithErrorImage(this)" />
+                      </figure>
+
+                      <div class="card-content">
+                        <div class="card-wrapper">
+                          <div class="card-tag">
+                            <p class="span hover-2">
+                              <% if(user.perms==="1" ){ %> Administrator <% } else if(user.perms==="0" ){ %> Normal
+                                  Admin <% } %>
+                            </p>
+                          </div>
+                        </div>
+
+                        <h3 class="headline headline-3">
+                          <a href="" class="card-title hover-2" style="font-family: var(--fontFamily-noto_sans_arabic)">
+                            <%- user.name %>
+                          </a>
+                        </h3>
+
+                        <div class="card-wrapper">
+                          <div class="profile-card">
+                            <div>
+                              <p class="card-title"><%- user.username %></p>
+
+                              <p class="card-subtitle"><%- user.email %></p>
+                            </div>
+                          </div>
+                          <div>
+                            <button class="button delete-button" data-id="<%- user.id %>" style="margin-bottom: 10px">
+                              <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                            <a class="edit-button" href="/dash/user/edit/<%- user.id %>">
+                              <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <% }); %>
+              </ul>
+            </div>
+          </section>
+
+        </article>
+      </main>
+
+      <%- include("../components/footer") %>
+
+        <div>
+          <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+            <ion-icon name=" yearData.arrow-up-outline" aria-hidden="true"></ion-icon>
+          </a>
+          <a href="/dash/user/add" class="add-btn" aria-label="Add New Data" data-back-top-btn>
+            <i class="fa-solid fa-plus"></i>
+          </a>
+        </div>
+
+        <!-- Custom JavaScript -->
+        <%- include("../components/javascript") %>
+
+          <!-- Ion Icons -->
+          <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+          <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+          <script>
+            document.querySelectorAll(".button").forEach((button) =>
+              button.addEventListener("click", (e) => {
+                if (!button.classList.contains("delete")) {
+                  button.classList.add("delete");
+                  setTimeout(() => button.classList.remove("delete"), 3200);
+                }
+                e.preventDefault();
+              })
+            );
+
+            // Attach event listeners to delete buttons
+            const deleteButtons = document.querySelectorAll(".delete-button");
+            deleteButtons.forEach((button) => {
+              button.addEventListener("click", async (event) => {
+                const id = event.currentTarget.dataset.id;
+
+                try {
+                  $.ajax({
+                    url: `/dash/user/delete/${id}?_=${Date.now()}`,
+                    method: "DELETE",
+                    success: function (response) {
+                      if (response.status === "success") {
+                        alert("Item deleted successfully.");
+                        window.location.href = window.location.href;
+                      } else {
+                        console.error("Failed to delete data.");
+                      }
+                    },
+                  });
+                } catch (error) {
+                  console.error("An error occurred:", error);
+                }
+              });
+            });
+          </script>
+  </body>
+
+</html>
