@@ -3,9 +3,7 @@
   <%- include("../components/head") %>
 
   <body id="top" class="light">
-    <%- include("../components/header", { isPersistentLoggedIn:
-    isPersistentLoggedIn, dashboardLoginPersistentValue:
-    dashboardLoginPersistentValue }) %>
+    <%- include("../components/header", { isPersistentLoggedIn: isPersistentLoggedIn, dashboardLoginPersistentValue: dashboardLoginPersistentValue, adminPerms: adminPerms, adminImage: adminImage  }) %>
 
     <main>
       <article>
@@ -16,7 +14,7 @@
         >
           <div class="container">
             <h2 class="headline headline-2 section-title">
-              <span class="span">Edit <%= item.name %></span>
+              <span class="span">Edit '<%= item.name %>'</span>
             </h2>
             <form
               method="POST"
@@ -68,6 +66,17 @@
                   placeholder="Email:"
                   value="<%- item.email %>"
                 /><br />
+              </div>
+
+              <div class="input-wrapper custom-select">
+                <select class="input-wrapper" name="perms" required>
+                  <option value="1" <% if(adminPerms === "1"){ %> selected <% } %> >
+                    administrator
+                  </option>
+                  <option value="0" <% if(adminPerms === "0"){ %> selected <% } %> >
+                    normal admin
+                  </option>
+                </select>
               </div>
 
               <div class="input-wrapper">
@@ -131,7 +140,7 @@
               const id = button.getAttribute("data-id");
     
               $.ajax({
-                url: `/dash/edit/user/${id}?_=${Date.now()}`,
+                url: `/dash/delete/user/${id}?_=${Date.now()}`,
                 method: "DELETE",
                 success: function (response) {
                   if (response.status === "success") {
